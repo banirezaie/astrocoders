@@ -1,4 +1,4 @@
-# Attendance register - Backend
+# Attendance register - Frontend
 
 In order to run the app, run these commands:
 
