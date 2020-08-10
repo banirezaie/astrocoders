@@ -37,7 +37,7 @@ client.connect(function () {
     const addAttandence = {
       name: req.body.name,
       email: req.body.email,
-      date: req.body.date,
+      date: new Date(req.body.date),
     };
 
     collection.insertOne(addAttandence, function (error, result) {
