@@ -3,14 +3,11 @@ import cors from "cors";
 import express from "express";
 
 const uri = process.env.DATABASE_URI;
-//Please add database uri in your .env as follows
-
-// DATABASE_URI = mongodb+srv://astrocoders:astrocoders123@codemons.jscsc.mongodb.net/Codemons?retryWrites=true&w=majority;
 
 const app = express();
 const mongodb = require("mongodb");
 const client = new mongodb.MongoClient(uri, { useUnifiedTopology: true });
-// const MongoClient = require("mongodb").MongoClient;
+
 app.use(express.json());
 
 const bodyParser = require("body-parser");
@@ -42,6 +39,11 @@ client.connect(function () {
 
     collection.insertOne(addAttandence, function (error, result) {
       res.send(error || result.ops[0]);
+      // if(error){
+      //   res.status(500).send(error)
+      // }else{
+      //   res.sendStatus(204).result.ops[0];
+      // }
       client.close;
     });
   });
