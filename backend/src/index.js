@@ -38,12 +38,11 @@ client.connect(function () {
     };
 
     collection.insertOne(addAttandence, function (error, result) {
-      res.send(error || result.ops[0]);
-      // if(error){
-      //   res.status(500).send(error)
-      // }else{
-      //   res.sendStatus(204).result.ops[0];
-      // }
+      if (error) {
+        res.status(500).send(error);
+      }
+      res.status(200).send(result.ops[0]);
+
       client.close;
     });
   });
