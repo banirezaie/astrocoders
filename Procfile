@@ -1,3 +1,3 @@
 "scripts": {
-  "start": "cd backend && npm start"
+  "postinstall": "cd backend && npm start"
 }
