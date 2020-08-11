@@ -2,6 +2,16 @@ import React from "react";
 import "../App.css";
 
 const ClassType = () => {
+  const cyfCities = [
+    "Medellín",
+    "Rome",
+    "London",
+    "Manchester",
+    "Birmingham",
+    "Glasgow",
+    "Cape Town",
+  ];
+
   return (
     <div className="App-header">
       <div className="col-6  mx-auto">
@@ -12,17 +22,19 @@ const ClassType = () => {
           <div className="form-group">
             <label htmlFor="class">Class</label>
             <select className="form-control" id="class">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option selected>Please select your class...</option>
+              {cyfCities.sort().map((city) => (
+                <option>{city}</option>
+              ))}
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="type">Type</label>
             <select className="form-control" id="type">
-              <option selected>class</option>
+              <option selected>
+                Are you attending class or homework club?
+              </option>
+              <option>Class</option>
               <option>Homework club</option>
             </select>
           </div>

@@ -12,7 +12,7 @@ const Students = () => {
         <form>
           <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" className="form-control" id="name" />
+            <input type="text" className="form-control" id="name" required />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email address</label>
@@ -21,19 +21,20 @@ const Students = () => {
               className="form-control"
               id="email"
               aria-describedby="emailHelp"
+              required
             />
             <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else.
             </small>
           </div>
           <div className="text-center">
-            <Link
-              type="submit"
-              className="btn btn-primary"
-              to="/students/classtype"
-            >
-              Next
-            </Link>
+            <button type="submit" className="btn btn-primary">
+              {" "}
+              <Link to="/students/classtype" className="text-white">
+                {" "}
+                Next
+              </Link>
+            </button>
           </div>
         </form>
       </div>
