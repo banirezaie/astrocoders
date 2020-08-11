@@ -1,6 +1,6 @@
-import "dotenv/config";
-import cors from "cors";
-import express from "express";
+require("dotenv/config");
+const cors = require("cors");
+const express = require("express");
 
 const uri = process.env.DATABASE_URI;
 
