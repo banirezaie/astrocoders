@@ -4,25 +4,24 @@ import "../App.css";
 const ClassType = ({ name, email }) => {
   const [myClass, setMyClass] = useState("");
   const [type, setType] = useState("");
- function handleSubmit() {
-   const body = JSON.stringify({
-     myClass,
-     type,
-     name,
-     email,
-   });
+  function handleSubmit() {
+    const body = JSON.stringify({
+      myClass,
+      type,
+      name,
+      email,
+    });
 
-   fetch(`http://localhost:9000/attendance`, {
-     method: "POST",
-     referrer: "",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body,
-   })
-     .then((res) => res.json())
-     .then();
- }
+    fetch(`http://localhost:9000/attendance`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body,
+    })
+      .then((res) => res.json())
+      .then();
+  }
 
   const cyfCities = [
     "Medellín",
@@ -34,7 +33,6 @@ const ClassType = ({ name, email }) => {
     "Cape Town",
   ];
 
- 
   return (
     <div className="App-header">
       <div className="col-6  mx-auto">
@@ -50,8 +48,8 @@ const ClassType = ({ name, email }) => {
               onChange={(e) => setMyClass(e.target.value)}
             >
               <option selected>Please select your class...</option>
-              {cyfCities.sort().map((city) => (
-                <option>{city}</option>
+              {cyfCities.sort().map((city, index) => (
+                <option key={index}>{city}</option>
               ))}
             </select>
           </div>
