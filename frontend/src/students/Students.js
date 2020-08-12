@@ -40,13 +40,13 @@ const Students = () => {
           </div>
 
           <div className="text-center">
-            <NavLink
-              type="submit"
-              className="btn btn-primary"
-              to="/students/classtype"
-            >
-              Next
-            </NavLink>
+            <button type="submit" className="btn btn-primary">
+              {" "}
+              <Link to="/students/classtype" className="text-white">
+                {" "}
+                Next
+              </Link>
+            </button>
           </div>
           <ClassType name={name} email={email} />
         </form>

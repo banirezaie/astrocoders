@@ -34,22 +34,20 @@ const ClassType = ({name,email}) => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="class">Class</label>
-            <select
-              className="form-control"
-              id="class"
-              onChange={(e) => setMyClass(e.target.value)}
-            >
+            <select className="form-control" id="class">
+              <option selected>Please select your class...</option>
+              {cyfCities.sort().map((city) => (
+                <option>{city}</option>
+              ))}
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="type">Type</label>
-            <select
-              className="form-control"
-              id="type"
-              onChange={(e) => setType(e.target.value)}
-            >
-              <option>...</option>
-              <option>class</option>
+            <select className="form-control" id="type">
+              <option selected>
+                Are you attending class or homework club?
+              </option>
+              <option>Class</option>
               <option>Homework club</option>
               <option>Other</option>
             </select>

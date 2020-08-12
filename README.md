@@ -1,6 +1,6 @@
 # Attendance register
 
-In order to run the app, run these commands:
+In order to run the frontend react app, run these commands:
 
 - cd frontend
 - npm install
@@ -8,6 +8,5 @@ In order to run the app, run these commands:
 
 then on a different Terminal:
 
-- cd backend
 - npm install
-- npm start
+- npm run dev
