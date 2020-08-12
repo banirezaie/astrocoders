@@ -35,6 +35,8 @@ client.connect(function () {
       name: req.body.name,
       email: req.body.email,
       date: new Date(req.body.date),
+      myClass: req.body.myClass,
+      type: req.body.type,
     };
 
     collection.insertOne(addAttandence, function (error, result) {
