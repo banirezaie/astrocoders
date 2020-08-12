@@ -1,30 +1,40 @@
 import React, { useState } from "react";
 import "../App.css";
 
-const ClassType = ({name,email}) => {
+const ClassType = ({ name, email }) => {
   const [myClass, setMyClass] = useState("");
   const [type, setType] = useState("");
-  
-  function handleSubmit() {
-    const body = JSON.stringify({
-      myClass,
-      type,
-      name,
-      email
-    });
+ function handleSubmit() {
+   const body = JSON.stringify({
+     myClass,
+     type,
+     name,
+     email,
+   });
 
-    fetch(`http://localhost:9000/attendance`, {
-      method: "POST",
-      referrer: "",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body,
-    })
-      .then((res) => res.json())
-      .then();
-  }
+   fetch(`http://localhost:9000/attendance`, {
+     method: "POST",
+     referrer: "",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body,
+   })
+     .then((res) => res.json())
+     .then();
+ }
 
+  const cyfCities = [
+    "Medellín",
+    "Rome",
+    "London",
+    "Manchester",
+    "Birmingham",
+    "Glasgow",
+    "Cape Town",
+  ];
+
+ 
   return (
     <div className="App-header">
       <div className="col-6  mx-auto">
@@ -34,7 +44,11 @@ const ClassType = ({name,email}) => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="class">Class</label>
-            <select className="form-control" id="class">
+            <select
+              className="form-control"
+              id="class"
+              onChange={(e) => setMyClass(e.target.value)}
+            >
               <option selected>Please select your class...</option>
               {cyfCities.sort().map((city) => (
                 <option>{city}</option>
@@ -43,7 +57,11 @@ const ClassType = ({name,email}) => {
           </div>
           <div className="form-group">
             <label htmlFor="type">Type</label>
-            <select className="form-control" id="type">
+            <select
+              className="form-control"
+              id="type"
+              onChange={(e) => setType(e.target.value)}
+            >
               <option selected>
                 Are you attending class or homework club?
               </option>
