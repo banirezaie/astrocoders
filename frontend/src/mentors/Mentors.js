@@ -11,7 +11,7 @@ const Mentors = () => {
   // const [date, setDate] = useState("");
   // const [time, setTime] = useState("");
   useEffect(() => {
-    fetch(`http://localhost:9000/attendance/student`)
+    fetch(`https://astrocodersbackend.herokuapp.com/attendance/student`)
       .then((res) => res.json())
       .then((data) => setStudents(data));
   }, []);

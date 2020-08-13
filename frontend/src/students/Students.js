@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 
-const Students = () => {
+const Students = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [myClass, setMyClass] = useState("");
@@ -24,6 +24,8 @@ const Students = () => {
     })
       .then((res) => res.json())
       .then();
+
+    props.history.push("/");
   }
 
   const cyfCities = [
