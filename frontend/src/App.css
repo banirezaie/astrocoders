@@ -16,3 +16,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.logo {
+  height: 3.4rem;
+  width: 11rem;
+}

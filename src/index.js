@@ -21,31 +21,56 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// client.connect(function () {
-//   const db = client.db("attandence");
-//   const collection = db.collection("students");
+client.connect(function () {
+  const db = client.db("attendance");
+  const collection = db.collection("students");
 
-app.get("/", (req, res) => {
-  res.send("<h2>You can search the students now!</h2>");
+  app.get("/", (req, res) => {
+    res.send("<h2>You can search the students now!</h2>");
+  });
+  app.get("/attendance/student", function (req, res) {
+    const client = new mongodb.MongoClient(uri);
+
+    client.connect(() => {
+      const db = client.db("attendance");
+      const collection = db.collection("students");
+
+      collection.find().toArray((error, tracks) => {
+        res.send(error || tracks);
+        client.close();
+      });
+    });
+  });
+  // create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
+  app.post("/attendance", (req, res) => {
+    let today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    const addAttendance = {
+      name: req.body.name,
+      email: req.body.email,
+      date: date.toString(),
+      time: time.toString(),
+      myClass: req.body.myClass,
+      type: req.body.type,
+    };
+
+    collection.insertOne(addAttendance, function (error, result) {
+      if (error) {
+        res.status(500).send(error);
+      }
+      res.status(200).send(result.ops[0]);
+
+      client.close;
+    });
+  });
 });
-
-//   // create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
-//   app.post("/attendance", (req, res) => {
-//     const addAttandence = {
-//       name: req.body.name,
-//       email: req.body.email,
-//       date: new Date(req.body.date),
-//     };
-
-//     collection.insertOne(addAttandence, function (error, result) {
-//       if (error) {
-//         res.status(500).send(error);
-//       }
-//       res.status(200).send(result.ops[0]);
-
-//       client.close;
-//     });
-//   });
-// });
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
