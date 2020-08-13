@@ -38,12 +38,12 @@ const Mentors = () => {
                   <tr key={i}>
                     {console.log(data)}
                     <th>{i + 1}</th>
-                    <td>{data.name}</td>
-                    <td>{data.email}</td>
-                    <td>{data.myClass}</td>
-                    <td>{data.type}</td>
-                    <td>{data.date}</td>
-                    <td>{data.time}</td>
+                    <td>{data.name ? data.name : null}</td>
+                    <td>{data.email ? data.email : null}</td>
+                    <td>{data.myClass ? data.myClass : null}</td>
+                    <td>{data.type ? data.type : null}</td>
+                    <td>{data.date ? data.date : null}</td>
+                    <td>{data.time ? data.time : null}</td>
                   </tr>
                 );
               })}
