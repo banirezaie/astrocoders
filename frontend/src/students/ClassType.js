@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "../App.css";
 
-const ClassType = ({name,email}) => {
+const ClassType = ({ name, email }) => {
   const [myClass, setMyClass] = useState("");
   const [type, setType] = useState("");
-  
+
   function handleSubmit() {
     const body = JSON.stringify({
       myClass,
       type,
       name,
-      email
+      email,
     });
 
     fetch(`http://localhost:9000/attendance`, {
@@ -36,9 +36,9 @@ const ClassType = ({name,email}) => {
             <label htmlFor="class">Class</label>
             <select className="form-control" id="class">
               <option selected>Please select your class...</option>
-              {cyfCities.sort().map((city) => (
+              {/* {cyfCities.sort().map((city) => (
                 <option>{city}</option>
-              ))}
+              ))} */}
             </select>
           </div>
           <div className="form-group">

@@ -42,10 +42,10 @@ const Students = () => {
           <div className="text-center">
             <button type="submit" className="btn btn-primary">
               {" "}
-              <Link to="/students/classtype" className="text-white">
+              <navLink to="/students/classtype" className="text-white">
                 {" "}
                 Next
-              </Link>
+              </navLink>
             </button>
           </div>
           <ClassType name={name} email={email} />
