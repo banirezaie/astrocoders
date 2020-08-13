@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import ClassType from "./ClassType";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 const Students = () => {
@@ -48,7 +47,6 @@ const Students = () => {
               </navLink>
             </button>
           </div>
-          <ClassType name={name} email={email} />
         </form>
       </div>
     </div>
