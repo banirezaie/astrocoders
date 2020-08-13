@@ -72,6 +72,7 @@ const Students = () => {
               className="form-control"
               id="class"
               onChange={(e) => setMyClass(e.target.value)}
+              // required="required"
             >
               <option defaultValue>Please select your class...</option>
               {cyfCities.sort().map((city, index) => (
@@ -85,6 +86,7 @@ const Students = () => {
               className="form-control"
               id="type"
               onChange={(e) => setType(e.target.value)}
+              // required="required"
             >
               <option defaultValue>
                 Are you attending class or homework club?
