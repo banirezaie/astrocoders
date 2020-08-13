@@ -3,8 +3,14 @@ import "../App.css";
 
 const Mentors = () => {
   const [students, setStudents] = useState("");
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [myClass, setMyClass] = useState("");
+  // const [type, setType] = useState("");
+  // const [date, setDate] = useState("");
+  // const [time, setTime] = useState("");
   useEffect(() => {
-    fetch(`http://localhost:9000/`)
+    fetch(`http://localhost:9000/attendance/student`)
       .then((res) => res.json())
       .then((data) => setStudents(data));
   }, []);
@@ -16,7 +22,7 @@ const Mentors = () => {
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Class</th>
+            <th scope="col">myClass</th>
             <th scope="col">Type</th>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
@@ -24,24 +30,18 @@ const Mentors = () => {
         </thead>
         {students ? (
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {students.map((data) => {
+              return (
+                <div>
+                  <td>{data.name}</td>
+                  <td>{data.email}</td>
+                  <td>{data.myClass}</td>
+                  <td>{data.type}</td>
+                  <td>{data.date}</td>
+                  <td>{data.time}</td>
+                </div>
+              );
+            })}
           </tbody>
         ) : (
           <tbody>
