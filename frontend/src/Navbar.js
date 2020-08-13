@@ -4,7 +4,7 @@ import "./App.css";
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <img src="logo.png" className="logo ml-4" />
+      <img src="logo.png" className="logo ml-4" alt="logo" />
       <button
         className="navbar-toggler"
         type="button"
