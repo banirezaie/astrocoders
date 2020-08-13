@@ -16,42 +16,47 @@ const Mentors = () => {
       .then((data) => setStudents(data));
   }, []);
   return (
-    <div className="App-header">
-      <table className="table table-striped container bg-white table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">myClass</th>
-            <th scope="col">Type</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-          </tr>
-        </thead>
-        {students ? (
-          <tbody>
-            {students.map((data) => {
-              return (
-                <div>
-                  <td>{data.name}</td>
-                  <td>{data.email}</td>
-                  <td>{data.myClass}</td>
-                  <td>{data.type}</td>
-                  <td>{data.date}</td>
-                  <td>{data.time}</td>
-                </div>
-              );
-            })}
-          </tbody>
-        ) : (
-          <tbody>
+    <div>
+      <Navbar />
+      <div className="App-header">
+        <table className="table table-striped container bg-white table-hover">
+          <thead>
             <tr>
-              <th>No one attended yet</th>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">myClass</th>
+              <th scope="col">Type</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
             </tr>
-          </tbody>
-        )}
-      </table>
+          </thead>
+          {students ? (
+            <tbody>
+              {students.map((data, i) => {
+                return (
+                  <tr key={i}>
+                    {console.log(data)}
+                    <th>{i + 1}</th>
+                    <td>{data.name}</td>
+                    <td>{data.email}</td>
+                    <td>{data.myClass}</td>
+                    <td>{data.type}</td>
+                    <td>{data.date}</td>
+                    <td>{data.time}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          ) : (
+            <tbody>
+              <tr>
+                <th>No one attended yet</th>
+              </tr>
+            </tbody>
+          )}
+        </table>
+      </div>
     </div>
   );
 };
