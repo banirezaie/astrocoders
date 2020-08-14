@@ -71,10 +71,10 @@ client.connect(function () {
 });
 
 client.connect(function () {
-  const db = client.db("admin");
+  const db = client.db("admins");
   const collection = db.collection("code");
 
-  app.get("/admin", function (req, res) {
+  app.get("/admins", function (req, res) {
     const client = new mongodb.MongoClient(uri);
     client.connect(() => {
       collection.find().toArray((error, tracks) => {
@@ -84,7 +84,7 @@ client.connect(function () {
     });
   });
 
-  app.post("/admin", (req, res) => {
+  app.post("/admins", (req, res) => {
     const classCode = {
       code: req.body.code,
     };
