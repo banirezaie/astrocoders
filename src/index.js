@@ -55,8 +55,9 @@ client.connect(function () {
       email: req.body.email,
       date: date.toString(),
       time: time.toString(),
-      myClass: req.body.myClass,
+      location: req.body.location,
       type: req.body.type,
+      code: req.body.code,
     };
 
     collection.insertOne(classCode, function (error, result) {
@@ -71,7 +72,7 @@ client.connect(function () {
 });
 
 client.connect(function () {
-  const db = client.db("admin");
+  const db = client.db("admins");
   const collection = db.collection("code");
 
   app.get("/admin", function (req, res) {
@@ -86,6 +87,8 @@ client.connect(function () {
 
   app.post("/admin", (req, res) => {
     const classCode = {
+      location: req.body.location,
+      type: req.body.type,
       code: req.body.code,
     };
 
@@ -93,7 +96,6 @@ client.connect(function () {
       if (error) {
         res.status(500).send(error);
       }
-      console.log(result, "1");
       res.status(200).send(result.ops[0]);
 
       client.close;

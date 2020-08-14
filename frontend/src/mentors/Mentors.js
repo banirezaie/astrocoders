@@ -11,7 +11,8 @@ const Mentors = () => {
   // const [date, setDate] = useState("");
   // const [time, setTime] = useState("");
   useEffect(() => {
-    fetch(`https://astrocodersbackend.herokuapp.com/attendance/student`)
+    fetch(`http://localhost:9000/attendance/student`)
+      // (`https://astrocodersbackend.herokuapp.com/attendance/student`)
       .then((res) => res.json())
       .then((data) => setStudents(data));
   }, []);
@@ -25,10 +26,11 @@ const Mentors = () => {
               <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
-              <th scope="col">myClass</th>
+              <th scope="col">Location</th>
               <th scope="col">Type</th>
               <th scope="col">Date</th>
               <th scope="col">Time</th>
+              <th scope="col">Code</th>
             </tr>
           </thead>
           {students ? (
@@ -44,6 +46,7 @@ const Mentors = () => {
                     <td>{data.type ? data.type : null}</td>
                     <td>{data.date ? data.date : null}</td>
                     <td>{data.time ? data.time : null}</td>
+                    <td>{data.code ? data.code : null}</td>
                   </tr>
                 );
               })}
