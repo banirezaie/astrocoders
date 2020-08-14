@@ -32,9 +32,6 @@ client.connect(function () {
     const client = new mongodb.MongoClient(uri);
 
     client.connect(() => {
-      const db = client.db("attendance");
-      const collection = db.collection("students");
-
       collection.find().toArray((error, tracks) => {
         res.send(error || tracks);
         client.close();
@@ -53,7 +50,7 @@ client.connect(function () {
     let time =
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-    const addAttendance = {
+    const classCode = {
       name: req.body.name,
       email: req.body.email,
       date: date.toString(),
@@ -62,10 +59,41 @@ client.connect(function () {
       type: req.body.type,
     };
 
-    collection.insertOne(addAttendance, function (error, result) {
+    collection.insertOne(classCode, function (error, result) {
       if (error) {
         res.status(500).send(error);
       }
+      res.status(200).send(result.ops[0]);
+
+      client.close;
+    });
+  });
+});
+
+client.connect(function () {
+  const db = client.db("admin");
+  const collection = db.collection("code");
+
+  app.get("/admin", function (req, res) {
+    const client = new mongodb.MongoClient(uri);
+    client.connect(() => {
+      collection.find().toArray((error, tracks) => {
+        res.send(error || tracks);
+        client.close();
+      });
+    });
+  });
+
+  app.post("/admin", (req, res) => {
+    const classCode = {
+      code: req.body.code,
+    };
+
+    collection.insertOne(classCode, (error, result) => {
+      if (error) {
+        res.status(500).send(error);
+      }
+      console.log(result, "1");
       res.status(200).send(result.ops[0]);
 
       client.close;
