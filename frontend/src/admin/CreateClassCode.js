@@ -35,9 +35,12 @@ const CreateClassCode = (props) => {
     "Glasgow",
     "Cape Town",
   ];
-  const generateRandomString = function (length = 6) {
-    return Math.random().toString(20).substr(2, length);
+
+  const handleGenerateClick = (e) => {
+    e.preventDefault();
+    setCode(Math.random().toString(20).substr(2, 6));
   };
+  console.log(code);
 
   return (
     <div className="App-header">
@@ -84,10 +87,9 @@ const CreateClassCode = (props) => {
               onChange={(e) => setCode(e.target.value)}
               required
             />
-            <button className="btn btn-warning">
+            <button onClick={handleGenerateClick} className="btn btn-warning">
               generate
             </button>
-
           </div>
           <div className="text-center">
             <button type="submit" className="btn btn-success">
