@@ -16,6 +16,11 @@ function Home() {
           <NavLink to="/mentors" className="btn btn-primary col-5">
             Mentors
           </NavLink>
+          <span className="col-2"></span>
+          <hr></hr>
+          <NavLink to="/createCode" className="btn btn-primary col-5">
+            Create a class Code
+          </NavLink>
         </div>
       </div>
     </div>
