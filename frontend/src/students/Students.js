@@ -33,7 +33,7 @@ const Students = (props) => {
           <h1>Attend class</h1>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="form-group mx-5">
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -44,7 +44,7 @@ const Students = (props) => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group mx-5">
             <label htmlFor="email">Email address</label>
             <input
               type="email"
@@ -57,7 +57,7 @@ const Students = (props) => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group mx-5">
             <label htmlFor="name">Class code</label>
             <input
               type="text"
