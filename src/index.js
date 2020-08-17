@@ -58,11 +58,44 @@ client.connect(function () {
       email: req.body.email,
       date: date.toString(),
       time: time.toString(),
-      myClass: req.body.myClass,
+      location: req.body.location,
       type: req.body.type,
+      code: req.body.code,
     };
 
-    collection.insertOne(addAttendance, function (error, result) {
+    collection.insertOne(classCode, function (error, result) {
+      if (error) {
+        res.status(500).send(error);
+      }
+      res.status(200).send(result.ops[0]);
+
+      client.close;
+    });
+  });
+});
+
+client.connect(function () {
+  const db = client.db("admins");
+  const collection = db.collection("code");
+
+  app.get("/admin", function (req, res) {
+    const client = new mongodb.MongoClient(uri);
+    client.connect(() => {
+      collection.find().toArray((error, tracks) => {
+        res.send(error || tracks);
+        client.close();
+      });
+    });
+  });
+
+  app.post("/admin", (req, res) => {
+    const classCode = {
+      location: req.body.location,
+      type: req.body.type,
+      code: req.body.code,
+    };
+
+    collection.insertOne(classCode, (error, result) => {
       if (error) {
         res.status(500).send(error);
       }

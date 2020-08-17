@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import "../App.css";
 
-const Students = (props) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [myClass, setMyClass] = useState("");
+const CreateClassCode = (props) => {
+  const [location, setLocation] = useState("");
   const [type, setType] = useState("");
   const [code, setCode] = useState("");
 
   function handleSubmit() {
     const body = JSON.stringify({
-      myClass,
+      location,
       type,
-      name,
-      email,
       code,
     });
 
-    fetch(`http://localhost:9000/attendance`, {
+    fetch(`http://localhost:9000/admin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,42 +36,25 @@ const Students = (props) => {
     "Cape Town",
   ];
 
+  const handleGenerateClick = (e) => {
+    e.preventDefault();
+    setCode(Math.random().toString(20).substr(2, 6));
+  };
+  console.log(code);
+
   return (
     <div className="App-header">
       <div className="col-6  mx-auto">
         <div className="text-center pb-5">
-          <h1>Attend class</h1>
+          <h1>Create Class Code</h1>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              aria-describedby="emailHelp"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
           <div className="form-group">
             <label htmlFor="class">Class</label>
             <select
               className="form-control"
               id="class"
-              onChange={(e) => setMyClass(e.target.value)}
+              onChange={(e) => setLocation(e.target.value)}
               // required="required"
             >
               <option defaultValue>Please select your class...</option>
@@ -92,9 +71,7 @@ const Students = (props) => {
               onChange={(e) => setType(e.target.value)}
               // required="required"
             >
-              <option defaultValue>
-                Are you attending class or homework club?
-              </option>
+              <option defaultValue>Is it class or homework club?</option>
               <option>Class</option>
               <option>Homework club</option>
               <option>Other</option>
@@ -110,6 +87,9 @@ const Students = (props) => {
               onChange={(e) => setCode(e.target.value)}
               required
             />
+            <button onClick={handleGenerateClick} className="btn btn-warning">
+              generate
+            </button>
           </div>
           <div className="text-center">
             <button type="submit" className="btn btn-success">
@@ -122,4 +102,4 @@ const Students = (props) => {
   );
 };
 
-export default Students;
+export default CreateClassCode;
