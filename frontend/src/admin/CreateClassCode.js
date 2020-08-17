@@ -49,7 +49,7 @@ const CreateClassCode = (props) => {
           <h1>Create Class Code</h1>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="form-group mx-5">
             <label htmlFor="class">Class</label>
             <select
               className="form-control"
@@ -63,7 +63,7 @@ const CreateClassCode = (props) => {
               ))}
             </select>
           </div>
-          <div className="form-group">
+          <div className="form-group mx-5">
             <label htmlFor="type">Type</label>
             <select
               className="form-control"
@@ -77,8 +77,8 @@ const CreateClassCode = (props) => {
               <option>Other</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="name">Class Code</label>
+          <div className="form-group mx-5">
+            <label htmlFor="name">Class code</label>
             <input
               type="text"
               className="form-control"
@@ -87,8 +87,11 @@ const CreateClassCode = (props) => {
               onChange={(e) => setCode(e.target.value)}
               required
             />
-            <button onClick={handleGenerateClick} className="btn btn-warning">
-              generate
+            <button
+              onClick={handleGenerateClick}
+              className="btn btn-warning mt-2"
+            >
+              Generate
             </button>
           </div>
           <div className="text-center">
