@@ -32,6 +32,9 @@ client.connect(function () {
     const client = new mongodb.MongoClient(uri);
 
     client.connect(() => {
+      const db = client.db("attendance");
+      const collection = db.collection("students");
+
       collection.find().toArray((error, tracks) => {
         res.send(error || tracks);
         client.close();
@@ -50,7 +53,7 @@ client.connect(function () {
     let time =
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-    const classCode = {
+    const addAttendance = {
       name: req.body.name,
       email: req.body.email,
       date: date.toString(),

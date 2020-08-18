@@ -1,7 +1,7 @@
 import React from "react";
-import "./App.css";
+import "../App.css";
 
-const Navbar = () => {
+const HomeNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a href="https://codeyourfuture.io/">
@@ -73,4 +73,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default HomeNavbar;
