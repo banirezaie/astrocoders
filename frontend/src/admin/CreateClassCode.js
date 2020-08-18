@@ -26,14 +26,21 @@ const CreateClassCode = (props) => {
     props.history.push("/");
   }
 
-  const cyfCities = [
-    "Medellín",
-    "Rome",
-    "London",
-    "Manchester",
-    "Birmingham",
-    "Glasgow",
-    "Cape Town",
+  const cyfGroups = [
+    "Birmingham-1",
+    "Manchester-1",
+    "Rome-1",
+    "Cape Town-1",
+    "Medellin-1",
+    "Glasgow-1",
+    "Glasgow-2",
+    "Glasgow-3",
+    "London-1",
+    "London-2",
+    "London-3",
+    "London-4",
+    "London-5",
+    "London-6",
   ];
 
   const handleGenerateClick = (e) => {
@@ -50,15 +57,15 @@ const CreateClassCode = (props) => {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group mx-5">
-            <label htmlFor="class">Class</label>
+            <label htmlFor="class">Group</label>
             <select
               className="form-control"
               id="class"
               onChange={(e) => setLocation(e.target.value)}
               // required="required"
             >
-              <option defaultValue>Please select your class...</option>
-              {cyfCities.sort().map((city, index) => (
+              <option defaultValue>Please select your group...</option>
+              {cyfGroups.sort().map((city, index) => (
                 <option key={index}>{city}</option>
               ))}
             </select>
