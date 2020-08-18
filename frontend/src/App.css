@@ -1,5 +1,6 @@
 .App-header {
   background-color: #282c34;
+  /* background-color: aliceblue; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,14 +10,11 @@
 }
 .home {
   background-color: #282c34;
+  /* background-color: aliceblue; */
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-.logo {
-  height: 3.4rem;
-  width: 11rem;
 }

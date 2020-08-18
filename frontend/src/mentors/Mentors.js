@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../Navbar";
+// import Navbar from "../Navbar";
 import "../App.css";
 
 const Mentors = () => {
@@ -17,7 +17,7 @@ const Mentors = () => {
   }, []);
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="App-header">
         <table className="table table-striped container bg-white table-hover">
           <thead>

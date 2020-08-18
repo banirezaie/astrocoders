@@ -7,12 +7,14 @@ import Admin from "./admin/Admin";
 
 function App() {
   return (
-    <Switch>
-      <Route path="/" component={Home} exact />
-      <Route path="/students" component={Students} exact />
-      <Route path="/mentors" component={Mentors} />
-      <Route path="/admin" component={Admin} />
-    </Switch>
+    <div>
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/students" component={Students} exact />
+        <Route path="/mentors" component={Mentors} />
+        <Route path="/admin" component={Admin} />
+      </Switch>
+    </div>
   );
 }
 

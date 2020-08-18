@@ -32,8 +32,8 @@ client.connect(function () {
     const client = new mongodb.MongoClient(uri);
 
     client.connect(() => {
-      collection.find().toArray((error, tracks) => {
-        res.send(error || tracks);
+      collection.find().toArray((error, result) => {
+        res.send(error || result);
         client.close();
       });
     });
