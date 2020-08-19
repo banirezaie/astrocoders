@@ -33,11 +33,8 @@ client.connect(function () {
     const client = new mongodb.MongoClient(uri);
 
     client.connect(() => {
-      const db = client.db("attendance");
-      const collection = db.collection("students");
-
-      collection.find().toArray((error, tracks) => {
-        res.send(error || tracks);
+      collection.find().toArray((error, result) => {
+        res.send(error || result);
         client.close();
       });
     });
@@ -56,12 +53,14 @@ client.connect(function () {
        });
      });
    });
-    app.get("/location/London", function (req, res) {
+    app.get("/location/:city", function (req, res) {
+      
       const client = new mongodb.MongoClient(uri);
+      const {city} =req.params;
 
       client.connect(() => {
         const db = client.db("location");
-        const collection = db.collection("london");
+        const collection = db.collection(city);
 
         collection.find().toArray((error, tracks) => {
           res.send(error || tracks);
@@ -69,19 +68,6 @@ client.connect(function () {
         });
       });
     });
-     app.get("/location/Glasgow", function (req, res) {
-       const client = new mongodb.MongoClient(uri);
-
-       client.connect(() => {
-         const db = client.db("location");
-         const collection = db.collection("glasgow");
-
-         collection.find().toArray((error, tracks) => {
-           res.send(error || tracks);
-           client.close();
-         });
-       });
-     });
      
   // create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
   app.post("/attendance", (req, res) => {
@@ -100,12 +86,12 @@ client.connect(function () {
       email: req.body.email,
       date: date.toString(),
       time: time.toString(),
-      location: req.body.location,
-      type: req.body.type,
+      // location: req.body.location,
+      // type: req.body.type,
       code: req.body.code,
     };
 
-    collection.insertOne(classCode, function (error, result) {
+    collection.insertOne(addAttendance, function (error, result) {
       if (error) {
         res.status(500).send(error);
       }
@@ -120,7 +106,8 @@ client.connect(function () {
   const db = client.db("admins");
   const collection = db.collection("code");
 
-  app.get("/admin", function (req, res) {
+  //shows all classes
+  app.get("/admins", function (req, res) {
     const client = new mongodb.MongoClient(uri);
     client.connect(() => {
       collection.find().toArray((error, tracks) => {
@@ -130,7 +117,8 @@ client.connect(function () {
     });
   });
 
-  app.post("/admin", (req, res) => {
+  //creates classes with code
+  app.post("/admins", (req, res) => {
     const classCode = {
       location: req.body.location,
       type: req.body.type,

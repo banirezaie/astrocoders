@@ -13,7 +13,8 @@ const Students = (props) => {
       code,
     });
 
-    fetch(`http://localhost:9000/attendance`, {
+    // fetch(`http://localhost:9000/attendance`, {
+    fetch(`https://astrocodersbackend.herokuapp.com/attendance`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

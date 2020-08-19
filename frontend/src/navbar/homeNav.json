@@ -1,0 +1,42 @@
+[
+  {
+    "text": "Home",
+    "path": "/",
+    "icon": "ion-ios-home"
+  },
+  {
+    "text": "Contact us",
+    "path": "/contact",
+    "icon": "ion-speakerphone"
+  },
+  {
+    "text": "About Us",
+    "path": "/about",
+    "icon": "ion-earth"
+  },
+  {
+    "text": "Sign up",
+    "path": "/login",
+    "icon": "ion-ios-personadd"
+  },
+  {
+    "text": "Sign in",
+    "path": "/sign",
+    "icon": "ion-log-in"
+  },
+  {
+    "text": "students",
+    "path": "/students",
+    "icon": "ion-university"
+  },
+  {
+    "text": "mentors",
+    "path": "/mentors",
+    "icon": "ion-bookmark"
+  },
+  {
+    "text": "lessons",
+    "path": "/lessons",
+    "icon": "ion-ios-book"
+  }
+]

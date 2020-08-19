@@ -17,7 +17,8 @@ const CreateClassCode = (props) => {
       code,
     });
 
-    fetch(`http://localhost:9000/admin`, {
+    //fetch(`http://localhost:9000/admins`, {
+    fetch(`https://astrocodersbackend.herokuapp.com/admins`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,14 +59,27 @@ const CreateClassCode = (props) => {
               className="form-control"
               id="type"
               onChange={(e) => setType(e.target.value)}
-              // required="required"
+              required
             >
-              <option defaultValue>Is it class or homework club?</option>
+              <option value="" disabled selected hidden>
+                Is it class or homework club?
+              </option>
               <option>Class</option>
               <option>Homework club</option>
               <option>Other</option>
             </select>
           </div>
+
+          <div className="form-group mx-5">
+            <label htmlFor="date">Date</label>
+            <input className="form-control" type="date" required></input>
+          </div>
+
+          <div className="form-group mx-5">
+            <label htmlFor="time">Time</label>
+            <input className="form-control" type="time" required></input>
+          </div>
+
           <div className="form-group mx-5">
             <label htmlFor="name">Class code</label>
             <input
@@ -74,7 +88,6 @@ const CreateClassCode = (props) => {
               id="code"
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              required
             />
             <button
               onClick={handleGenerateClick}
@@ -83,6 +96,7 @@ const CreateClassCode = (props) => {
               Generate
             </button>
           </div>
+
           <div className="text-center">
             <button type="submit" className="btn btn-success">
               Submit
