@@ -55,12 +55,12 @@ client.connect(function () {
       email: req.body.email,
       date: date.toString(),
       time: time.toString(),
-      location: req.body.location,
-      type: req.body.type,
+      // location: req.body.location,
+      // type: req.body.type,
       code: req.body.code,
     };
 
-    collection.insertOne(classCode, function (error, result) {
+    collection.insertOne(addAttendance, function (error, result) {
       if (error) {
         res.status(500).send(error);
       }
