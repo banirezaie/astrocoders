@@ -32,11 +32,8 @@ client.connect(function () {
     const client = new mongodb.MongoClient(uri);
 
     client.connect(() => {
-      const db = client.db("attendance");
-      const collection = db.collection("students");
-
-      collection.find().toArray((error, tracks) => {
-        res.send(error || tracks);
+      collection.find().toArray((error, result) => {
+        res.send(error || result);
         client.close();
       });
     });
@@ -78,7 +75,7 @@ client.connect(function () {
   const db = client.db("admins");
   const collection = db.collection("code");
 
-  app.get("/admin", function (req, res) {
+  app.get("/admins", function (req, res) {
     const client = new mongodb.MongoClient(uri);
     client.connect(() => {
       collection.find().toArray((error, tracks) => {
@@ -88,7 +85,7 @@ client.connect(function () {
     });
   });
 
-  app.post("/admin", (req, res) => {
+  app.post("/admins", (req, res) => {
     const classCode = {
       location: req.body.location,
       type: req.body.type,
