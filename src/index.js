@@ -22,8 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 client.connect(function () {
-  const db = client.db("attendance");
-  const collection = db.collection("students");
+  
 
   app.get("/", (req, res) => {
     res.send("<h2>You can search the students now!</h2>");
@@ -31,7 +30,8 @@ client.connect(function () {
 
   app.get("/attendance/student", function (req, res) {
     const client = new mongodb.MongoClient(uri);
-
+const db = client.db("attendance");
+  const collection = db.collection("students");
     client.connect(() => {
       collection.find().toArray((error, result) => {
         res.send(error || result);
