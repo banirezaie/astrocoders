@@ -28,6 +28,7 @@ client.connect(function () {
   app.get("/", (req, res) => {
     res.send("<h2>You can search the students now!</h2>");
   });
+
   app.get("/attendance/student", function (req, res) {
     const client = new mongodb.MongoClient(uri);
 
@@ -41,6 +42,47 @@ client.connect(function () {
       });
     });
   });
+
+   app.get("/location", function (req, res) {
+     const client = new mongodb.MongoClient(uri);
+
+     client.connect(() => {
+       const db = client.db("location");
+       const collection = db.collection("group");
+
+       collection.find().toArray((error, tracks) => {
+         res.send(error || tracks);
+         client.close();
+       });
+     });
+   });
+    app.get("/location/London", function (req, res) {
+      const client = new mongodb.MongoClient(uri);
+
+      client.connect(() => {
+        const db = client.db("location");
+        const collection = db.collection("london");
+
+        collection.find().toArray((error, tracks) => {
+          res.send(error || tracks);
+          client.close();
+        });
+      });
+    });
+     app.get("/location/Glasgow", function (req, res) {
+       const client = new mongodb.MongoClient(uri);
+
+       client.connect(() => {
+         const db = client.db("location");
+         const collection = db.collection("glasgow");
+
+         collection.find().toArray((error, tracks) => {
+           res.send(error || tracks);
+           client.close();
+         });
+       });
+     });
+     
   // create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
   app.post("/attendance", (req, res) => {
     let today = new Date();
