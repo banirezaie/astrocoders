@@ -50,13 +50,14 @@ client.connect(function () {
     let time =
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-    const classCode = {
+    const addAttendance = {
       name: req.body.name,
       email: req.body.email,
       date: date.toString(),
       time: time.toString(),
-      myClass: req.body.myClass,
+      location: req.body.location,
       type: req.body.type,
+      code: req.body.code,
     };
 
     collection.insertOne(classCode, function (error, result) {
@@ -86,6 +87,8 @@ client.connect(function () {
 
   app.post("/admins", (req, res) => {
     const classCode = {
+      location: req.body.location,
+      type: req.body.type,
       code: req.body.code,
     };
 
@@ -93,7 +96,6 @@ client.connect(function () {
       if (error) {
         res.status(500).send(error);
       }
-      console.log(result, "1");
       res.status(200).send(result.ops[0]);
 
       client.close;
