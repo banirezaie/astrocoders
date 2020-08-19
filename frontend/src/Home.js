@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./App.css";
-import Navbar from "./Navbar";
+import HomeNavbar from "./navbar/HomeNavbar";
 
 function Home() {
   return (
     <div>
-      <Navbar />
+      <HomeNavbar background="#888" hoverBackground="#ddd" linkColor="#eee" />
       <div className="home">
         <div className="col-6">
           <NavLink to="/students" className="btn btn-primary col-5">
@@ -20,6 +20,10 @@ function Home() {
           <hr></hr>
           <NavLink to="/createCode" className="btn btn-primary col-5">
             Create a class code
+          </NavLink>
+          <span className="col-2"></span>
+          <NavLink to="/class-code" className="btn btn-primary col-5">
+            Show classes
           </NavLink>
         </div>
       </div>

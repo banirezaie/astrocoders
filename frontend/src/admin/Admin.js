@@ -8,7 +8,7 @@ const Admin = (props) => {
       classCode,
     });
 
-    fetch(`http://localhost:9000/admin`, {
+    fetch(`http://localhost:9000/admins`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

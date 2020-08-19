@@ -22,26 +22,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 client.connect(function () {
-  const db = client.db("attendance");
-  const collection = db.collection("students");
+  
 
   app.get("/", (req, res) => {
     res.send("<h2>You can search the students now!</h2>");
   });
 
+
   app.get("/attendance/student", function (req, res) {
     const client = new mongodb.MongoClient(uri);
-
+const db = client.db("attendance");
+  const collection = db.collection("students");
     client.connect(() => {
-      const db = client.db("attendance");
-      const collection = db.collection("students");
-
-      collection.find().toArray((error, tracks) => {
-        res.send(error || tracks);
+      collection.find().toArray((error, result) => {
+        res.send(error || result);
         client.close();
       });
     });
   });
+
 
    app.get("/location", function (req, res) {
      const client = new mongodb.MongoClient(uri);
@@ -84,6 +83,7 @@ client.connect(function () {
      });
      
   // create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
+  // allows students to post: Name, Email Address 
   app.post("/attendance", (req, res) => {
     let today = new Date();
     let date =
@@ -100,12 +100,12 @@ client.connect(function () {
       email: req.body.email,
       date: date.toString(),
       time: time.toString(),
-      location: req.body.location,
-      type: req.body.type,
+      // location: req.body.location,
+      // type: req.body.type,
       code: req.body.code,
     };
 
-    collection.insertOne(classCode, function (error, result) {
+    collection.insertOne(addAttendance, function (error, result) {
       if (error) {
         res.status(500).send(error);
       }
@@ -120,7 +120,8 @@ client.connect(function () {
   const db = client.db("admins");
   const collection = db.collection("code");
 
-  app.get("/admin", function (req, res) {
+  //shows all classes
+  app.get("/admins", function (req, res) {
     const client = new mongodb.MongoClient(uri);
     client.connect(() => {
       collection.find().toArray((error, tracks) => {
@@ -130,7 +131,8 @@ client.connect(function () {
     });
   });
 
-  app.post("/admin", (req, res) => {
+  //creates classes with code
+  app.post("/admins", (req, res) => {
     const classCode = {
       location: req.body.location,
       type: req.body.type,
