@@ -5,9 +5,7 @@ const GroupSelect = ({ selectedLocation, selectedGroup, setSelectedGroup }) => {
 
   useEffect(() => {
     if (selectedLocation) {
-      fetch(
-        `https://astrocodersbackend.herokuapp.com/location/${selectedLocation}`
-      )
+      fetch(`http://localhost:9000/location/${selectedLocation}`)
         .then((res) => res.json())
         .then((data) => setGroups(data));
     }
