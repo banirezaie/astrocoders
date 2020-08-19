@@ -4,7 +4,7 @@ const LocationSelect = ({ selectedLocation, setSelectedLocation }) => {
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9000/location")
+    fetch("https://astrocodersbackend.herokuapp.com/location")
       .then((res) => res.json())
       .then((data) => setLocations(data));
   }, []);
