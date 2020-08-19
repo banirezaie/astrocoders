@@ -13,7 +13,8 @@ const CreateClassCode = (props) => {
       code,
     });
 
-    fetch(`http://localhost:9000/admin`, {
+    //fetch(`http://localhost:9000/admins`, {
+    fetch(`https://astrocodersbackend.herokuapp.com/admins`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

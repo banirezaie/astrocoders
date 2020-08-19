@@ -28,6 +28,8 @@ client.connect(function () {
   app.get("/", (req, res) => {
     res.send("<h2>You can search the students now!</h2>");
   });
+
+  //shows all students attendance
   app.get("/attendance/student", function (req, res) {
     const client = new mongodb.MongoClient(uri);
 
@@ -38,7 +40,8 @@ client.connect(function () {
       });
     });
   });
-  // create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
+
+  // allows students to post: Name, Email Address and code
   app.post("/attendance", (req, res) => {
     let today = new Date();
     let date =
@@ -55,12 +58,12 @@ client.connect(function () {
       email: req.body.email,
       date: date.toString(),
       time: time.toString(),
-      location: req.body.location,
-      type: req.body.type,
+      // location: req.body.location,
+      // type: req.body.type,
       code: req.body.code,
     };
 
-    collection.insertOne(classCode, function (error, result) {
+    collection.insertOne(addAttendance, function (error, result) {
       if (error) {
         res.status(500).send(error);
       }
@@ -75,6 +78,7 @@ client.connect(function () {
   const db = client.db("admins");
   const collection = db.collection("code");
 
+  //shows all classes
   app.get("/admins", function (req, res) {
     const client = new mongodb.MongoClient(uri);
     client.connect(() => {
@@ -85,6 +89,7 @@ client.connect(function () {
     });
   });
 
+  //creates classes with code
   app.post("/admins", (req, res) => {
     const classCode = {
       location: req.body.location,

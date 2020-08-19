@@ -2,19 +2,14 @@ import React, { useState, useEffect } from "react";
 // import Navbar from "../Navbar";
 import "../App.css";
 
-const Mentors = () => {
-  const [students, setStudents] = useState("");
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [myClass, setMyClass] = useState("");
-  // const [type, setType] = useState("");
-  // const [date, setDate] = useState("");
-  // const [time, setTime] = useState("");
+const ClassCodes = () => {
+  const [classes, setClasses] = useState("");
+
   useEffect(() => {
-    // fetch(`http://localhost:9000/attendance/student`)
-    fetch(`https://astrocodersbackend.herokuapp.com/attendance/student`)
+    // fetch(`http://localhost:9000/admins`)
+    fetch(`https://astrocodersbackend.herokuapp.com/admins`)
       .then((res) => res.json())
-      .then((data) => setStudents(data));
+      .then((data) => setClasses(data));
   }, []);
   return (
     <div>
@@ -24,8 +19,6 @@ const Mentors = () => {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
               <th scope="col">Location</th>
               <th scope="col">Type</th>
               <th scope="col">Date</th>
@@ -33,16 +26,13 @@ const Mentors = () => {
               <th scope="col">Code</th>
             </tr>
           </thead>
-          {students ? (
+          {classes ? (
             <tbody>
-              {students.map((data, i) => {
+              {classes.map((data, i) => {
                 return (
                   <tr key={i}>
-                    {console.log(data)}
                     <th>{i + 1}</th>
-                    <td>{data.name ? data.name : null}</td>
-                    <td>{data.email ? data.email : null}</td>
-                    <td>{data.myClass ? data.myClass : null}</td>
+                    <td>{data.location ? data.location : null}</td>
                     <td>{data.type ? data.type : null}</td>
                     <td>{data.date ? data.date : null}</td>
                     <td>{data.time ? data.time : null}</td>
@@ -54,7 +44,7 @@ const Mentors = () => {
           ) : (
             <tbody>
               <tr>
-                <th>No one attended yet</th>
+                <th>No classes to be shown</th>
               </tr>
             </tbody>
           )}
@@ -64,4 +54,4 @@ const Mentors = () => {
   );
 };
 
-export default Mentors;
+export default ClassCodes;
