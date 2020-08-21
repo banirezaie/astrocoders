@@ -6,8 +6,8 @@ const ClassCodes = () => {
   const [classes, setClasses] = useState("");
 
   useEffect(() => {
-    // fetch(`http://localhost:9000/admins`)
-    fetch(`https://astrocodersbackend.herokuapp.com/admins`)
+    fetch(`http://localhost:9000/admins`)
+    // fetch(`https://astrocodersbackend.herokuapp.com/admins`)
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, []);

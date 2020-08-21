@@ -6,7 +6,7 @@ import GroupSelect from "./GroupSelect";
 const CreateClassCode = (props) => {
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
-  const [code, setCode] = useState("");
+
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
 
@@ -14,11 +14,11 @@ const CreateClassCode = (props) => {
     const body = JSON.stringify({
       location,
       type,
-      code,
+
     });
 
-    //fetch(`http://localhost:9000/admins`, {
-    fetch(`https://astrocodersbackend.herokuapp.com/admins`, {
+    fetch(`http://localhost:9000/admins`, {
+    // fetch(`https://astrocodersbackend.herokuapp.com/admins`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,10 +31,10 @@ const CreateClassCode = (props) => {
     props.history.push("/");
   }
 
-  const handleGenerateClick = (e) => {
-    e.preventDefault();
-    setCode(Math.random().toString(20).substr(2, 6));
-  };
+  // const handleGenerateClick = (e) => {
+  //   e.preventDefault();
+  //   setCode(Math.random().toString(20).substr(2, 6));
+  // };
   return (
     <div className="App-header">
       <div className="col-6  mx-auto">
@@ -80,22 +80,8 @@ const CreateClassCode = (props) => {
             <input className="form-control" type="time" required></input>
           </div>
 
-          <div className="form-group mx-5">
-            <label htmlFor="name">Class code</label>
-            <input
-              type="text"
-              className="form-control"
-              id="code"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-            />
-            <button
-              onClick={handleGenerateClick}
-              className="btn btn-warning mt-2"
-            >
-              Generate
-            </button>
-          </div>
+
+
 
           <div className="text-center">
             <button type="submit" className="btn btn-success">
