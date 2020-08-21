@@ -21,6 +21,7 @@
     "express-mongo-db": "^2.0.4",
     "mongodb": "^3.6.0",
     "passport": "^0.4.1",
+    "random-words": "^1.1.1",
     "uuid": "^7.0.3"
   }
 }

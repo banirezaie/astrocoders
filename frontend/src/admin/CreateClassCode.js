@@ -4,20 +4,25 @@ import LocationSelect from "./LocationSelect";
 import GroupSelect from "./GroupSelect";
 
 const CreateClassCode = (props) => {
-  const [location, setLocation] = useState("");
+  // const [location, setLocation] = useState("");
   const [type, setType] = useState("");
-  const [code, setCode] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
 
   function handleSubmit() {
     const body = JSON.stringify({
-      location,
+      selectedLocation,
+      selectedGroup,
       type,
-      code,
+      date,
+      time,
+
+      
     });
 
-    //fetch(`http://localhost:9000/admins`, {
+    // fetch(`http://localhost:9000/admins`, {
     fetch(`https://astrocodersbackend.herokuapp.com/admins`, {
       method: "POST",
       headers: {
@@ -31,10 +36,7 @@ const CreateClassCode = (props) => {
     props.history.push("/");
   }
 
-  const handleGenerateClick = (e) => {
-    e.preventDefault();
-    setCode(Math.random().toString(20).substr(2, 6));
-  };
+
   return (
     <div className="App-header">
       <div className="col-6  mx-auto">
@@ -72,29 +74,24 @@ const CreateClassCode = (props) => {
 
           <div className="form-group mx-5">
             <label htmlFor="date">Date</label>
-            <input className="form-control" type="date" required></input>
+            <input
+              className="form-control"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            ></input>
           </div>
 
           <div className="form-group mx-5">
             <label htmlFor="time">Time</label>
-            <input className="form-control" type="time" required></input>
-          </div>
-
-          <div className="form-group mx-5">
-            <label htmlFor="name">Class code</label>
             <input
-              type="text"
               className="form-control"
-              id="code"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-            />
-            <button
-              onClick={handleGenerateClick}
-              className="btn btn-warning mt-2"
-            >
-              Generate
-            </button>
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              required
+            ></input>
           </div>
 
           <div className="text-center">
