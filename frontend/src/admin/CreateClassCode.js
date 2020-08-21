@@ -61,7 +61,7 @@ const CreateClassCode = (props) => {
               onChange={(e) => setType(e.target.value)}
               required
             >
-              <option value="" disabled selected hidden>
+              <option defaultValue="" disabled selected hidden>
                 Is it class or homework club?
               </option>
               <option>Class</option>
