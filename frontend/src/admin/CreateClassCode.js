@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "../App.css";
+import LocationSelect from "./LocationSelect";
+import GroupSelect from "./GroupSelect";
 
 const CreateClassCode = (props) => {
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
   const [code, setCode] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [selectedGroup, setSelectedGroup] = useState(null);
 
   function handleSubmit() {
     const body = JSON.stringify({
@@ -27,29 +31,10 @@ const CreateClassCode = (props) => {
     props.history.push("/");
   }
 
-  const cyfGroups = [
-    "Birmingham-1",
-    "Manchester-1",
-    "Rome-1",
-    "Cape Town-1",
-    "Medellin-1",
-    "Glasgow-1",
-    "Glasgow-2",
-    "Glasgow-3",
-    "London-1",
-    "London-2",
-    "London-3",
-    "London-4",
-    "London-5",
-    "London-6",
-  ];
-
   const handleGenerateClick = (e) => {
     e.preventDefault();
     setCode(Math.random().toString(20).substr(2, 6));
   };
-  console.log(code);
-
   return (
     <div className="App-header">
       <div className="col-6  mx-auto">
@@ -57,22 +42,17 @@ const CreateClassCode = (props) => {
           <h1>Create Class Code</h1>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="form-group mx-5">
-            <label htmlFor="class">Group</label>
-            <select
-              className="form-control"
-              id="class"
-              onChange={(e) => setLocation(e.target.value)}
-              required
-            >
-              <option value="" disabled selected hidden>
-                Please select your group...
-              </option>
-              {cyfGroups.sort().map((city, index) => (
-                <option key={index}>{city}</option>
-              ))}
-            </select>
+          <div>
+            <LocationSelect
+              selectedLocation={selectedLocation}
+              setSelectedLocation={setSelectedLocation}
+            />
           </div>
+          <GroupSelect
+            selectedLocation={selectedLocation}
+            selectedGroup={selectedGroup}
+            setSelectedGroup={setSelectedGroup}
+          />
           <div className="form-group mx-5">
             <label htmlFor="type">Type</label>
             <select
@@ -81,7 +61,7 @@ const CreateClassCode = (props) => {
               onChange={(e) => setType(e.target.value)}
               required
             >
-              <option value="" disabled selected hidden>
+              <option defaultValue="" disabled selected hidden>
                 Is it class or homework club?
               </option>
               <option>Class</option>
