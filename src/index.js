@@ -6,6 +6,7 @@ const uri = process.env.DATABASE_URI;
 
 const app = express();
 const mongodb = require("mongodb");
+const ObjectID = mongodb.ObjectID;
 const client = new mongodb.MongoClient(uri, { useUnifiedTopology: true });
 
 app.use(express.json());
@@ -21,119 +22,235 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 var randomWords = require("random-words");
-client.connect(function () {
-  app.get("/", (req, res) => {
-    res.send("<h2>You can search the students now!</h2>");
-  });
 
-  app.get("/attendance/student", function (req, res) {
-    const client = new mongodb.MongoClient(uri);
-    const db = client.db("attendance");
-    const collection = db.collection("students");
-    client.connect(() => {
-      collection.find().toArray((error, result) => {
-        res.send(error || result);
-        client.close();
-      });
+app.get("/", (req, res) => {
+  res.send("<h2>You can search the students now!</h2>");
+});
+
+app.get("/attendance/student", function (req, res) {
+  let filter = {};
+
+  if (req.query.location) {
+    filter["class_code.location._id"] = new ObjectID(req.query.location);
+  }
+
+  if (req.query.group) {
+    filter["class_code.group._id"] = new ObjectID(req.query.group);
+  }
+
+  if (req.query.type) {
+    filter["class_code.type"] = req.query.type;
+  }
+
+  console.log(filter);
+
+  client
+    .db("attendance")
+    .collection("students")
+    .find(filter)
+    .toArray()
+    .then((locations) => res.status(200).send(locations).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+/*
+
+{
+      class_code: {
+        location: {
+          _id: req.query.location ? { $eq: req.query.location } : undefined,
+        },
+
+        group: {
+          _id: req.query.group ? { $eq: req.query.group } : undefined,
+        },
+
+        type: req.query.type ? { $eq: req.query.type } : undefined,
+      },
+    }
+
+    */
+/*
+app.get("/location", function (req, res) {
+  const client = new mongodb.MongoClient(uri);
+
+  client.connect(() => {
+    const db = client.db("location");
+    const collection = db.collection("group");
+
+    collection.find().toArray((error, tracks) => {
+      res.send(error || tracks);
+      client.close();
     });
   });
+});
+app.get("/location/:city", function (req, res) {
+  const client = new mongodb.MongoClient(uri);
+  const { city } = req.params;
 
-  app.get("/location", function (req, res) {
-    const client = new mongodb.MongoClient(uri);
+  client.connect(() => {
+    const db = client.db("location");
+    const collection = db.collection(city);
 
-    client.connect(() => {
-      const db = client.db("location");
-      const collection = db.collection("group");
-
-      collection.find().toArray((error, tracks) => {
-        res.send(error || tracks);
-        client.close();
-      });
+    collection.find().toArray((error, tracks) => {
+      res.send(error || tracks);
+      client.close();
     });
   });
-  app.get("/location/:city", function (req, res) {
-    const client = new mongodb.MongoClient(uri);
-    const { city } = req.params;
+});
+*/
+// create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
+app.post("/attendance", (req, res) => {
+  const admindb = client.db("admins");
 
-    client.connect(() => {
-      const db = client.db("location");
-      const collection = db.collection(city);
+  admindb
+    .collection("code")
+    .findOne({ code: { $eq: req.body.code } })
 
-      collection.find().toArray((error, tracks) => {
-        res.send(error || tracks);
-        client.close();
-      });
+    .then(function (result) {
+      if (!result) {
+        return Promise.reject(new Error("Invalid code"));
+      }
+
+      console.log(result);
+      return result;
+    })
+
+    .then((result) => {
+      const db = client.db("attendance");
+      const collection = db.collection("students");
+      let today = new Date();
+      let date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate();
+      let time =
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+      const addAttendance = {
+        name: req.body.name,
+        email: req.body.email,
+        date: date.toString(),
+        time: time.toString(),
+        // location: req.body.location,
+        // type: req.body.type,
+        code: req.body.code,
+
+        class_code: {
+          ...result,
+          attendes: null,
+        },
+      };
+
+      return admindb
+        .collection("code")
+        .findOneAndUpdate(
+          { _id: { $eq: result._id } },
+          { $push: { attendes: addAttendance } }
+        )
+        .then(() => collection.insertOne(addAttendance));
+    })
+    .then(function (result) {
+      res.status(200).send(result.ops[0]).end();
+    })
+    .catch(function (err) {
+      console.error(err);
+      return res.status(500).send({ message: err.message }).end();
     });
-  });
+});
 
-  // create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
-  app.post("/attendance", (req, res) => {
-    let today = new Date();
-    let date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    let time =
-      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+app.get("/location", function (req, res) {
+  client
+    .db("admins")
+    .collection("location")
+    .find({})
+    .toArray()
+    .then((locations) => res.status(200).send(locations).end())
+    .catch((error) => res.status(500).send(error).end());
+});
 
-    const addAttendance = {
+app.post("/location", function (req, res) {
+  client
+    .db("admins")
+    .collection("location")
+    .insertOne({
       name: req.body.name,
-      email: req.body.email,
-      date: date.toString(),
-      time: time.toString(),
-      // location: req.body.location,
-      // type: req.body.type,
-      code: req.body.code,
-    };
-
-    collection.insertOne(addAttendance, function (error, result) {
-      if (error) {
-        res.status(500).send(error);
-      }
-      res.status(200).send(result.ops[0]);
-
-      client.close;
-    });
-  });
+      groups: [],
+    })
+    .then((result) => res.status(200).send(result.ops[0]).end());
 });
 
-client.connect(function () {
-  const db = client.db("admins");
-  const collection = db.collection("code");
+app.post("/location/:id/group", function (req, res) {
+  var group = { _id: new ObjectID(), name: req.body.name };
 
-  //shows all classes
-  app.get("/admins", function (req, res) {
-    const client = new mongodb.MongoClient(uri);
-    client.connect(() => {
-      collection.find().toArray((error, tracks) => {
-        res.send(error || tracks);
-        client.close();
-      });
-    });
-  });
+  client
+    .db("admins")
+    .collection("location")
+    .findOneAndUpdate(
+      // search operation
+      { _id: { $eq: new ObjectID(req.params.id) } },
 
-  //creates classes with code
-  app.post("/admins", (req, res) => {
-    const classCode = {
-      location: req.body.location,
-      group: req.body.group,
-      type: req.body.type,
-      date: new Date(req.body.date),
-      time: req.body.time,
-      code: randomWords({ exactly: 2, join: " " }),
-    };
-
-    collection.insertOne(classCode, (error, result) => {
-      if (error) {
-        res.status(500).send(error);
-      }
-      res.status(200).send(result.ops[0]);
-
-      client.close;
-    });
-  });
+      // update operation
+      { $push: { groups: group } }
+    )
+    .then((result) => res.status(200).send(group).end())
+    .catch((error) => res.status(500).send(error).end());
 });
 
-app.listen(PORT, () => console.log(`server started on port ${PORT}`));
+//shows all classes
+app.get("/admins", function (req, res) {
+  client
+    .db("admins")
+    .collection("code")
+    .find()
+    .toArray((error, tracks) => {
+      res.send(error || tracks);
+    });
+});
+
+// get single class
+app.get("/admins/:id", function (req, res) {
+  client
+    .db("admins")
+    .collection("code")
+    .findOne({ _id: { $eq: new ObjectID(req.params.id) } })
+    .then((result) => res.status(200).send(result).end())
+    .catch((error) => res.status(500).send(error.message).end());
+});
+
+//creates classes with code
+app.post("/admins", (req, res) => {
+  const classCode = {
+    location: {
+      _id: new ObjectID(req.body.location._id),
+      name: req.body.location.name,
+    },
+    group: {
+      _id: new ObjectID(req.body.group._id),
+      name: req.body.group.name,
+    },
+    type: req.body.type,
+    date: new Date(req.body.date + " " + req.body.time),
+    time: req.body.time,
+    code: randomWords({ exactly: 2, join: " " }),
+  };
+
+  client
+    .db("admins")
+    .collection("code")
+    .insertOne(classCode)
+    .then((result) =>
+      res
+        .status(200)
+        .send({ _id: result.ops[0]._id, ...classCode })
+        .end()
+    )
+    .catch((error) => res.status(500).send(error.message).end());
+});
+
+client
+  .connect()
+  .then(() =>
+    app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+  );
