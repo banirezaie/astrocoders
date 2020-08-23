@@ -6,6 +6,9 @@ import Mentors from "./mentors/Mentors";
 import Admin from "./admin/Admin";
 import CreateClassCode from "./admin/CreateClassCode";
 import ClassCodes from "./admin/ClassCodes";
+import Groups from "./groups/Groups";
+import GroupDetail from "./groups/GroupDetail";
+import AttandeeList from "./attandees/AttandeeList";
 
 function App() {
   return (
@@ -13,6 +16,12 @@ function App() {
       <Route path="/" component={Home} exact />
       <Route path="/students" component={Students} exact />
       <Route path="/mentors" component={Mentors} />
+
+      <Route path="/attendees" component={AttandeeList} />
+
+      <Route exact path="/groups" component={Groups} />
+      <Route path="/groups/:id/details" component={GroupDetail} />
+
       <Route path="/admin" component={Admin} />
       <Route path="/CreateCode" component={CreateClassCode} />
       <Route path="/class-code" component={ClassCodes} />

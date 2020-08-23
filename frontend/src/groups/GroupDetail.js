@@ -1,50 +1,31 @@
 import React, { useState, useEffect } from "react";
 // import Navbar from "../Navbar";
 import "../App.css";
-import GroupSelect from "../admin/GroupSelect";
+import { Link } from "react-router-dom";
 
-const Mentors = () => {
-  const [students, setStudents] = useState("");
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
+const GroupDetail = ({ match }) => {
+  const [group, setGroup] = useState(null);
   const [myClass, setMyClass] = useState("");
   const [type, setType] = useState("");
-
-  // const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
 
-  const getClassList = () => {
-    //  let url = `${process.env.API}/attendance/student`;
-    let url = "http://localhost:9000/attendance/student";
-    // http://localhost:3000/undefined/attendance/student
-    let query = [];
-    if (location) query.push(`location=${location}`);
-    if (myClass) query.push(`myClass=${myClass}`);
-    if (type) query.push(`type=${type}`);
+  console.log("Match: ", match);
 
-    if (query.length > 0) {
-      const queryString = query.join("&");
-      url += "?" + queryString;
-    }
-    return url;
-  };
   useEffect(() => {
-    fetch(getClassList())
-      // fetch(`${process.env.APIURL}/attendance/student`)
+    fetch("http://localhost:9000/admins/" + match.params.id)
+
       .then((res) => res.json())
-      .then((data) => setStudents(data));
+      .then((data) => setGroup(data));
   }, []);
+
+  if (!group) {
+    return <div>Loading..</div>;
+  }
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div ClassName="App-header">
-        {" "}
-        <h2>Attendance List</h2>{" "}
-      </div>
-      <div>
-        {" "}
-        <GroupSelect />
+        <h2>Group Detail of {group.location}</h2>{" "}
       </div>
       <div className="table">
         <table className="table table-striped container bg-white table-hover">
@@ -60,9 +41,9 @@ const Mentors = () => {
               <th scope="col">Code</th>
             </tr>
           </thead>
-          {students ? (
+          {group && group.attendes ? (
             <tbody>
-              {students.map((data, i) => {
+              {group.attendes.map((data, i) => {
                 return (
                   <tr key={i}>
                     {console.log(data)}
@@ -91,4 +72,4 @@ const Mentors = () => {
   );
 };
 
-export default Mentors;
+export default GroupDetail;

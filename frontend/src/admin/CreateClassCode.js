@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../App.css";
 import LocationSelect from "./LocationSelect";
 import GroupSelect from "./GroupSelect";
+import TypeSelect from "./TypeSelect";
+import Swal from "sweetalert2";
 
 const CreateClassCode = (props) => {
   // const [location, setLocation] = useState("");
@@ -11,19 +13,19 @@ const CreateClassCode = (props) => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
+
     const body = JSON.stringify({
-      selectedLocation,
-      selectedGroup,
+      location: selectedLocation,
+      group: selectedGroup,
       type,
       date,
       time,
-
-      
     });
 
-    // fetch(`http://localhost:9000/admins`, {
-    fetch(`https://astrocodersbackend.herokuapp.com/admins`, {
+    fetch(`http://localhost:9000/admins`, {
+      //fetch(`https://astrocodersbackend.herokuapp.com/admins`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,11 +33,23 @@ const CreateClassCode = (props) => {
       body,
     })
       .then((res) => res.json())
-      .then();
-
-    props.history.push("/");
+      .then((response) => {
+        Swal.fire(
+          "Success!",
+          "Your class code has been generated with code: " +
+            response.code,
+          "success"
+        );
+        props.history.push("/");
+      })
+      .catch((error) =>
+        Swal.fire(
+          "Error",
+          "An error occured while creating the class code.",
+          "error"
+        )
+      );
   }
-
 
   return (
     <div className="App-header">
@@ -47,7 +61,10 @@ const CreateClassCode = (props) => {
           <div>
             <LocationSelect
               selectedLocation={selectedLocation}
-              setSelectedLocation={setSelectedLocation}
+              setSelectedLocation={(value) => {
+                setSelectedLocation(value);
+                setSelectedGroup(null);
+              }}
             />
           </div>
           <GroupSelect
@@ -55,23 +72,7 @@ const CreateClassCode = (props) => {
             selectedGroup={selectedGroup}
             setSelectedGroup={setSelectedGroup}
           />
-          <div className="form-group mx-5">
-            <label htmlFor="type">Type</label>
-            <select
-              className="form-control"
-              id="type"
-              onChange={(e) => setType(e.target.value)}
-              required
-            >
-              <option defaultValue="" disabled selected hidden>
-                Is it class or homework club?
-              </option>
-              <option>Class</option>
-              <option>Homework club</option>
-              <option>Other</option>
-            </select>
-          </div>
-
+          <TypeSelect type={type} setType={setType} />
           <div className="form-group mx-5">
             <label htmlFor="date">Date</label>
             <input

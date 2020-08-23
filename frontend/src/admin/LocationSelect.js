@@ -10,8 +10,14 @@ const LocationSelect = ({ selectedLocation, setSelectedLocation }) => {
   }, []);
 
   const changeHandler = (event) => {
+    console.log(
+      "Location changed: ",
+      locations[event.target.selectedIndex - 1]
+    );
     setSelectedLocation(
-      event.target.selectedIndex === 0 ? null : event.target.value
+      event.target.selectedIndex === 0
+        ? null
+        : locations[event.target.selectedIndex - 1]
     );
   };
 
@@ -21,7 +27,7 @@ const LocationSelect = ({ selectedLocation, setSelectedLocation }) => {
       <select id="class" className="form-control" onChange={changeHandler}>
         <option>Select the Location</option>
         {locations.map((element, index) => {
-          return <option key={index}>{element.location}</option>;
+          return <option key={index}>{element.name}</option>;
         })}
       </select>
     </div>

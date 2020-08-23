@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import "../App.css";
+import Swal from "sweetalert2";
 
 const Students = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     const body = JSON.stringify({
       name,
       email,
       code,
     });
 
-    // fetch(`http://localhost:9000/attendance`, {
-    fetch(`https://astrocodersbackend.herokuapp.com/attendance`, {
+    fetch(`http://localhost:9000/attendance`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,10 +23,23 @@ const Students = (props) => {
       body,
     })
       .then((res) => res.json())
-      .then();
-
-    props.history.push("/");
-  }
+      .then((response) => {
+        Swal.fire(
+          "Success!",
+          "Your class code has been submitted",
+          response.code,
+          "success"
+        );
+        props.history.push("/");
+      })
+      .catch((error) =>
+        Swal.fire(
+          "Error",
+          "An error occurred while creating the class code.",
+          "error"
+        )
+      );
+        }
 
   return (
     <div className="App-header">
