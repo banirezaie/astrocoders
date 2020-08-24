@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 // import Navbar from "../Navbar";
 import "../App.css";
-import { Link } from "react-router-dom";
 import LocationSelect from "../admin/LocationSelect";
 import GroupSelect from "../admin/GroupSelect";
 import TypeSelect from "../admin/TypeSelect";
 import qs from "query-string";
 
-const AttandeeList = () => {
+const AttendeeList = () => {
   const [students, setStudents] = useState("");
 
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -35,8 +34,8 @@ const AttandeeList = () => {
   return (
     <div>
       {/* <Navbar /> */}
-      <div ClassName="App-header">
-        <h2>Attandee List</h2>
+      <div>
+        <h2>Attendee List</h2>
       </div>
 
       <div className="row">
@@ -119,4 +118,4 @@ const AttandeeList = () => {
   );
 };
 
-export default AttandeeList;
+export default AttendeeList;

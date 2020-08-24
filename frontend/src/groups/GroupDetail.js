@@ -1,31 +1,25 @@
 import React, { useState, useEffect } from "react";
-// import Navbar from "../Navbar";
 import "../App.css";
-import { Link } from "react-router-dom";
 
 const GroupDetail = ({ match }) => {
   const [group, setGroup] = useState(null);
-  const [myClass, setMyClass] = useState("");
-  const [type, setType] = useState("");
-  const [location, setLocation] = useState("");
 
   console.log("Match: ", match);
 
   useEffect(() => {
-    fetch("http://localhost:9000/admins/" + match.params.id)
-
+    fetch(`http://localhost:9000/admins/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => setGroup(data));
   }, []);
 
   if (!group) {
-    return <div>Loading..</div>;
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
       <div ClassName="App-header">
-        <h2>Group Detail of {group.location}</h2>{" "}
+        <h2>Group Detail of {group.location}</h2>
       </div>
       <div className="table">
         <table className="table table-striped container bg-white table-hover">
