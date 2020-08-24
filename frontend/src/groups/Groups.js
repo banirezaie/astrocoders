@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Mentors = () => {
   const [students, setStudents] = useState("");
-  const { groups, type, location } = "";
+  // const { groups, type, location } = "";
 
   // const [groups, setGroups] = useState("");
   // const [type, setType] = useState("");
