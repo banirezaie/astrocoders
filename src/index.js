@@ -139,7 +139,7 @@ app.post("/attendance", (req, res) => {
 
         class_code: {
           ...result,
-          attendes: null,
+          attendees: null,
         },
       };
 
@@ -147,7 +147,7 @@ app.post("/attendance", (req, res) => {
         .collection("code")
         .findOneAndUpdate(
           { _id: { $eq: result._id } },
-          { $push: { attendes: addAttendance } }
+          { $push: { attendees: addAttendance } }
         )
         .then(() => collection.insertOne(addAttendance));
     })

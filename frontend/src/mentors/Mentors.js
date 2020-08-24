@@ -38,7 +38,7 @@ const Mentors = () => {
   return (
     <div>
       {/* <Navbar /> */}
-      <div ClassName="App-header">
+      <div className="App-header">
         {" "}
         <h2>Attendance List</h2>{" "}
       </div>

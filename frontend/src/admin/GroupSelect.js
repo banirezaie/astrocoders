@@ -1,17 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const GroupSelect = ({ selectedLocation, selectedGroup, setSelectedGroup }) => {
-  const [groups, setGroups] = useState([]);
-  /*
-  useEffect(() => {
-    if (selectedLocation) {
-      fetch(`http://localhost:9000/location/${selectedLocation}`)
-        .then((res) => res.json())
-        .then((data) => setGroups(data));
-    }
-  }, [selectedLocation]);
-*/
-
   const changeHandler = (event) => {
     setSelectedGroup(
       event.target.selectedIndex === 0

@@ -1,32 +1,29 @@
 import React, { useState, useEffect } from "react";
-// import Navbar from "../Navbar";
 import "../App.css";
 import { Link } from "react-router-dom";
 
 const Mentors = () => {
   const [students, setStudents] = useState("");
-  const [groups, setGroups] = useState("");
-  const [type, setType] = useState("");
-  const [location, setLocation] = useState("");
+  const { groups, type, location } = "";
+
+  // const [groups, setGroups] = useState("");
+  // const [type, setType] = useState("");
+  // const [location, setLocation] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:9000/admins", { query: { location, groups, type } })
-
       .then((res) => res.json())
       .then((data) => setStudents(data));
-}, []);
+  }, []);
 
-if (!students) {
-  return <div>Loading..</div>;
-}
-
+  if (!students) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      {/* <Navbar /> */}
-      <div ClassName="App-header">
-        {" "}
-        <h2>Group List</h2>{" "}
+      <div className="App-header">
+        <h2>Group List</h2>
       </div>
       <div className="table">
         <table className="table table-striped container bg-white table-hover">
@@ -36,7 +33,7 @@ if (!students) {
               <th scope="col">Location</th>
               <th scope="col">Group</th>
               <th scope="col">Type</th>
-              <th scope="col">Attandees Count</th>
+              <th scope="col">Attendees Count</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -50,9 +47,14 @@ if (!students) {
                     <td>{data.location}</td>
                     <td>{data.group}</td>
                     <td>{data.type}</td>
-                    <td>{data.attendes ? data.attendes.length : '-'}</td>
+                    <td>{data.attendees ? data.attendees.length : "-"}</td>
                     <td>
-                        <Link to={"/groups/" + data._id + "/details"} className="btn btn-sm btn-primary">View attendes</Link>
+                      <Link
+                        to={"/groups/" + data._id + "/details"}
+                        className="btn btn-sm btn-primary"
+                      >
+                        View attendees
+                      </Link>
                     </td>
                   </tr>
                 );
