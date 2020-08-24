@@ -10,7 +10,7 @@ const GroupDetail = ({ match }) => {
     fetch(`http://localhost:9000/admins/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => setGroup(data));
-  }, []);
+  }, [match]);
 
   if (!group) {
     return <div>Loading...</div>;
