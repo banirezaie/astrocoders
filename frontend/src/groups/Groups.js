@@ -11,18 +11,24 @@ const Mentors = () => {
   // const [location, setLocation] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:9000/admins", { query: { location, groups, type } })
+    fetch("http://localhost:9000/admins")
+      // , { query: { location, groups, type } }
       .then((res) => res.json())
       .then((data) => setStudents(data));
-  }, []);
 
+ 
+  }, [setStudents]);
+  console.log(students)
+ 
+ 
   if (!students) {
     return <div>Loading...</div>;
   }
-
+  
   return (
+
     <div>
-      <div className="App-header">
+      <div className="header">
         <h2>Group List</h2>
       </div>
       <div className="table">
@@ -39,15 +45,17 @@ const Mentors = () => {
           </thead>
           {students ? (
             <tbody>
+              
               {students.map((data, i) => {
+                
                 return (
                   <tr key={i}>
-                    {console.log(data)}
+                    
                     <th>{i + 1}</th>
-                    <td>{data.location}</td>
-                    <td>{data.group}</td>
+                    <td>{data.location.name}</td>
+                    <td>{data.group.name}</td>
                     <td>{data.type}</td>
-                    <td>{data.attendees ? data.attendees.length : "-"}</td>
+                    <td>{data.attendes ? data.attendes.length : "-"}</td>
                     <td>
                       <Link
                         to={"/groups/" + data._id + "/details"}

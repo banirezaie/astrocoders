@@ -13,15 +13,15 @@ function Home() {
             Students
           </NavLink>
           <span className="col-2"></span>
-         
+
           <hr></hr>
           <NavLink to="/createCode" className="btn btn-primary col-5">
             Create a class code
           </NavLink>
-          {/* <span className="col-2"></span>
-          <NavLink to="/mentors" className="btn btn-primary col-5">
-            Show classes
-          </NavLink> */}
+          <span className="col-2"></span>
+          <NavLink to="/groups" className="btn btn-primary col-5">
+            Show Groups
+          </NavLink>
           <span className="col-2"></span>
           <hr></hr>
           <NavLink to="/attendees" className="btn btn-primary col-5">

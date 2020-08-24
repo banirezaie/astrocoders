@@ -7,7 +7,7 @@ import Admin from "./admin/Admin";
 import CreateClassCode from "./admin/CreateClassCode";
 import ClassCodes from "./admin/ClassCodes";
 import Groups from "./groups/Groups";
-// import GroupDetail from "./groups/GroupDetail";
+import GroupDetail from "./groups/GroupDetail";
 import AttendeeList from "./attendees/AttendeeList";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
       <Route path="/attendees" component={AttendeeList} />
 
       <Route exact path="/groups" component={Groups} />
-      {/* <Route path="/groups/:id/details" component={GroupDetail} /> */}
+      <Route path="/groups/:id/details" component={GroupDetail} />
 
       <Route path="/admin" component={Admin} />
       <Route path="/CreateCode" component={CreateClassCode} />
