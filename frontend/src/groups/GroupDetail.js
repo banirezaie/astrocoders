@@ -37,9 +37,9 @@ const GroupDetail = ({ match }) => {
               <th scope="col">Code</th>
             </tr>
           </thead>
-          {group && group.attendes ? (
+          {group && group.attendees ? (
             <tbody>
-              {group.attendes.map((data, i) => {
+              {group.attendees.map((data, i) => {
                 return (
                   <tr key={i}>
                     {console.log(data)}

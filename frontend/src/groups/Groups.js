@@ -55,7 +55,7 @@ const Mentors = () => {
                     <td>{data.location.name}</td>
                     <td>{data.group.name}</td>
                     <td>{data.type}</td>
-                    <td>{data.attendes ? data.attendes.length : "-"}</td>
+                    <td>{data.attendees ? data.attendees.length : "-"}</td>
                     <td>
                       <Link
                         to={"/groups/" + data._id + "/details"}
