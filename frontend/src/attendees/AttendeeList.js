@@ -14,9 +14,9 @@ const AttendeeList = () => {
   const [selectedType, setSelectedType] = useState(null);
 
   useEffect(() => {
-    console.log("Selected location: ", selectedLocation);
-    console.log("Selected group: ", selectedGroup);
-    console.log("Selected type: ", selectedType);
+    // console.log("Selected location: ", selectedLocation);
+    // console.log("Selected group: ", selectedGroup);
+    // console.log("Selected type: ", selectedType);
 
     fetch(
       "http://localhost:9000/attendance/student?" +
