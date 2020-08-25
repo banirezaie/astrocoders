@@ -10,16 +10,18 @@ const GroupDetail = ({ match }) => {
     fetch(`http://localhost:9000/admins/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => setGroup(data));
-  }, []);
+  }, [match]);
 
   if (!group) {
     return <div>Loading...</div>;
   }
 
+  console.log("data===>", group);
+
   return (
     <div>
       <div ClassName="App-header">
-        <h2>Group Detail of {group.location}</h2>
+        <h2>Group Detail of {group.location.name}</h2>
       </div>
       <div className="table">
         <table className="table table-striped container bg-white table-hover">
@@ -35,9 +37,9 @@ const GroupDetail = ({ match }) => {
               <th scope="col">Code</th>
             </tr>
           </thead>
-          {group && group.attendes ? (
+          {group && group.attendees ? (
             <tbody>
-              {group.attendes.map((data, i) => {
+              {group.attendees.map((data, i) => {
                 return (
                   <tr key={i}>
                     {console.log(data)}

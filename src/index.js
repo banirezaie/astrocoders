@@ -1,4 +1,5 @@
 require("dotenv/config");
+// var studentService = require("./student-service"); This is to use the functions in student - service.js
 const cors = require("cors");
 const express = require("express");
 
@@ -22,6 +23,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 var randomWords = require("random-words");
+
+// app.use(studentService); This is to use the functions in student-service.js
 
 app.get("/", (req, res) => {
   res.send("<h2>You can search the students now!</h2>");
@@ -52,52 +55,7 @@ app.get("/attendance/student", function (req, res) {
     .then((locations) => res.status(200).send(locations).end())
     .catch((error) => res.status(500).send(error).end());
 });
-/*
 
-{
-      class_code: {
-        location: {
-          _id: req.query.location ? { $eq: req.query.location } : undefined,
-        },
-
-        group: {
-          _id: req.query.group ? { $eq: req.query.group } : undefined,
-        },
-
-        type: req.query.type ? { $eq: req.query.type } : undefined,
-      },
-    }
-
-    */
-/*
-app.get("/location", function (req, res) {
-  const client = new mongodb.MongoClient(uri);
-
-  client.connect(() => {
-    const db = client.db("location");
-    const collection = db.collection("group");
-
-    collection.find().toArray((error, tracks) => {
-      res.send(error || tracks);
-      client.close();
-    });
-  });
-});
-app.get("/location/:city", function (req, res) {
-  const client = new mongodb.MongoClient(uri);
-  const { city } = req.params;
-
-  client.connect(() => {
-    const db = client.db("location");
-    const collection = db.collection(city);
-
-    collection.find().toArray((error, tracks) => {
-      res.send(error || tracks);
-      client.close();
-    });
-  });
-});
-*/
 // create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
 app.post("/attendance", (req, res) => {
   const admindb = client.db("admins");
