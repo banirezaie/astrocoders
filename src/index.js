@@ -207,6 +207,46 @@ app.post("/admins", (req, res) => {
     .catch((error) => res.status(500).send(error.message).end());
 });
 
+//syllabus -------------------------------
+
+app.get("/syllabus", function (req, res) {
+  client
+    .db("admins")
+    .collection("syllabus")
+    .find({})
+    .toArray()
+    .then((syllabus) => res.status(200).send(syllabus).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
+app.post("/syllabus", function (req, res) {
+  client
+    .db("admins")
+    .collection("syllabus")
+    .insertOne({
+      module: req.body.module,
+      lesson: [],
+    })
+    .then((result) => res.status(200).send(result.ops[0]).end());
+});
+
+app.post("/syllabus/:id/lesson", function (req, res) {
+  var lesson = { _id: new ObjectID(), name: req.body.name };
+
+  client
+    .db("admins")
+    .collection("syllabus")
+    .findOneAndUpdate(
+      // search operation
+      { _id: { $eq: new ObjectID(req.params.id) } },
+
+      // update operation
+      { $push: { lesson: lesson } }
+    )
+    .then((result) => res.status(200).send(lesson).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
 client
   .connect()
   .then(() =>

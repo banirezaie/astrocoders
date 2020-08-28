@@ -21,7 +21,7 @@ const GroupDetail = ({ match }) => {
   return (
     <div>
       <div ClassName="App-header">
-        <h2>Group Detail of {group.location.name}</h2>
+        <p>Group Detail of </p> <p style={{ color: "red" }}> {group.group.name}</p>
       </div>
       <div className="table">
         <table className="table table-striped container bg-white table-hover">
@@ -30,7 +30,6 @@ const GroupDetail = ({ match }) => {
               <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
-              <th scope="col">Location</th>
               <th scope="col">Type</th>
               <th scope="col">Date</th>
               <th scope="col">Time</th>
@@ -46,8 +45,7 @@ const GroupDetail = ({ match }) => {
                     <th>{i + 1}</th>
                     <td>{data.name ? data.name : null}</td>
                     <td>{data.email ? data.email : null}</td>
-                    <td>{data.myClass ? data.myClass : null}</td>
-                    <td>{data.type ? data.type : null}</td>
+                    <td>{data.class_code.type ? data.class_code.type : null}</td>
                     <td>{data.date ? data.date : null}</td>
                     <td>{data.time ? data.time : null}</td>
                     <td>{data.code ? data.code : null}</td>
