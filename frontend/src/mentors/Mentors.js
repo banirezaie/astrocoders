@@ -55,6 +55,7 @@ const Mentors = () => {
               <th scope="col">Email</th>
               <th scope="col">Location</th>
               <th scope="col">Type</th>
+              <th scope="col">Module</th>
               <th scope="col">Date</th>
               <th scope="col">Time</th>
               <th scope="col">Code</th>
@@ -71,6 +72,7 @@ const Mentors = () => {
                     <td>{data.email ? data.email : null}</td>
                     <td>{data.myClass ? data.myClass : null}</td>
                     <td>{data.type ? data.type : null}</td>
+                    <td>{data.module ? data.module : null}</td>
                     <td>{data.date ? data.date : null}</td>
                     <td>{data.time ? data.time : null}</td>
                     <td>{data.code ? data.code : null}</td>
