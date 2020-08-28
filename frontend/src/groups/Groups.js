@@ -15,18 +15,13 @@ const Mentors = () => {
       // , { query: { location, groups, type } }
       .then((res) => res.json())
       .then((data) => setStudents(data));
-
- 
   }, [setStudents]);
-  console.log(students)
- 
- 
+
   if (!students) {
     return <div>Loading...</div>;
   }
-  
-  return (
 
+  return (
     <div>
       <div className="header">
         <h2>Group List</h2>
@@ -39,22 +34,32 @@ const Mentors = () => {
               <th scope="col">Location</th>
               <th scope="col">Group</th>
               <th scope="col">Type</th>
+              <th scope="col">Module</th>
+              <th scope="col">Lesson</th>
               <th scope="col">Attendees Count</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
+
           {students ? (
             <tbody>
-              
               {students.map((data, i) => {
-                
                 return (
                   <tr key={i}>
-                    
                     <th>{i + 1}</th>
                     <td>{data.location.name}</td>
                     <td>{data.group.name}</td>
                     <td>{data.type}</td>
+                    <td>
+                      {data.syllabus && data.syllabus.module
+                        ? data.syllabus.module
+                        : null}
+                    </td>
+                    <td>
+                      {data.lesson && data.lesson.name
+                        ? data.lesson.name
+                        : null}
+                    </td>
                     <td>{data.attendees ? data.attendees.length : "-"}</td>
                     <td>
                       <Link

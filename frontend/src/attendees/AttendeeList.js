@@ -4,6 +4,9 @@ import "../App.css";
 import LocationSelect from "../admin/LocationSelect";
 import GroupSelect from "../admin/GroupSelect";
 import TypeSelect from "../admin/TypeSelect";
+import ModuleSelect from "../admin/ModuleSelect";
+import ModuleLessonSelect from "../admin/ModuleLessonSelect";
+
 import qs from "query-string";
 
 const AttendeeList = () => {
@@ -12,24 +15,30 @@ const AttendeeList = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
+  const [selectedModule, setSelectedModule] = useState(null);
+  const [selectedLesson, setSelectedLesson] = useState(null);
 
   useEffect(() => {
-    // console.log("Selected location: ", selectedLocation);
-    // console.log("Selected group: ", selectedGroup);
-    // console.log("Selected type: ", selectedType);
-
     fetch(
       "http://localhost:9000/attendance/student?" +
         qs.stringify({
           location: selectedLocation ? selectedLocation._id : undefined,
           group: selectedGroup ? selectedGroup._id : null,
           type: selectedType ? selectedType : null,
+          module: selectedModule ? selectedModule._id : undefined,
+          lesson: selectedLesson ? selectedLesson._id : null,
         })
     )
       // fetch(`${process.env.APIURL}/attendance/student`)
       .then((res) => res.json())
       .then((data) => setStudents(data));
-  }, [selectedLocation, selectedGroup, selectedType]);
+  }, [
+    selectedLocation,
+    selectedGroup,
+    selectedType,
+    selectedModule,
+    selectedLesson,
+  ]);
 
   return (
     <div>
@@ -39,7 +48,7 @@ const AttendeeList = () => {
       </div>
 
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <LocationSelect
             selectedLocation={selectedLocation}
             setSelectedLocation={(value) => {
@@ -48,15 +57,31 @@ const AttendeeList = () => {
             }}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <GroupSelect
             selectedLocation={selectedLocation}
             selectedGroup={selectedGroup}
             setSelectedGroup={setSelectedGroup}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <TypeSelect type={selectedType} setType={setSelectedType} />
+        </div>
+        <div>
+          <ModuleSelect
+            selectedModule={selectedModule}
+            setSelectedModule={(value) => {
+              setSelectedModule(value);
+              setSelectedLesson(null);
+            }}
+          />
+        </div>
+        <div className="col-md-3">
+          <ModuleLessonSelect
+            selectedModule={selectedModule}
+            selectedLesson={selectedLesson}
+            setSelectedLesson={setSelectedLesson}
+          />
         </div>
       </div>
 
@@ -70,6 +95,8 @@ const AttendeeList = () => {
               <th scope="col">Location</th>
               <th scope="col">Group</th>
               <th scope="col">Type</th>
+              <th scope="col">Module</th>
+              <th scope="col">Lesson</th>
               <th scope="col">Date</th>
               <th scope="col">Time</th>
               <th scope="col">Code</th>
@@ -98,6 +125,17 @@ const AttendeeList = () => {
                         ? data.class_code.type
                         : null}
                     </td>
+                    <td>
+                      {data.class_code && data.class_code.syllabus
+                        ? data.class_code && data.class_code.syllabus.module
+                        : null}
+                    </td>
+                    <td>
+                      {data.class_code && data.class_code.lesson
+                        ? data.class_code && data.class_code.lesson.name
+                        : null}
+                    </td>
+                   
                     <td>{data.date ? data.date : null}</td>
                     <td>{data.time ? data.time : null}</td>
                     <td>{data.code ? data.code : null}</td>

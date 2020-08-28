@@ -45,7 +45,13 @@ app.get("/attendance/student", function (req, res) {
     filter["class_code.type"] = req.query.type;
   }
 
-  console.log(filter);
+  if (req.query.module) {
+    filter["class_code.syllabus._id"] = new ObjectID(req.query.module);
+  }
+
+  if (req.query.lesson) {
+    filter["class_code.lesson._id"] = new ObjectID(req.query.lesson);
+  }
 
   client
     .db("attendance")
@@ -192,6 +198,14 @@ app.post("/admins", (req, res) => {
     date: new Date(req.body.date + " " + req.body.time),
     time: req.body.time,
     code: randomWords({ exactly: 2, join: " " }),
+    syllabus: {
+      _id: new ObjectID(req.body.syllabus._id),
+      module: req.body.syllabus.module,
+    },
+    lesson: {
+      _id: new ObjectID(req.body.lesson._id),
+      name: req.body.lesson.name,
+    },
   };
 
   client

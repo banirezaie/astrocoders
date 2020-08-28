@@ -3,6 +3,8 @@ import "../App.css";
 import LocationSelect from "./LocationSelect";
 import GroupSelect from "./GroupSelect";
 import TypeSelect from "./TypeSelect";
+import ModuleSelect from "./ModuleSelect";
+import ModuleLessonSelect from "./ModuleLessonSelect";
 import Swal from "sweetalert2";
 
 const CreateClassCode = (props) => {
@@ -12,7 +14,8 @@ const CreateClassCode = (props) => {
   const [time, setTime] = useState("");
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
-
+  const [selectedModule, setSelectedModule]=useState(null);
+  const [selectedLesson, setSelectedLesson] = useState(null);
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -22,6 +25,8 @@ const CreateClassCode = (props) => {
       type,
       date,
       time,
+      syllabus:selectedModule,
+      lesson:selectedLesson
     });
 
     fetch(`http://localhost:9000/admins`, {
@@ -36,8 +41,7 @@ const CreateClassCode = (props) => {
       .then((response) => {
         Swal.fire(
           "Success!",
-          "Your class code has been generated with code: " +
-            response.code,
+          "Your class code has been generated with code: " + response.code,
           "success"
         );
         props.history.push("/");
@@ -71,6 +75,18 @@ const CreateClassCode = (props) => {
             selectedLocation={selectedLocation}
             selectedGroup={selectedGroup}
             setSelectedGroup={setSelectedGroup}
+          />
+          <ModuleSelect
+            selectedModule={selectedModule}
+            setSelectedModule={(value) => {
+              setSelectedModule(value);
+              setSelectedLesson(null);
+            }}
+          />
+          <ModuleLessonSelect
+            selectedModule={selectedModule}
+            selectedLesson={selectedLesson}
+            setSelectedLesson={setSelectedLesson}
           />
           <TypeSelect type={type} setType={setType} />
           <div className="form-group mx-5">
