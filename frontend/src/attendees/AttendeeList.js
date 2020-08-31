@@ -11,13 +11,13 @@ import qs from "query-string";
 
 const AttendeeList = () => {
   const [students, setStudents] = useState("");
-
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
   const [selectedModule, setSelectedModule] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
-
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredStudents, setFilteredStudents] = useState("");
   useEffect(() => {
     fetch(
       "http://localhost:9000/attendance/student?" +
@@ -31,7 +31,10 @@ const AttendeeList = () => {
     )
       // fetch(`${process.env.APIURL}/attendance/student`)
       .then((res) => res.json())
-      .then((data) => setStudents(data));
+      .then((data) => {
+        setStudents(data);
+        setFilteredStudents(data);
+      });
   }, [
     selectedLocation,
     selectedGroup,
@@ -39,7 +42,27 @@ const AttendeeList = () => {
     selectedModule,
     selectedLesson,
   ]);
-
+  const search = (searchVal) => {
+    if (searchVal !== "") {
+      setFilteredStudents(
+        students.filter(
+          (person) => person.name.toLowerCase() === searchVal.toLowerCase()
+        )
+      );
+    } else {
+      setFilteredStudents(students);
+    }
+  };
+  const handleSearchInput = (e) => {
+    setSearchInput(e.target.value);
+    if (e.target.value.length === 0) {
+      search("");
+    }
+  };
+  function submitInput(event) {
+    event.preventDefault();
+    search(searchInput);
+  }
   return (
     <div>
       {/* <Navbar /> */}
@@ -83,6 +106,20 @@ const AttendeeList = () => {
             setSelectedLesson={setSelectedLesson}
           />
         </div>
+        <div className="col-md-3">
+          <form className="form-group search-box" onSubmit={submitInput}>
+            <label htmlFor="customerName">Student Name</label>
+            <input
+              type="text"
+              id="customerName"
+              className="form-control"
+              placeholder="Search student name or surname "
+              value={searchInput}
+              onChange={handleSearchInput}
+            />
+            <button className="btn btn-primary">Search</button>
+          </form>
+        </div>
       </div>
 
       <div className="table">
@@ -102,9 +139,9 @@ const AttendeeList = () => {
               <th scope="col">Code</th>
             </tr>
           </thead>
-          {students ? (
+          {filteredStudents ? (
             <tbody>
-              {students.map((data, i) => {
+              {filteredStudents.map((data, i) => {
                 return (
                   <tr key={i}>
                     <th>{i + 1}</th>
@@ -135,7 +172,7 @@ const AttendeeList = () => {
                         ? data.class_code && data.class_code.lesson.name
                         : null}
                     </td>
-                   
+
                     <td>{data.date ? data.date : null}</td>
                     <td>{data.time ? data.time : null}</td>
                     <td>{data.code ? data.code : null}</td>
