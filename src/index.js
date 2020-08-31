@@ -134,6 +134,7 @@ app.get("/location", function (req, res) {
     .catch((error) => res.status(500).send(error).end());
 });
 
+
 app.post("/location", function (req, res) {
   client
     .db("admins")
@@ -182,6 +183,7 @@ app.get("/admins/:id", function (req, res) {
     .then((result) => res.status(200).send(result).end())
     .catch((error) => res.status(500).send(error.message).end());
 });
+//get single location class
 
 //creates classes with code
 app.post("/admins", (req, res) => {
