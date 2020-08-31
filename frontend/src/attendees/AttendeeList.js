@@ -108,7 +108,7 @@ const AttendeeList = () => {
         </div>
         <div className="col-md-3">
           <form className="form-group search-box" onSubmit={submitInput}>
-            <label htmlFor="customerName">Customer name</label>
+            <label htmlFor="customerName">Student name</label>
             <input
               type="text"
               id="customerName"
