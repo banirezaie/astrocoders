@@ -124,6 +124,8 @@ app.post("/attendance", (req, res) => {
     });
 });
 
+// location--------------------------
+
 app.get("/location", function (req, res) {
   client
     .db("admins")
@@ -143,6 +145,75 @@ app.post("/location", function (req, res) {
       groups: [],
     })
     .then((result) => res.status(200).send(result.ops[0]).end());
+});
+
+app.delete("/location/:id", function (req, res) {
+  const id = new mongodb.ObjectID(req.params.id);
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("location")
+    .deleteOne(searchObject)
+    .then((location) => res.status(200).send(location).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
+app.get("/location/:id", function (req, res) {
+  // id = {id: mongodb.ObjectID(req.params.id)};
+  // var id = new ObjectID(req.params.id);
+
+  const id = new mongodb.ObjectID(req.params.id);
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("location")
+    .findOne(searchObject)
+    .then((location) => res.status(200).send(location).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
+app.delete("/location/group/:id", function (req, res) {
+  const id = new mongodb.ObjectID(req.params.id);
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("location")
+    // .deleteOne(searchObject)
+
+    // .then((result) => res.status(200).send(result).end())
+    // .catch((error) => res.status(500).send(error).end());
+
+    .deleteOne(searchObject, function (error, result) {
+      if (error) {
+        res.status(500).send(error);
+      } else if (result.deletedCount) {
+        res.sendStatus(204);
+      } else {
+        res.sendStatus(404);
+      }
+    });
+});
+
+app.delete("/location/:id", function (req, res) {
+  const id = new mongodb.ObjectID(req.params.id);
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("location")
+    // .deleteOne(searchObject)
+
+    // .then((result) => res.status(200).send(result).end())
+    // .catch((error) => res.status(500).send(error).end());
+
+    .deleteOne(searchObject, function (error, result) {
+      if (error) {
+        res.status(500).send(error);
+      } else if (result.deletedCount) {
+        res.sendStatus(204);
+      } else {
+        res.sendStatus(404);
+      }
+    });
 });
 
 app.post("/location/:id/group", function (req, res) {

@@ -13,7 +13,9 @@ function Home() {
             Students
           </NavLink>
           <span className="col-2"></span>
-
+          <NavLink to="/locations" className="btn btn-primary col-5">
+            Add-Delete Locations
+          </NavLink>
           <hr></hr>
           <NavLink to="/createCode" className="btn btn-primary col-5">
             Create a class code
