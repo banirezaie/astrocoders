@@ -9,15 +9,18 @@ import ClassCodes from "./admin/ClassCodes";
 import Groups from "./groups/Groups";
 import GroupDetail from "./groups/GroupDetail";
 import AttendeeList from "./attendees/AttendeeList";
+import LocationUpdate from "./admin/LocationUpdate";
+import AddLocation from "./admin/AddGroup";
 
 function App() {
   return (
     <Switch>
       <Route path="/" component={Home} exact />
       <Route path="/students" component={Students} exact />
-      {/* <Route path="/mentors" component={Mentors} /> */}
+      <Route path="/locations" component={LocationUpdate} />
 
       <Route path="/attendees" component={AttendeeList} />
+      <Route path="/add-location" component={AddLocation} />
 
       <Route exact path="/groups" component={Groups} />
       <Route path="/groups/:id/details" component={GroupDetail} />
