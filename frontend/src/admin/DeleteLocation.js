@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../App.css";
 import Swal from "sweetalert2";
 import { FaTrashAlt } from "react-icons/fa";
