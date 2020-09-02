@@ -3,24 +3,33 @@ import "../App.css";
 import { Link } from "react-router-dom";
 import DeleteGroup from "./DeleteGroup";
 
-const ViewGroups = ({id}) => {
+const ViewGroups = ({ id }) => {
   const [group, setGroup] = useState("");
 
-  useEffect(() => {
+  const loadLocation = () =>{
     fetch(`http://localhost:9000/location/${id}`)
       // , { query: { location, groups, type } }
       .then((res) => res.json())
       .then((data) => setGroup(data));
-  }, [setGroup]);
-    { console.log(group) }
+  }
+
+  useEffect(() => {
+    loadLocation()
+  }, []);
+  {
+    console.log(group);
+  }
   if (!group) {
     return <div>Loading...</div>;
   }
 
-  return (
-      
-    <div>
 
+  const handleOnDeleteGroup =() =>{
+    loadLocation()
+  }
+
+  return (
+    <div>
       <div className="">
         <h4></h4>
       </div>
@@ -38,13 +47,15 @@ const ViewGroups = ({id}) => {
             <tbody>
               {group.groups.map((data, i) => {
                 return (
-                   
                   <tr key={i}>
                     <th>{i + 1}</th>
                     <td>{data.name}</td>
-                        <td><DeleteGroup props={data._id}/></td>
+                    <td>
+                      <DeleteGroup
+                        props={{ locationId: group._id, groupId: data._id, onDeleteGroup: handleOnDeleteGroup }}
+                      />
+                    </td>
                   </tr>
-                 
                 );
               })}
             </tbody>

@@ -6,37 +6,61 @@ import ViewGroups from "./ViewGroups";
 import AddLocation from "./AddLocation";
 import DeleteLocation from "./DeleteLocation";
 
-const LocationUpdate = (props) => {
+const LocationUpdate = ({ props }) => {
   const [location, setLocation] = useState("");
 
-  useEffect(() => {
+  const loadLocation = () => {
     fetch("http://localhost:9000/location")
       // , { query: { location, groups, type } }
       .then((res) => res.json())
       .then((data) => setLocation(data));
-  }, [setLocation]);
+  };
+
+  useEffect(() => {
+    loadLocation();
+  }, []);
 
   if (!location) {
     return <div>Loading...</div>;
   }
+
+  const handleOnDeleteLocation = () => {
+    loadLocation();
+  };
+  const handleOnAddLocation = () => {
+    loadLocation();
+  };
+  const handleOnAddGroup = () => {
+    loadLocation();
+  };
 
   return (
     <div>
       <div className="header">
         <h2>Location List</h2>
       </div>
-      <div className="col-md-6">
-        <AddLocation />
-      </div>
+
       <div className="table">
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Location</th>
               <th scope="col"></th>
-              <th scope="col">Groups</th>
-                          <th scope="col">Actions</th>
+              <th scope="col">
+                <h4>Location</h4>
+              </th>
+              <th scope="col">
+                <h4>Groups</h4>
+              </th>
+              <th scope="col">
+                <h4>Actions</h4>
+              </th>
+              <th scope="col">
+                <AddLocation
+                  props={{
+                    onAddLocation: handleOnAddLocation,
+                  }}
+                />
+              </th>
             </tr>
           </thead>
 
@@ -45,9 +69,19 @@ const LocationUpdate = (props) => {
               {location.map((data, i) => {
                 return (
                   <tr key={i}>
-                    <th>{i + 1}</th>
-                    <td>{data.name}</td>
-                    <DeleteLocation props={data._id} />
+                    <th>
+                      <h4>{i + 1}</h4>
+                    </th>
+                    <td>
+                      <h4>{data.name}</h4>
+                      <DeleteLocation
+                        props={{
+                          id: data._id,
+                          onDeleteLocation: handleOnDeleteLocation,
+                        }}
+                      />
+                    </td>
+
                     <td>
                       {/* <Link
                         to={"/location/" + data._id}
@@ -58,7 +92,12 @@ const LocationUpdate = (props) => {
                       <ViewGroups id={data._id} />
                     </td>
                     <td>
-                      <AddGroup props={data._id} />
+                      <AddGroup
+                        props={{
+                          id: data._id,
+                          onAddGroup: handleOnAddGroup,
+                        }}
+                      />
                     </td>
                   </tr>
                 );
