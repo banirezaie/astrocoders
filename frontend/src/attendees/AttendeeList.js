@@ -45,8 +45,8 @@ const AttendeeList = () => {
   const search = (searchVal) => {
     if (searchVal !== "") {
       setFilteredStudents(
-        students.filter(
-          (person) => person.name.toLowerCase() === searchVal.toLowerCase()
+        students.filter((person) =>
+          person.name.toLowerCase().includes(searchVal.toLowerCase())
         )
       );
     } else {
@@ -55,14 +55,9 @@ const AttendeeList = () => {
   };
   const handleSearchInput = (e) => {
     setSearchInput(e.target.value);
-    if (e.target.value.length === 0) {
-      search("");
-    }
+    search(e.target.value);
   };
-  function submitInput(event) {
-    event.preventDefault();
-    search(searchInput);
-  }
+
   return (
     <div>
       {/* <Navbar /> */}
@@ -107,7 +102,7 @@ const AttendeeList = () => {
           />
         </div>
         <div className="col-md-3">
-          <form className="form-group search-box" onSubmit={submitInput}>
+          <form className="form-group search-box">
             <label htmlFor="customerName">Student Name</label>
             <input
               type="text"
@@ -117,7 +112,6 @@ const AttendeeList = () => {
               value={searchInput}
               onChange={handleSearchInput}
             />
-            <button className="btn btn-primary">Search</button>
           </form>
         </div>
       </div>
