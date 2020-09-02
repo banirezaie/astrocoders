@@ -4,13 +4,15 @@ const cors = require("cors");
 const express = require("express");
 
 const uri = process.env.DATABASE_URI;
-
+const example = require("./student-service");
 const app = express();
 const mongodb = require("mongodb");
+
 const ObjectID = mongodb.ObjectID;
 const client = new mongodb.MongoClient(uri, { useUnifiedTopology: true });
 
 app.use(express.json());
+app.use("/example", example)
 
 const bodyParser = require("body-parser");
 
