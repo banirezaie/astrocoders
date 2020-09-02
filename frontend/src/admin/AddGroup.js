@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import Swal from "sweetalert2";
 
-const AddGroup = ({ props }) => {
+const AddGroup = ( {props} ) => {
   const [name, setName] = useState("");
 
   function handleSubmit(e) {
@@ -11,7 +11,7 @@ const AddGroup = ({ props }) => {
       name,
     });
 
-    fetch(`http://localhost:9000/location/${props}/group`, {
+    fetch(`http://localhost:9000/location/${props.id}/group`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,12 +20,14 @@ const AddGroup = ({ props }) => {
     })
       .then((res) => res.json())
       .then((response) => {
+        props.onAddGroup();
         Swal.fire(
           "Success!",
           "Your location has been submitted",
           response.name,
           "success"
         );
+
         // props.history.push("/");
       })
       .catch((error) =>
@@ -39,10 +41,11 @@ const AddGroup = ({ props }) => {
 
   return (
     <div className="">
-      <div className="add-group">
-        <form onSubmit={handleSubmit}>
-          <div className="col-md-10">
+      <form onSubmit={handleSubmit}>
+        <div className="form-row align-items-center">
+          <div className="col-md-9">
             <input
+              placeholder="Add a new Group"
               type="text"
               className="form-control"
               id="name"
@@ -51,13 +54,13 @@ const AddGroup = ({ props }) => {
             />
           </div>
 
-          <div className="col-md-10">
+          <div className="col-md-3">
             <button type="submit" className="btn-sm btn-primary">
-              Add new Group
+              Add
             </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };

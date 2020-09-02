@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import "../App.css";
 import Swal from "sweetalert2";
+import { FaTrash } from "react-icons/fa";
 
 const DeleteGroup = ({ props }) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(`http://localhost:9000/location/group/${props}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `http://localhost:9000/location/${props.locationId}/group/${props.groupId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((response) => {
+        props.onDeleteGroup();
         Swal.fire(
           "Success!",
           "Your GROUP has been deleted",
@@ -34,7 +39,9 @@ const DeleteGroup = ({ props }) => {
   return (
     <div className="">
       <div className="add-group">
-        <button onClick={handleSubmit}>Delete</button>
+        <FaTrash color="purple" onClick={handleSubmit} />
+
+        {/* <button onClick={handleSubmit}>Delete</button> */}
       </div>
     </div>
   );

@@ -11,7 +11,7 @@
   color: white;
 }
 .home {
-  background-color: #F6F5F4;
+  background-color: #f6f5f4;
   /* background-color: aliceblue; */
   min-height: 100vh;
   display: flex;
@@ -20,25 +20,26 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.row{
-  background-color: #7E7694;
+.row {
+  background-color: #7e7694;
   margin: 15px 5px;
   color: white;
 }
-.btn-primary{
+.btn-primary {
   background-color: #bc3d53;
   border-color: #dd1173;
 }
 
-.table thead th{
+.table thead th {
   background-color: #bc3d53;
   color: white;
-  position: sticky; 
+  position: sticky;
   top: 0;
-
 }
 .table-hover tbody tr:hover td {
-    background: #f8e7ea;
+  background: #f8e7ea;
 }
-
-
+.add-location {
+  background-color: white;
+  padding: 15px;
+}

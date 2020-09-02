@@ -6,6 +6,7 @@ const Students = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
+  const [notes, setNotes] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -13,6 +14,7 @@ const Students = (props) => {
       name,
       email,
       code,
+      notes,
     });
 
     fetch(`http://localhost:9000/attendance`, {
@@ -39,7 +41,7 @@ const Students = (props) => {
           "error"
         )
       );
-        }
+  }
 
   return (
     <div className="App-header">
@@ -83,8 +85,19 @@ const Students = (props) => {
               required
             />
           </div>
+          <div className="form-group mx-5">
+            <label htmlFor="name">Add Notes</label>
+            <textarea
+              placeholder="Optional"
+              type="text"
+              className="form-control"
+              id="notes"
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+            ></textarea>
+          </div>
           <div className="text-center">
-            <button type="submit" className="btn btn-success">
+            <button type="submit" className="btn btn-danger">
               Submit
             </button>
           </div>

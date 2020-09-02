@@ -137,6 +137,7 @@ const AttendeeList = () => {
               <th scope="col">Date</th>
               <th scope="col">Time</th>
               <th scope="col">Code</th>
+              <th scope="col">Notes</th>
             </tr>
           </thead>
           {filteredStudents ? (
@@ -176,6 +177,7 @@ const AttendeeList = () => {
                     <td>{data.date ? data.date : null}</td>
                     <td>{data.time ? data.time : null}</td>
                     <td>{data.code ? data.code : null}</td>
+                    <td>{data.notes ? data.notes : null}</td>
                   </tr>
                 );
               })}
