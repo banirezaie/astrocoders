@@ -15,7 +15,7 @@ const ViewGroups = ({ id }) => {
 
   useEffect(() => {
     loadLocation()
-  }, []);
+  }, );
 
   if (!group) {
     return <div>Loading...</div>;

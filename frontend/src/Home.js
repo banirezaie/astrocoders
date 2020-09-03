@@ -30,6 +30,9 @@ function Home() {
             Show Attendees
           </NavLink>
           <span className="col-2"></span>
+          <NavLink to="/login" className="btn btn-primary col-5">
+            Login Page
+          </NavLink>
           {/* <NavLink to="/groups" className="btn btn-primary col-5">
             Show Groups
           </NavLink> */}
