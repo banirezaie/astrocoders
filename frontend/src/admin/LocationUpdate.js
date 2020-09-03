@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import AddGroup from "../admin/AddGroup";
 import ViewGroups from "./ViewGroups";
 import AddLocation from "./AddLocation";

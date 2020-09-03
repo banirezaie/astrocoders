@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import DeleteGroup from "./DeleteGroup";
 
 const ViewGroups = ({ id }) => {
@@ -16,9 +16,7 @@ const ViewGroups = ({ id }) => {
   useEffect(() => {
     loadLocation()
   }, []);
-  {
-    console.log(group);
-  }
+
   if (!group) {
     return <div>Loading...</div>;
   }
@@ -31,7 +29,7 @@ const ViewGroups = ({ id }) => {
   return (
     <div>
       <div className="">
-        <h4></h4>
+
       </div>
       <div className="table">
         <table className="table">
