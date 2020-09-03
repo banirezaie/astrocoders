@@ -11,6 +11,7 @@ import GroupDetail from "./groups/GroupDetail";
 import AttendeeList from "./attendees/AttendeeList";
 import LocationUpdate from "./admin/LocationUpdate";
 import AddLocation from "./admin/AddGroup";
+import LoginPage from "./LoginPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path="/admin" component={Admin} />
       <Route path="/CreateCode" component={CreateClassCode} />
       <Route path="/class-code" component={ClassCodes} />
+      <Route path="/login" component={LoginPage} />
     </Switch>
   );
 }
