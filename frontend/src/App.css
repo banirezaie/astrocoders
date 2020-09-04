@@ -43,3 +43,56 @@
   background-color: white;
   padding: 15px;
 }
+.row-login {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: 0px;
+}
+span{
+  display: inline-block;
+  margin-top: 90px;
+}
+.login-image {
+  background-image: url("./image/login-landing.png");
+  height: 99vh;
+  background-position: LEFT;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.login-logo {
+  width: 90%;
+}
+
+.login-header {
+  background-color: #7e7694;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 30px;
+}
+
+.login-title {
+  display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  justify-content: center;
+  color: #bc3d53;
+}
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
