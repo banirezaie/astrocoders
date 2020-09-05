@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./Login";
-import logo from "./image/cyf_brand.png";
-import "./App.css";
+import logo from "../image/cyf_brand.png";
+import "../App.css";
 
 export default function LoginPage() {
   return (

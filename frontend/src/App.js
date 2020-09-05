@@ -12,10 +12,9 @@ import GroupDetail from "./groups/GroupDetail";
 import AttendeeList from "./attendees/AttendeeList";
 import LocationUpdate from "./admin/LocationUpdate";
 import AddLocation from "./admin/AddGroup";
-import LoginPage from "./LoginPage";
-import SignIn from "./authentication/SignIn";
-import SignUp from "./authentication/SignUp";
-import PasswordReset from "./authentication/PasswordReset";
+import LoginPage from "./authentication/LoginPage";
+import Register from "./authentication/Register";
+// import PasswordReset from "./authentication/PasswordReset";
 import UserProvider from "./providers/UserProvider";
 // const UserContext = createContext({ user: null });
 
@@ -27,9 +26,10 @@ function App() {
   return (
     <UserProvider>
       <Switch>
-        <Route path="/sign-in" component={SignIn} />
-        <Route path="/sign-up" component={SignUp} />
-        <Route path="/password-reset" component={PasswordReset} />
+        <Route path="/login" component={LoginPage} />
+        {/* <Route path="/sign-in" component={SignIn} /> */}
+        <Route path="/register" component={Register} />
+        {/* <Route path="/password-reset" component={PasswordReset} /> */}
         <Route path="/" component={Home} exact />
         <Route path="/students" component={Students} exact />
         <Route path="/locations" component={LocationUpdate} />
@@ -40,7 +40,7 @@ function App() {
         <Route path="/admin" component={Admin} />
         <Route path="/CreateCode" component={CreateClassCode} />
         <Route path="/class-code" component={ClassCodes} />
-        <Route path="/login" component={LoginPage} />
+       
       </Switch>
     </UserProvider>
   );
