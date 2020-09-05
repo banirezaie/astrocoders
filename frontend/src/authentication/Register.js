@@ -8,19 +8,17 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
-  const createUserWithEmailAndPasswordHandler = (event, email, password) => {
+  const createUserWithEmailAndPasswordHandler = (event) => {
     event.preventDefault();
-    setEmail("");
-    setPassword("");
-    setDisplayName("");
+  
   };
 
   return (
-    <div className="mt-8">
-      <h1 className="text-3xl mb-2 text-center font-bold">Sign Up</h1>
-      <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
+    <div className="Login">
+      <h1 className="">Sign Up</h1>
+      <div className="">
         {error !== null && (
-          <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
+          <div className="">
             {error}
           </div>
         )}

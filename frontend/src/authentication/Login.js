@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import {Link  ,Route, Switch } from "react-router-dom";
 
 import { signInWithGoogle } from "../firebase";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
@@ -23,7 +23,7 @@ export default function Login() {
         <h4>Log in</h4>
       </div>
       {error !== null && (
-        <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
+        <div className="">
           {error}
         </div>
       )}
@@ -47,7 +47,7 @@ export default function Login() {
             type="password"
           />
         </FormGroup>
-        <Button disabled={!validateForm()} type="submit" block bsSize="medium">
+        <Button disabled={!validateForm()} type="submit" block bsSize="medium" >
           Login
         </Button>{" "}
       </form>
