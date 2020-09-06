@@ -11,8 +11,8 @@ const mongodb = require("mongodb");
 const ObjectID = mongodb.ObjectID;
 const client = new mongodb.MongoClient(uri, { useUnifiedTopology: true });
 
-app.use(express.json());
-app.use("/example", example)
+// app.use(express.json());
+// app.use("/example", example)
 
 const bodyParser = require("body-parser");
 
