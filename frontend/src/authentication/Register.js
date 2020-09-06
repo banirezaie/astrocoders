@@ -7,7 +7,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const createUserWithEmailAndPasswordHandler = (event) => {
     event.preventDefault();
   
@@ -17,11 +17,11 @@ const Register = () => {
     <div className="Login">
       <h1 className="">Sign Up</h1>
       <div className="">
-        {error !== null && (
+        {/* {error !== null && (
           <div className="">
             {error}
           </div>
-        )}
+        )} */}
         <form className="" onSubmit={createUserWithEmailAndPasswordHandler}>
           <label htmlFor="displayName">Display Name:</label>
           <input

@@ -8,7 +8,7 @@ import { Button, FormGroup, FormControl } from "react-bootstrap";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const signInWithEmailAndPasswordHandler = (event) => {
     event.preventDefault();
   };
@@ -22,11 +22,11 @@ export default function Login() {
       <div className="login-header">
         <h4>Log in</h4>
       </div>
-      {error !== null && (
+      {/* {error !== null && (
         <div className="">
           {error}
         </div>
-      )}
+      )} */}
       <form onSubmit={signInWithEmailAndPasswordHandler}>
         <FormGroup controlId="email">
           {/* <ControlLabel>Email</ControlLabel> */}
