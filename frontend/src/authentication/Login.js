@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
-import { Link, Route, Switch, Redirect } from "react-router-dom";
+import { Link,  Redirect } from "react-router-dom";
 
 import { signInWithGoogle } from "../firebase";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
@@ -11,7 +11,6 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
   const signInWithEmailAndPasswordHandler = (event) => {
     event.preventDefault();
   };
