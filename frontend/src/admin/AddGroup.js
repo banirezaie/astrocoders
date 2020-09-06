@@ -1,5 +1,7 @@
-import React, { useState } from "react";
 import "../App.css";
+
+import React, { useState } from "react";
+
 import Swal from "sweetalert2";
 
 const AddGroup = ( {props} ) => {
@@ -11,7 +13,9 @@ const AddGroup = ( {props} ) => {
       name,
     });
 
-    fetch(`http://localhost:9000/location/${props.id}/group`, {
+    const apiBaseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_LOCAL_API_URL;
+
+    fetch(`${apiBaseUrl}/location/${props.id}/group`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
