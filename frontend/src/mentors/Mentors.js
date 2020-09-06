@@ -14,9 +14,14 @@ const Mentors = () => {
   const [location, setLocation] = useState("");
 
   const getClassList = () => {
-    //  let url = `${process.env.API}/attendance/student`;
-    let url = "http://localhost:9000/attendance/student";
-    // http://localhost:3000/undefined/attendance/student
+
+          const apiBaseUrl =
+            process.env.NODE_ENV === "production"
+              ? process.env.REACT_APP_PROD_API_URL
+              : process.env.REACT_APP_LOCAL_API_URL;
+
+    let url = `${apiBaseUrl}/attendance/student`;
+
     let query = [];
     if (location) query.push(`location=${location}`);
     if (myClass) query.push(`myClass=${myClass}`);

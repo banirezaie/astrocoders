@@ -1,5 +1,5 @@
-import React, { useState, createContext, useEffect } from "react";
-import { auth } from "./firebase";
+import React from "react";
+// import { auth } from "./firebase";
 import Home from "./Home";
 import Students from "./students/Students";
 import { Route, Switch } from "react-router-dom";

@@ -4,15 +4,14 @@ import { Link } from "react-router-dom";
 
 const Mentors = () => {
   const [students, setStudents] = useState("");
-  // const { groups, type, location } = "";
-
-  // const [groups, setGroups] = useState("");
-  // const [type, setType] = useState("");
-  // const [location, setLocation] = useState("");
+      const apiBaseUrl =
+        process.env.NODE_ENV === "production"
+          ? process.env.REACT_APP_PROD_API_URL
+          : process.env.REACT_APP_LOCAL_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:9000/admins")
-      // , { query: { location, groups, type } }
+    fetch(`${apiBaseUrl}/admins`)
+
       .then((res) => res.json())
       .then((data) => setStudents(data));
   }, [setStudents]);

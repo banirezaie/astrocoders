@@ -5,9 +5,13 @@ const GroupDetail = ({ match }) => {
   const [group, setGroup] = useState(null);
 
   console.log("Match: ", match);
+      const apiBaseUrl =
+        process.env.NODE_ENV === "production"
+          ? process.env.REACT_APP_PROD_API_URL
+          : process.env.REACT_APP_LOCAL_API_URL;
 
   useEffect(() => {
-    fetch(`http://localhost:9000/admins/${match.params.id}`)
+    fetch(`${apiBaseUrl}/admins/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => setGroup(data));
   }, [match]);

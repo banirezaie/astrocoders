@@ -7,8 +7,12 @@ const Admin = (props) => {
     const body = JSON.stringify({
       classCode,
     });
+    const apiBaseUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_PROD_API_URL
+        : process.env.REACT_APP_LOCAL_API_URL;
 
-    fetch(`http://localhost:9000/admins`, {
+    fetch(`${apiBaseUrl}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 
 const ModuleSelect = ({ selectedModule, setSelectedModule }) => {
   const [modules, setModules] = useState([]);
+      const apiBaseUrl =
+        process.env.NODE_ENV === "production"
+          ? process.env.REACT_APP_PROD_API_URL
+          : process.env.REACT_APP_LOCAL_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:9000/syllabus")
+    fetch(`${apiBaseUrl}/syllabus`)
       .then((res) => res.json())
       .then((data) => setModules(data));
-  }, []);
+  },[]);
 
   const changeHandler = (event) => {
     console.log("Location changed: ", modules[event.target.selectedIndex - 1]);

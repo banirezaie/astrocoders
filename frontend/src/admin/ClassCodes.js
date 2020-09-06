@@ -5,9 +5,13 @@ import "../App.css";
 const ClassCodes = () => {
   const [classes, setClasses] = useState("");
 
+  const apiBaseUrl =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_PROD_API_URL
+      : process.env.REACT_APP_LOCAL_API_URL;
+
   useEffect(() => {
-    // fetch(`http://localhost:9000/admins`)
-    fetch(`https://astrocodersbackend.herokuapp.com/admins`)
+    fetch(`${apiBaseUrl}`)
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, []);

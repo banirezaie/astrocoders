@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signInWithGoogle } from "../firebase";
-import { Button, FormGroup, FormControl } from "react-bootstrap";
+import { FormGroup, FormControl } from "react-bootstrap";
 
 const Register = () => {
   const [email, setEmail] = useState("");
