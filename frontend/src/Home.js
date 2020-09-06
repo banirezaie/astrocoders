@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./App.css";
 import HomeNavbar from "./navbar/HomeNavbar";
+import { UserContext } from "./providers/UserProvider";
 
 function Home() {
+  const user = useContext(UserContext);
+
   return (
+  
     <div>
       <HomeNavbar background="#888" hoverBackground="#ddd" linkColor="#eee" />
+     
       <div className="home">
         <div className="col-6">
+          {< h1 > Welcome {user && user.displayName}</h1 >}
           <NavLink to="/students" className="btn btn-primary col-5">
             Students
           </NavLink>
