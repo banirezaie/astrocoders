@@ -14,7 +14,7 @@ const GroupDetail = ({ match }) => {
     fetch(`${apiBaseUrl}/admins/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => setGroup(data));
-  }, [match]);
+  }, [apiBaseUrl, match.params.id]);
 
   if (!group) {
     return <div>Loading...</div>;

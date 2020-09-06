@@ -11,10 +11,9 @@ const Mentors = () => {
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/admins`)
-
       .then((res) => res.json())
       .then((data) => setStudents(data));
-  }, [setStudents]);
+  }, [apiBaseUrl]);
 
   if (!students) {
     return <div>Loading...</div>;

@@ -12,7 +12,7 @@ const LocationSelect = ({ selectedLocation, setSelectedLocation }) => {
     fetch(`${apiBaseUrl}/location`)
       .then((res) => res.json())
       .then((data) => setLocations(data));
-  }, []);
+  }, [apiBaseUrl]);
 
   const changeHandler = (event) => {
     console.log(

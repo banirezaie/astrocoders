@@ -11,7 +11,7 @@ const ModuleSelect = ({ selectedModule, setSelectedModule }) => {
     fetch(`${apiBaseUrl}/syllabus`)
       .then((res) => res.json())
       .then((data) => setModules(data));
-  },[]);
+  }, [apiBaseUrl]);
 
   const changeHandler = (event) => {
     console.log("Location changed: ", modules[event.target.selectedIndex - 1]);

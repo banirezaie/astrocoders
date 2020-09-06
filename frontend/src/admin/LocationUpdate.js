@@ -22,7 +22,7 @@ const LocationUpdate = ({ props }) => {
 
   useEffect(() => {
     loadLocation();
-  }, []);
+  });
 
   if (!location) {
     return <div>Loading...</div>;

@@ -14,7 +14,7 @@ const ClassCodes = () => {
     fetch(`${apiBaseUrl}`)
       .then((res) => res.json())
       .then((data) => setClasses(data));
-  }, []);
+  }, [apiBaseUrl]);
   return (
     <div>
       {/* <Navbar /> */}
