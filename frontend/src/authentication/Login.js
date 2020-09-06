@@ -1,32 +1,34 @@
-import React, { useState } from "react";
-import {Link  ,Route, Switch } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../providers/UserProvider";
+import { Link,  Redirect } from "react-router-dom";
 
 import { signInWithGoogle } from "../firebase";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
+
 // import "./Login.css";
 
 export default function Login() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
   const signInWithEmailAndPasswordHandler = (event) => {
     event.preventDefault();
   };
+  const user = useContext(UserContext);
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
-
+  
   return (
-    <div className="Login">
+
+   <div className="Login">
       <div className="login-header">
         <h4>Log in</h4>
       </div>
-      {error !== null && (
-        <div className="">
-          {error}
-        </div>
-      )}
+     
+      {user ? <Redirect to="/" /> :
+        <div>
       <form onSubmit={signInWithEmailAndPasswordHandler}>
         <FormGroup controlId="email">
           {/* <ControlLabel>Email</ControlLabel> */}
@@ -47,11 +49,11 @@ export default function Login() {
             type="password"
           />
         </FormGroup>
-        <Button disabled={!validateForm()} type="submit" block bsSize="medium" >
+        <Button disabled={!validateForm()} type="submit" block bsSize="medium">
           Login
         </Button>{" "}
       </form>
-      <hr></hr>
+
       <p className="text-center my-3">or</p>
       <Button block bsSize="medium" onClick={signInWithGoogle}>
         <i className="fa fa-google-plus"></i>
@@ -69,7 +71,10 @@ export default function Login() {
         >
           Forgot Password?
         </Link> */}
-      </p>
-    </div>
+         </p>
+        </div> }
+
+         </div>
+    
   );
 }
