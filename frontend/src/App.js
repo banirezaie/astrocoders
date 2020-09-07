@@ -1,5 +1,4 @@
 import React from "react";
-
 import Home from "./Home";
 import Students from "./students/Students";
 import { Route, Switch } from "react-router-dom";

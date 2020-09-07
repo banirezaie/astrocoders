@@ -19,8 +19,12 @@ const AttendeeList = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredStudents, setFilteredStudents] = useState("");
   useEffect(() => {
+          const apiBaseUrl =
+            process.env.NODE_ENV === "production"
+              ? process.env.REACT_APP_PROD_API_URL
+              : process.env.REACT_APP_LOCAL_API_URL;
     fetch(
-      "http://localhost:9000/attendance/student?" +
+      `${apiBaseUrl}/attendance/student?` +
         qs.stringify({
           location: selectedLocation ? selectedLocation._id : undefined,
           group: selectedGroup ? selectedGroup._id : null,

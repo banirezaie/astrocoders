@@ -7,15 +7,17 @@ const DeleteGroup = ({ props }) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(
-      `http://localhost:9000/location/${props.locationId}/group/${props.groupId}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+        const apiBaseUrl =
+          process.env.NODE_ENV === "production"
+            ? process.env.REACT_APP_PROD_API_URL
+            : process.env.REACT_APP_LOCAL_API_URL;
+
+    fetch(`${apiBaseUrl}/location/${props.locationId}/group/${props.groupId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((response) => {
         props.onDeleteGroup();

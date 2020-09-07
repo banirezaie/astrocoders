@@ -9,16 +9,20 @@ import DeleteLocation from "./DeleteLocation";
 const LocationUpdate = ({ props }) => {
   const [location, setLocation] = useState("");
 
+  const apiBaseUrl =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_PROD_API_URL
+      : process.env.REACT_APP_LOCAL_API_URL;
+
   const loadLocation = () => {
-    fetch("http://localhost:9000/location")
-      // , { query: { location, groups, type } }
+    fetch(`${apiBaseUrl}/location`)
       .then((res) => res.json())
       .then((data) => setLocation(data));
   };
 
   useEffect(() => {
     loadLocation();
-  }, []);
+  });
 
   if (!location) {
     return <div>Loading...</div>;
