@@ -13,14 +13,14 @@ import AttendeeList from "./attendees/AttendeeList";
 import LocationUpdate from "./admin/LocationUpdate";
 import AddLocation from "./admin/AddGroup";
 import LoginPage from "./authentication/LoginPage";
-import Login from "./authentication/Login"
+import Login from "./authentication/Login";
 import Register from "./authentication/Register";
 // import PasswordReset from "./authentication/PasswordReset";
 import UserProvider from "./providers/UserProvider";
 // const UserContext = createContext({ user: null });
+import StudentsView from "./students/StudentsView";
 
 function App() {
-
   // useEffect(() => {
   //   auth.onAuthStateChanged(setUser);
   // });
@@ -35,6 +35,7 @@ function App() {
         {/* <Route path="/password-reset" component={PasswordReset} /> */}
         <Route path="/" component={Home} exact />
         <Route path="/students" component={Students} exact />
+        <Route path="/studentsView" component={StudentsView} />
         <Route path="/locations" component={LocationUpdate} />
         <Route path="/attendees" component={AttendeeList} />
         <Route path="/add-location" component={AddLocation} />
@@ -43,7 +44,6 @@ function App() {
         <Route path="/admin" component={Admin} />
         <Route path="/CreateCode" component={CreateClassCode} />
         <Route path="/class-code" component={ClassCodes} />
-       
       </Switch>
     </UserProvider>
   );
