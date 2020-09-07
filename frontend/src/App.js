@@ -1,5 +1,4 @@
 import React from "react";
-// import { auth } from "./firebase";
 import Home from "./Home";
 import Students from "./students/Students";
 import { Route, Switch } from "react-router-dom";
@@ -13,6 +12,7 @@ import AttendeeList from "./attendees/AttendeeList";
 import LocationUpdate from "./admin/LocationUpdate";
 import AddLocation from "./admin/AddGroup";
 import LoginPage from "./authentication/LoginPage";
+import Login from "./authentication/Login"
 import Register from "./authentication/Register";
 // import PasswordReset from "./authentication/PasswordReset";
 import UserProvider from "./providers/UserProvider";
@@ -26,7 +26,9 @@ function App() {
   return (
     <UserProvider>
       <Switch>
+        {}
         <Route path="/login" component={LoginPage} />
+        <Route path="/loginx" component={Login} />
         {/* <Route path="/sign-in" component={SignIn} /> */}
         <Route path="/register" component={Register} />
         {/* <Route path="/password-reset" component={PasswordReset} /> */}
