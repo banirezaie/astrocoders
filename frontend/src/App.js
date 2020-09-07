@@ -39,7 +39,7 @@ function App() {
         <Route path="/locations" component={LocationUpdate} />
         <Route path="/attendees" component={AttendeeList} />
         <Route path="/add-location" component={AddLocation} />
-        <Route exact path="/groups" component={Groups} />
+        <Route path="/groups" component={Groups} exact />
         <Route path="/groups/:id/details" component={GroupDetail} />
         <Route path="/admin" component={Admin} />
         <Route path="/CreateCode" component={CreateClassCode} />
