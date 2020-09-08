@@ -1,9 +1,8 @@
 import React from "react";
-
 import Home from "./Home";
 import Students from "./students/Students";
 import { Route, Switch } from "react-router-dom";
-// import Mentors from "./mentors/Mentors";
+import MentorsView from "./mentors/MentorsView";
 import Admin from "./admin/Admin";
 import CreateClassCode from "./admin/CreateClassCode";
 import ClassCodes from "./admin/ClassCodes";
@@ -18,7 +17,9 @@ import Register from "./authentication/Register";
 // import PasswordReset from "./authentication/PasswordReset";
 import UserProvider from "./providers/UserProvider";
 // const UserContext = createContext({ user: null });
+
 import StudentsView from "./students/StudentsView";
+
 
 function App() {
   // useEffect(() => {
@@ -44,6 +45,9 @@ function App() {
         <Route path="/admin" component={Admin} />
         <Route path="/CreateCode" component={CreateClassCode} />
         <Route path="/class-code" component={ClassCodes} />
+
+        <Route path="/mentors" component={MentorsView} />
+
       </Switch>
     </UserProvider>
   );

@@ -3,11 +3,16 @@ import React, { useState, useEffect } from "react";
 const LocationSelect = ({ selectedLocation, setSelectedLocation }) => {
   const [locations, setLocations] = useState([]);
 
+      const apiBaseUrl =
+        process.env.NODE_ENV === "production"
+          ? process.env.REACT_APP_PROD_API_URL
+          : process.env.REACT_APP_LOCAL_API_URL;
+
   useEffect(() => {
-    fetch("http://localhost:9000/location")
+    fetch(`${apiBaseUrl}/location`)
       .then((res) => res.json())
       .then((data) => setLocations(data));
-  }, []);
+  }, [apiBaseUrl]);
 
   const changeHandler = (event) => {
     console.log(

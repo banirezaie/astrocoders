@@ -40,6 +40,12 @@
   border-color: #dd1173;
 }
 
+.welcomeAdmin {
+  position: absolute;
+  margin: 5rem 0 0 15%;
+  color: #bc3d53;
+}
+
 .table thead th {
   background-color: #bc3d53;
   color: white;
@@ -88,6 +94,12 @@ span {
   align-items: center;
   height: 60px;
   margin-bottom: 30px;
+}
+
+.welcome {
+  position: absolute;
+  margin: 5rem 0 0 15%;
+  color: #bc3d53;
 }
 
 .login-title {

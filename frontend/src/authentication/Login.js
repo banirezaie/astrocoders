@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { Link,  Redirect } from "react-router-dom";
 
+
 import { signInWithGoogle } from "../firebase";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 
@@ -11,6 +12,7 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const signInWithEmailAndPasswordHandler = (event) => {
     event.preventDefault();
   };
@@ -26,9 +28,11 @@ export default function Login() {
       <div className="login-header">
         <h4>Log in</h4>
       </div>
+
      
       {user ? <Redirect to="/" /> :
         <div>
+
       <form onSubmit={signInWithEmailAndPasswordHandler}>
         <FormGroup controlId="email">
           {/* <ControlLabel>Email</ControlLabel> */}

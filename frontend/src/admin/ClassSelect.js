@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 
 const ClassSelect = ({ selectedClass, setSelectedClass }) => {
   const [classes, setClasses] = useState([]);
-  
+
+  const apiBaseUrl =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_PROD_API_URL
+      : process.env.REACT_APP_LOCAL_API_URL;
+
   useEffect(() => {
-    fetch(`http://localhost:9000/admins`)
+    fetch(`${apiBaseUrl}/admins`)
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, []);
@@ -27,7 +32,8 @@ const ClassSelect = ({ selectedClass, setSelectedClass }) => {
         disabled={!selectedLocation}
       >
         <option>Choose a Class</option>
-        {classes && classes.map((element, index) => {
+        {classes &&
+          classes.map((element, index) => {
             return <option key={index}>{element.location}</option>;
           })}
       </select>

@@ -14,7 +14,7 @@ const CreateClassCode = (props) => {
   const [time, setTime] = useState("");
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
-  const [selectedModule, setSelectedModule]=useState(null);
+  const [selectedModule, setSelectedModule] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
   function handleSubmit(e) {
     e.preventDefault();
@@ -25,12 +25,16 @@ const CreateClassCode = (props) => {
       type,
       date,
       time,
-      syllabus:selectedModule,
-      lesson:selectedLesson
+      syllabus: selectedModule,
+      lesson: selectedLesson,
     });
 
-    fetch(`http://localhost:9000/admins`, {
-      //fetch(`https://astrocodersbackend.herokuapp.com/admins`, {
+    const apiBaseUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_PROD_API_URL
+        : process.env.REACT_APP_LOCAL_API_URL;
+
+    fetch(`${apiBaseUrl}/admins`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
