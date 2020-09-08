@@ -17,9 +17,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   font-size: calc(10px + 2vmin);
-  color:#bc3d53 ;
+  color: #bc3d53;
 }
 .row {
   background-color: #7e7694;
@@ -29,6 +29,12 @@
 .btn-primary {
   background-color: #bc3d53;
   border-color: #dd1173;
+}
+
+.welcomeAdmin {
+  position: absolute;
+  margin: 5rem 0 0 15%;
+  color: #bc3d53;
 }
 
 .table thead th {
@@ -54,7 +60,7 @@
   margin-right: -15px;
   margin-left: 0px;
 }
-span{
+span {
   display: inline-block;
   margin-top: 90px;
 }
@@ -83,7 +89,7 @@ span{
 
 .login-title {
   display: flex;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   justify-content: center;
   color: #bc3d53;
 }
