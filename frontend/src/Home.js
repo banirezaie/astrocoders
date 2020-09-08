@@ -8,22 +8,17 @@ function Home() {
   const user = useContext(UserContext);
 
   return (
-  
     <div>
       <HomeNavbar background="#888" hoverBackground="#ddd" linkColor="#eee" />
-     
+
       <div className="home">
         <div className="col-6">
-          {< h1 > Welcome {user && user.displayName}</h1 >}
 
-          {user?
-            <NavLink to="/students" className="btn btn-primary col-5">
-              Students
-          </NavLink> :
-            <NavLink to="/login" className="btn btn-primary col-5">
-              Login Page
-          </NavLink>}
-         
+          {<h1> Welcome {user && user.displayName}</h1>}
+          <NavLink to="/students" className="btn btn-primary col-5">
+            Students
+          </NavLink>
+
           <span className="col-2"></span>
           <NavLink to="/locations" className="btn btn-primary col-5">
             Add-Delete Locations
@@ -48,6 +43,10 @@ function Home() {
           {/* <NavLink to="/groups" className="btn btn-primary col-5">
             Show Groups
           </NavLink> */}
+          <hr></hr>
+          <NavLink to="/adminView" className="btn btn-primary col-5">
+            Admin new view
+          </NavLink>
         </div>
       </div>
     </div>

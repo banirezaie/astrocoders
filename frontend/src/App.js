@@ -12,14 +12,14 @@ import AttendeeList from "./attendees/AttendeeList";
 import LocationUpdate from "./admin/LocationUpdate";
 import AddLocation from "./admin/AddGroup";
 import LoginPage from "./authentication/LoginPage";
-import Login from "./authentication/Login"
+import Login from "./authentication/Login";
 import Register from "./authentication/Register";
 // import PasswordReset from "./authentication/PasswordReset";
 import UserProvider from "./providers/UserProvider";
 // const UserContext = createContext({ user: null });
+import AdminView from "./admin/AdminView";
 
 function App() {
-
   // useEffect(() => {
   //   auth.onAuthStateChanged(setUser);
   // });
@@ -42,7 +42,7 @@ function App() {
         <Route path="/admin" component={Admin} />
         <Route path="/CreateCode" component={CreateClassCode} />
         <Route path="/class-code" component={ClassCodes} />
-       
+        <Route path="/adminView" component={AdminView} />
       </Switch>
     </UserProvider>
   );
