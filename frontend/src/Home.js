@@ -13,10 +13,12 @@ function Home() {
 
       <div className="home">
         <div className="col-6">
+
           {<h1> Welcome {user && user.displayName}</h1>}
           <NavLink to="/students" className="btn btn-primary col-5">
             Students
           </NavLink>
+
           <span className="col-2"></span>
           <NavLink to="/locations" className="btn btn-primary col-5">
             Add-Delete Locations
