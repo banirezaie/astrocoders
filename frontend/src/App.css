@@ -85,6 +85,7 @@ span{
   display: flex;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   justify-content: center;
+  
   color: #bc3d53;
 }
 @media all and (min-width: 480px) {
