@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./Home";
-import Students from "./students/Students";
+
 import { Route, Switch } from "react-router-dom";
 import MentorsView from "./mentors/MentorsView";
 import Admin from "./admin/Admin";
@@ -19,7 +19,7 @@ import UserProvider from "./providers/UserProvider";
 // const UserContext = createContext({ user: null });
 
 import StudentsView from "./students/StudentsView";
-
+import StudentViewHistory from "./students/StudentViewHistory";
 
 function App() {
   // useEffect(() => {
@@ -35,7 +35,7 @@ function App() {
         <Route path="/register" component={Register} />
         {/* <Route path="/password-reset" component={PasswordReset} /> */}
         <Route path="/" component={Home} exact />
-        <Route path="/students" component={Students} exact />
+
         <Route path="/studentsView" component={StudentsView} />
         <Route path="/locations" component={LocationUpdate} />
         <Route path="/attendees" component={AttendeeList} />
@@ -47,7 +47,7 @@ function App() {
         <Route path="/class-code" component={ClassCodes} />
 
         <Route path="/mentors" component={MentorsView} />
-
+        <Route path="/student-history" component={StudentViewHistory} />
       </Switch>
     </UserProvider>
   );
