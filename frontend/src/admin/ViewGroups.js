@@ -9,16 +9,17 @@ const ViewGroups = ({ id }) => {
     process.env.NODE_ENV === "production"
       ? process.env.REACT_APP_PROD_API_URL
       : process.env.REACT_APP_LOCAL_API_URL;
-  const loadLocation = () => {
+  
+      const loadLocation = () => {
     fetch(`${apiBaseUrl}/location/${id}`)
       // , { query: { location, groups, type } }
       .then((res) => res.json())
-      .then((data) => setGroup(data));
-  };
+      .then((data) => setGroup(data))};
 
   useEffect(() => {
     loadLocation();
-  });
+    
+  }, []);
 
   if (!group) {
     return <div>Loading...</div>;

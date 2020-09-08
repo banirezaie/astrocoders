@@ -16,7 +16,7 @@ const AddLocation = ({ props }) => {
         ? process.env.REACT_APP_PROD_API_URL
         : process.env.REACT_APP_LOCAL_API_URL;
 
-    fetch(`${apiBaseUrl}`, {
+    fetch(`${apiBaseUrl}/location`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
