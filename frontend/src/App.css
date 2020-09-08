@@ -31,6 +31,12 @@
   border-color: #dd1173;
 }
 
+.welcomeAdmin {
+  position: absolute;
+  margin: 5rem 0 0 15%;
+  color: #bc3d53;
+}
+
 .table thead th {
   background-color: #bc3d53;
   color: white;

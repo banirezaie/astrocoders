@@ -5,32 +5,33 @@ import DeleteGroup from "./DeleteGroup";
 
 const ViewGroups = ({ id }) => {
   const [group, setGroup] = useState("");
-
-  const loadLocation = () =>{
-    fetch(`http://localhost:9000/location/${id}`)
+  const apiBaseUrl =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_PROD_API_URL
+      : process.env.REACT_APP_LOCAL_API_URL;
+  
+      const loadLocation = () => {
+    fetch(`${apiBaseUrl}/location/${id}`)
       // , { query: { location, groups, type } }
       .then((res) => res.json())
-      .then((data) => setGroup(data));
-  }
+      .then((data) => setGroup(data))};
 
   useEffect(() => {
-    loadLocation()
-  }, );
+    loadLocation();
+    
+  }, []);
 
   if (!group) {
     return <div>Loading...</div>;
   }
 
-
-  const handleOnDeleteGroup =() =>{
-    loadLocation()
-  }
+  const handleOnDeleteGroup = () => {
+    loadLocation();
+  };
 
   return (
     <div>
-      <div className="">
-
-      </div>
+      <div className=""></div>
       <div className="table">
         <table className="table">
           {/* <thead>
@@ -50,7 +51,11 @@ const ViewGroups = ({ id }) => {
                     <td>{data.name}</td>
                     <td>
                       <DeleteGroup
-                        props={{ locationId: group._id, groupId: data._id, onDeleteGroup: handleOnDeleteGroup }}
+                        props={{
+                          locationId: group._id,
+                          groupId: data._id,
+                          onDeleteGroup: handleOnDeleteGroup,
+                        }}
                       />
                     </td>
                   </tr>

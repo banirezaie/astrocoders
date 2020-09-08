@@ -17,6 +17,7 @@ import Register from "./authentication/Register";
 // import PasswordReset from "./authentication/PasswordReset";
 import UserProvider from "./providers/UserProvider";
 // const UserContext = createContext({ user: null });
+import AdminView from "./admin/AdminView";
 
 function App() {
   // useEffect(() => {
