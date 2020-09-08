@@ -87,6 +87,12 @@ span {
   margin-bottom: 30px;
 }
 
+.welcome {
+  position: absolute;
+  margin: 5rem 0 0 15%;
+  color: #bc3d53;
+}
+
 .login-title {
   display: flex;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;

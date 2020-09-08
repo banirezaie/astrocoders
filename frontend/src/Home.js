@@ -44,8 +44,10 @@ function Home() {
             Show Groups
           </NavLink> */}
           <hr></hr>
-          <NavLink to="/adminView" className="btn btn-primary col-5">
-            Admin new view
+
+          <NavLink to="/mentors" className="btn btn-primary col-5">
+            Mentors page
+
           </NavLink>
         </div>
       </div>

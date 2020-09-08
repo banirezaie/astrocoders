@@ -2,7 +2,7 @@ import React from "react";
 import Home from "./Home";
 import Students from "./students/Students";
 import { Route, Switch } from "react-router-dom";
-// import Mentors from "./mentors/Mentors";
+import MentorsView from "./mentors/MentorsView";
 import Admin from "./admin/Admin";
 import CreateClassCode from "./admin/CreateClassCode";
 import ClassCodes from "./admin/ClassCodes";
@@ -42,7 +42,7 @@ function App() {
         <Route path="/admin" component={Admin} />
         <Route path="/CreateCode" component={CreateClassCode} />
         <Route path="/class-code" component={ClassCodes} />
-        <Route path="/adminView" component={AdminView} />
+        <Route path="/mentors" component={MentorsView} />
       </Switch>
     </UserProvider>
   );
