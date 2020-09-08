@@ -64,6 +64,20 @@ app.get("/attendance/student", function (req, res) {
     .catch((error) => res.status(500).send(error).end());
 });
 
+// ------------------------Student Attendance History
+app.get("/studentsView/history", function (req, res) {
+  // const searchObject = {email: req.query.email};
+
+  client
+    .db("attendance")
+    .collection("students")
+    // .filter((user) => user.email === searchObject)
+    .find({ email: { $eq: req.query.email } })
+    .toArray(function (error, tracks) {
+      res.send(error || tracks);
+    });
+});
+
 // create a  /attendance page which includes a form. Our form allow students to enter: Name, Email Address, Date
 app.post("/attendance", (req, res) => {
   const admindb = client.db("admins");
