@@ -45,8 +45,8 @@ function Home() {
           </NavLink> */}
           <hr></hr>
 
-          <NavLink to="/mentors" className="btn btn-primary col-5">
-            Mentors page
+          <NavLink to="/studentsView" className="btn btn-primary col-5">
+            New Students View
 
           </NavLink>
         </div>

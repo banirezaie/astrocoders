@@ -17,7 +17,9 @@ import Register from "./authentication/Register";
 // import PasswordReset from "./authentication/PasswordReset";
 import UserProvider from "./providers/UserProvider";
 // const UserContext = createContext({ user: null });
-import AdminView from "./admin/AdminView";
+
+import StudentsView from "./students/StudentsView";
+
 
 function App() {
   // useEffect(() => {
@@ -34,15 +36,18 @@ function App() {
         {/* <Route path="/password-reset" component={PasswordReset} /> */}
         <Route path="/" component={Home} exact />
         <Route path="/students" component={Students} exact />
+        <Route path="/studentsView" component={StudentsView} />
         <Route path="/locations" component={LocationUpdate} />
         <Route path="/attendees" component={AttendeeList} />
         <Route path="/add-location" component={AddLocation} />
-        <Route exact path="/groups" component={Groups} />
+        <Route path="/groups" component={Groups} exact />
         <Route path="/groups/:id/details" component={GroupDetail} />
         <Route path="/admin" component={Admin} />
         <Route path="/CreateCode" component={CreateClassCode} />
         <Route path="/class-code" component={ClassCodes} />
+
         <Route path="/mentors" component={MentorsView} />
+
       </Switch>
     </UserProvider>
   );

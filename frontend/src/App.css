@@ -10,6 +10,15 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.student-header {
+  background-color: #3a2226;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
 .home {
   background-color: #f6f5f4;
   /* background-color: aliceblue; */
