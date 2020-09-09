@@ -13,7 +13,6 @@ function Home() {
 
       <div className="home">
         <div className="col-6">
-
           {<h1> Welcome {user && user.displayName}</h1>}
           <NavLink to="/students" className="btn btn-primary col-5">
             Students
@@ -47,7 +46,14 @@ function Home() {
 
           <NavLink to="/studentsView" className="btn btn-primary col-5">
             New Students View
-
+          </NavLink>
+          <span className="col-2"></span>
+          <NavLink to="/adminView" className="btn btn-primary col-5">
+            New Admin View
+          </NavLink>
+          <hr></hr>
+          <NavLink to="/mentors" className="btn btn-primary col-5">
+            New Mentors page
           </NavLink>
         </div>
       </div>
