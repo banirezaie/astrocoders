@@ -20,6 +20,7 @@ import UserProvider from "./providers/UserProvider";
 
 import StudentsView from "./students/StudentsView";
 import StudentViewHistory from "./students/StudentViewHistory";
+import AdminView from "./admin/AdminView";
 
 function App() {
   // useEffect(() => {
@@ -45,7 +46,7 @@ function App() {
         <Route path="/admin" component={Admin} />
         <Route path="/CreateCode" component={CreateClassCode} />
         <Route path="/class-code" component={ClassCodes} />
-
+        <Route path="/adminView" component={AdminView} />
         <Route path="/mentors" component={MentorsView} />
         <Route path="/student-history" component={StudentViewHistory} />
       </Switch>
