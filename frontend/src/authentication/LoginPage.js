@@ -2,12 +2,10 @@ import React from "react";
 import Login from "./Login";
 import logo from "../image/cyf_brand.png";
 import "../App.css";
-import LoginNavbar from "../navbar/LoginNavbar";
 
 export default function LoginPage() {
   return (
     <div>
-      <LoginNavbar background="#888" hoverBackground="#ddd" linkColor="#eee" />
       <div className="">
         <div className="row-login">
           <div className="col-md-5">

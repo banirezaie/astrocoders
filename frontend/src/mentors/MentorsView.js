@@ -9,7 +9,7 @@ const MentorsView = () => {
   return (
     <div>
       <MentorsNavbar
-        background="#aaa"
+        background="#8391a4"
         hoverBackground="#ddd"
         linkColor="#eee"
       />

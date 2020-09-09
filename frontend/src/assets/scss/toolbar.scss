@@ -3,6 +3,7 @@ nav.responsive-toolbar {
   height: 60px;
   width: 100%;
   position: fixed;
+  z-index: 10;
   ul {
     display: flex;
     margin-inline-start: 0;

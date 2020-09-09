@@ -60,7 +60,7 @@
   padding: 15px;
 }
 .row-login {
-  display: -ms-flexbox;
+  /* display: -ms-flexbox; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -75,7 +75,7 @@ span {
 }
 .login-image {
   background-image: url("./image/login-landing.png");
-  height: 99vh;
+  height: 100vh;
   background-position: LEFT;
   background-repeat: no-repeat;
   background-size: cover;
@@ -106,7 +106,7 @@ span {
   display: flex;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   justify-content: center;
-  
+
   color: #bc3d53;
 }
 @media all and (min-width: 480px) {

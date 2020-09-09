@@ -62,7 +62,7 @@ const StudentsView = (props) => {
   return (
     <div>
       <StudentsNavbar
-        background="#aaa"
+        background="#8391a4"
         hoverBackground="#ccc"
         linkColor="#eee"
       />
