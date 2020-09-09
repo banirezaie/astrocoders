@@ -51,6 +51,10 @@ function Home() {
           <NavLink to="/adminView" className="btn btn-primary col-5">
             New Admin View
           </NavLink>
+          <hr></hr>
+          <NavLink to="/mentors" className="btn btn-primary col-5">
+            New Mentors page
+          </NavLink>
         </div>
       </div>
     </div>
