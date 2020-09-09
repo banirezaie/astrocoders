@@ -23,3 +23,13 @@ const provider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => {
   auth.signInWithPopup(provider);
 };
+
+export function googleSignout() {
+  firebase.auth().signOut()
+
+    .then(function () {
+      console.log('Signout Succesfull')
+    }, function (error) {
+      console.log('Signout Failed')
+    });
+}

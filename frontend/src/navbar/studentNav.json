@@ -1,0 +1,27 @@
+[
+  {
+    "text": "Home",
+    "path": "/",
+    "icon": "ion-ios-home"
+  },
+  {
+    "text": "Contact us",
+    "path": "/contact",
+    "icon": "ion-speakerphone"
+  },
+  {
+    "text": "About Us",
+    "path": "/about",
+    "icon": "ion-earth"
+  },
+  {
+    "text": "Sign out",
+    "path": "/signOut",
+    "icon": "ion-log-out"
+  },
+  {
+    "text": "lessons",
+    "path": "/lessons",
+    "icon": "ion-ios-book"
+  }
+]
