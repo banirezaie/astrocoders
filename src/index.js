@@ -91,7 +91,6 @@ app.post("/attendance", (req, res) => {
         return Promise.reject(new Error("Invalid code"));
       }
 
-      console.log(result);
       return result;
     })
 
@@ -136,7 +135,6 @@ app.post("/attendance", (req, res) => {
       res.status(200).send(result.ops[0]).end();
     })
     .catch(function (err) {
-      console.error(err);
       return res.status(500).send({ message: err.message }).end();
     });
 });
