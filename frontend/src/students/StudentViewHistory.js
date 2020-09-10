@@ -7,15 +7,18 @@ import Logout from "../authentication/Logout";
 const StudentViewHistory = (props) => {
   const user = useContext(UserContext);
   const [students, setStudents] = useState("");
-  const email = user.email;
+ 
+
+  const email = user && user.email;
+
   useEffect(() => {
     const apiBaseUrl =
       process.env.NODE_ENV === "production"
         ? process.env.REACT_APP_PROD_API_URL
         : process.env.REACT_APP_LOCAL_API_URL;
-
-    console.log(email);
-    fetch(`${apiBaseUrl}/studentsView/history?email=abcelen228@gmail.com`)
+        
+    email &&
+    fetch(`${apiBaseUrl}/studentsView/history?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         setStudents(data);
@@ -110,7 +113,7 @@ const StudentViewHistory = (props) => {
           <Logout />
         </div>
       ) : (
-        props.history.push("/login")
+        <div></div>
       )}
     </div>
   );
