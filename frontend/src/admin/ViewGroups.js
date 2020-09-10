@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "../App.css";
 // import { Link } from "react-router-dom";
 import DeleteGroup from "./DeleteGroup";
@@ -9,17 +9,19 @@ const ViewGroups = ({ id }) => {
     process.env.NODE_ENV === "production"
       ? process.env.REACT_APP_PROD_API_URL
       : process.env.REACT_APP_LOCAL_API_URL;
-  
-      const loadLocation = () => {
+
+  const loadLocation = useCallback(() => {
     fetch(`${apiBaseUrl}/location/${id}`)
       // , { query: { location, groups, type } }
       .then((res) => res.json())
-      .then((data) => setGroup(data))};
+      .then((data) => setGroup(data));
+  }, []);
+
+  
 
   useEffect(() => {
     loadLocation();
-    
-  }, []);
+  }, [loadLocation]);
 
   if (!group) {
     return <div>Loading...</div>;

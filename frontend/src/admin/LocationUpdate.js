@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useCallback } from "react";
 import "../App.css";
 // import { Link } from "react-router-dom";
 import AddGroup from "../admin/AddGroup";
@@ -14,15 +14,15 @@ const LocationUpdate = ({ props }) => {
       ? process.env.REACT_APP_PROD_API_URL
       : process.env.REACT_APP_LOCAL_API_URL;
 
-  const loadLocation = () => {
+  const loadLocation = useCallback(() => {
     fetch(`${apiBaseUrl}/location`)
       .then((res) => res.json())
       .then((data) => setLocation(data));
-  };
+  },[]);
 
   useEffect(() => {
     loadLocation();
-  }, []);
+  }, [loadLocation]);
 
   if (!location) {
     return <div>Loading...</div>;
