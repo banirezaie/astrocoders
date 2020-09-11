@@ -15,7 +15,7 @@ const ViewGroups = ({ id }) => {
       // , { query: { location, groups, type } }
       .then((res) => res.json())
       .then((data) => setGroup(data));
-  }, []);
+  }, [apiBaseUrl,id]);
 
   
 
