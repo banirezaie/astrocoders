@@ -21,7 +21,7 @@
   },
   {
     "text": "Sign in",
-    "path": "/sign",
+    "path": "/register",
     "icon": "ion-log-in"
   },
   {

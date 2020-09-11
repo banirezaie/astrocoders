@@ -14,27 +14,12 @@ function Home() {
       <div className="home">
         <div className="col-6">
           {<h1> Welcome {user && user.displayName}</h1>}
-          <NavLink to="/students" className="btn btn-primary col-5">
-            Students
-          </NavLink>
+          
 
-          <span className="col-2"></span>
-          <NavLink to="/locations" className="btn btn-primary col-5">
-            Add-Delete Locations
-          </NavLink>
-          <hr></hr>
-          <NavLink to="/createCode" className="btn btn-primary col-5">
-            Create a class code
-          </NavLink>
-          <span className="col-2"></span>
-          <NavLink to="/groups" className="btn btn-primary col-5">
-            Show Groups
-          </NavLink>
-          <span className="col-2"></span>
-          <hr></hr>
-          <NavLink to="/attendees" className="btn btn-primary col-5">
-            Show Attendees
-          </NavLink>
+         
+         
+          
+       
           <span className="col-2"></span>
           <NavLink to="/login" className="btn btn-primary col-5">
             Login Page
@@ -45,15 +30,15 @@ function Home() {
           <hr></hr>
 
           <NavLink to="/studentsView" className="btn btn-primary col-5">
-            New Students View
+           Students View
           </NavLink>
           <span className="col-2"></span>
           <NavLink to="/adminView" className="btn btn-primary col-5">
-            New Admin View
+           Admin View
           </NavLink>
           <hr></hr>
           <NavLink to="/mentors" className="btn btn-primary col-5">
-            New Mentors page
+           Mentors page
           </NavLink>
         </div>
       </div>

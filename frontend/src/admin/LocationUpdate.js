@@ -18,7 +18,7 @@ const LocationUpdate = ({ props }) => {
     fetch(`${apiBaseUrl}/location`)
       .then((res) => res.json())
       .then((data) => setLocation(data));
-  },[]);
+  }, [apiBaseUrl]);
 
   useEffect(() => {
     loadLocation();

@@ -24,20 +24,6 @@ const StudentViewHistory = (props) => {
         setStudents(data);
       });
   }, [email]);
-  // useEffect(() => {
-  //     async function fetchData() {
-  //         try {
-  //             const response = await fetch(
-  //                 `${apiBaseUrl}/studentsView/history?email=${email}`
-  //             );
-  //             const json = await response.json();
-  //             setStudents(json.data.children.map(it => it.data));
-  //         } catch (e) {
-  //             console.error(e);
-  //         }
-  //     };
-  //     fetchData();
-  // }, []);
 
   return (
     <div>
