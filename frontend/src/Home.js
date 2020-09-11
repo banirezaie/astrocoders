@@ -14,12 +14,7 @@ function Home() {
       <div className="home">
         <div className="col-6">
           {<h1> Welcome {user && user.displayName}</h1>}
-          
 
-         
-         
-          
-       
           <span className="col-2"></span>
           <NavLink to="/login" className="btn btn-primary col-5">
             Login Page

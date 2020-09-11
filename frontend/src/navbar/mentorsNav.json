@@ -23,10 +23,5 @@
     "text": "About Us",
     "path": "/about",
     "icon": "ion-earth"
-  },
-  {
-    "text": "Sign out",
-    "path": "/signOut",
-    "icon": "ion-log-out"
   }
 ]

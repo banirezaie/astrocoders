@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "../App.css";
 import { UserContext } from "../providers/UserProvider";
 import Logout from "../authentication/Logout";
-
+import {Redirect} from "react-router-dom"
 const StudentViewHistory = (props) => {
   const user = useContext(UserContext);
   const [students, setStudents] = useState("");
@@ -99,7 +99,9 @@ const StudentViewHistory = (props) => {
           <Logout />
         </div>
       ) : (
-        <div></div>
+        <div>
+          <Redirect to="/login"/>
+        </div>
       )}
     </div>
   );

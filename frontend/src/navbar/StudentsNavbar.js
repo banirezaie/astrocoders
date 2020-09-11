@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import studentNav from "./studentNav.json";
-import { NavLink } from "react-router-dom";
 
+import Logout from "../authentication/Logout";
 import "../App.css";
 
 const StudentNavbar = ({ background, hoverBackground }) => {
-  const [hoverIndex, setHoverIndex] = useState(-1);
   const [navOpen, setNavOpen] = useState(false);
 
   return (
@@ -18,24 +16,7 @@ const StudentNavbar = ({ background, hoverBackground }) => {
         >
           <img src="logo.png" alt="logo" />
         </figure>
-        {studentNav.map((item, i) => (
-          <li
-            key={i}
-            onMouseEnter={() => {
-              setHoverIndex(i);
-            }}
-            onMouseLeave={() => {
-              setHoverIndex(-1);
-            }}
-            style={{
-              background: hoverIndex === i ? hoverBackground || "#999" : "",
-            }}
-          >
-            <i className={item.icon} />
-            {/* https://ionicons.com/v2/ */}
-            <NavLink to={item.path}>{item.text}</NavLink>
-          </li>
-        ))}
+        <Logout />{" "}
       </ul>
     </nav>
   );

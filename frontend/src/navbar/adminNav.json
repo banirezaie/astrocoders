@@ -24,10 +24,5 @@
     "text": "Contact us",
     "path": "/contact",
     "icon": "ion-speakerphone"
-  },
-  {
-    "text": "Sign Out",
-    "path": "/sign",
-    "icon": "ion-log-out"
   }
 ]

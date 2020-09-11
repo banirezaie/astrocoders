@@ -30,7 +30,7 @@ function App() {
     <UserProvider>
       <Switch>
         {}
-        <Route path="/login" component={LoginPage} />
+        <Route path="/login" component={LoginPage} exact />
         <Route path="/loginx" component={Login} />
         {/* <Route path="/sign-in" component={SignIn} /> */}
         <Route path="/register" component={Register} />
