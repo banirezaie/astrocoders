@@ -6,11 +6,9 @@ import { UserContext } from "../providers/UserProvider";
 
 const StudentsView = (props) => {
   const user = useContext(UserContext);
-  console.log(user);
+
   const [code, setCode] = useState("");
   const [notes, setNotes] = useState("");
-  // const [name, setName]= useState("");
-  // const [email, setEmail] = useState("");
 
   const name = user.displayName;
   const email = user.email;
@@ -19,10 +17,6 @@ const StudentsView = (props) => {
     process.env.NODE_ENV === "production"
       ? process.env.REACT_APP_PROD_API_URL
       : process.env.REACT_APP_LOCAL_API_URL;
-
-  //  const setName =()=>{
-  //   name.displayName
-  //   }
 
   function handleSubmit(e) {
     e.preventDefault();

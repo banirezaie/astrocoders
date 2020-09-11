@@ -29,6 +29,7 @@ const StudentViewHistory = (props) => {
     <div>
       {email ? (
         <div className="table">
+          <Logout />
           <table className="table table-striped container bg-white table-hover">
             <thead>
               <tr>
@@ -96,13 +97,9 @@ const StudentViewHistory = (props) => {
               </tbody>
             )}
           </table>
-          <Logout />
+          
         </div>
-      ) : (
-        <div>
-          <Redirect to="/login"/>
-        </div>
-      )}
+      ) : (<div></div>)}
     </div>
   );
 };

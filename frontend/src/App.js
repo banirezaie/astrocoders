@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
 import Home from "./Home";
-
 import { Route, Switch } from "react-router-dom";
 import MentorsView from "./mentors/MentorsView";
 import Admin from "./admin/Admin";
@@ -14,29 +13,25 @@ import AddLocation from "./admin/AddGroup";
 import LoginPage from "./authentication/LoginPage";
 import Login from "./authentication/Login";
 import Register from "./authentication/Register";
-// import PasswordReset from "./authentication/PasswordReset";
 import UserProvider from "./providers/UserProvider";
-// const UserContext = createContext({ user: null });
-
 import StudentsView from "./students/StudentsView";
 import StudentViewHistory from "./students/StudentViewHistory";
 import AdminView from "./admin/AdminView";
 
+import { Redirect } from "react-router-dom";
+import { UserContext } from "./providers/UserProvider";
+
 function App() {
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(setUser);
-  // });
+  const user = useContext(UserContext);
+  console.log(user);
   return (
     <UserProvider>
       <Switch>
-        {}
-        <Route path="/login" component={LoginPage} exact />
+        <Route path="/" component={LoginPage} exact />
         <Route path="/loginx" component={Login} />
-        {/* <Route path="/sign-in" component={SignIn} /> */}
         <Route path="/register" component={Register} />
-        {/* <Route path="/password-reset" component={PasswordReset} /> */}
-        <Route path="/" component={Home} exact />
 
+        <Route path="/" component={Home} exact />
         <Route path="/studentsView" component={StudentsView} />
         <Route path="/locations" component={LocationUpdate} />
         <Route path="/attendees" component={AttendeeList} />
