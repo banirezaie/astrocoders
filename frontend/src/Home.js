@@ -1,46 +1,77 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import "./App.css";
 import HomeNavbar from "./navbar/HomeNavbar";
-import { UserContext } from "./providers/UserProvider";
+import { useUserProfile } from "./providers/UserProvider";
 
 function Home() {
-  const user = useContext(UserContext);
+  const user = useUserProfile();
+  
+
+  const adminView=()=>(
+    <div className="home">
+      <div className="col-4">
+        <NavLink to="/createCode" className="btn btn-primary col-12">
+          Create a class code
+          </NavLink>
+        <hr></hr>
+        <NavLink to="/locations" className="btn btn-primary col-12">
+          Add-Delete Locations
+          </NavLink>
+        <hr></hr>
+        <NavLink to="/groups" className="btn btn-primary col-12">
+          Show Groups
+          </NavLink>
+        <hr></hr>
+        <NavLink to="/attendees" className="btn btn-primary col-12">
+          Show Attendees
+          </NavLink>
+      </div>
+    </div>
+  )
+  
+
+  const mentorView = () => (
+    <div className="home">
+      <div className="col-4">
+        <NavLink to="/groups" className="btn btn-primary col-12">
+          Show Groups
+          </NavLink>
+        <hr></hr>
+        <NavLink to="/attendees" className="btn btn-primary col-12">
+          Show Attendees
+          </NavLink>
+      </div>
+    </div>
+  )
+
+  const studentView = () => (
+    <div className="home">
+      <div className="col-4">
+        
+      </div>
+    </div>
+  )
+
 
   return (
+
     <div>
       <HomeNavbar background="#888" hoverBackground="#ddd" linkColor="#eee" />
-
       <div className="home">
-        <div className="col-6">
-          {<h1> Welcome {user && user.displayName}</h1>}
+     
+        { user.role === "admin" && 
+           adminView()
+        }
+
+        {user.role === "mentor" &&
+          mentorView()
+        }
+        {user.role === "student" &&
+          studentView()
+        }
           
 
-         
-         
-          
-       
-          <span className="col-2"></span>
-          <NavLink to="/login" className="btn btn-primary col-5">
-            Login Page
-          </NavLink>
-          {/* <NavLink to="/groups" className="btn btn-primary col-5">
-            Show Groups
-          </NavLink> */}
-          <hr></hr>
-
-          <NavLink to="/studentsView" className="btn btn-primary col-5">
-           Students View
-          </NavLink>
-          <span className="col-2"></span>
-          <NavLink to="/adminView" className="btn btn-primary col-5">
-           Admin View
-          </NavLink>
-          <hr></hr>
-          <NavLink to="/mentors" className="btn btn-primary col-5">
-           Mentors page
-          </NavLink>
-        </div>
       </div>
     </div>
   );

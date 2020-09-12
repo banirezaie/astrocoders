@@ -354,6 +354,41 @@ app.post("/syllabus/:id/lesson", function (req, res) {
     .catch((error) => res.status(500).send(error).end());
 });
 
+//outh
+app.post("/login/create-user", function (req, res) {
+  var userParam = {
+    socialId: req.body.socialId,
+    displayName: req.body.displayName,
+    email: req.body.email,
+  };
+
+  client
+    .db("admins")
+    .collection("users")
+    .findOne(
+      // search operation
+      { email: userParam.email }
+    )
+    .then((user) => {
+      if (user) {
+        return res.status(200).send(user).end();
+      }
+      user = {};
+      user.email = userParam.email;
+      user.name = userParam.displayName;
+      user.role = "student";
+      user.password = "";
+      client
+        .db("admins")
+        .collection("user")
+        .insertOne(user)
+        .then((result) => res.status(200).send(user).end())
+        .catch((error) => res.status(500).send(error).end());
+    })
+
+    .catch((error) => res.status(500).send(error).end());
+});
+
 client
   .connect()
   .then(() =>
