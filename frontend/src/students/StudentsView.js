@@ -2,17 +2,17 @@ import React, { useState, useContext } from "react";
 import "../App.css";
 import Swal from "sweetalert2";
 import StudentsNavbar from "../navbar/StudentsNavbar";
-import { UserContext } from "../providers/UserProvider";
+import { UserContext, useUserProfile } from "../providers/UserProvider";
 
 const StudentsView = (props) => {
-  const user = useContext(UserContext);
+  const user = useUserProfile();
   console.log(user);
   const [code, setCode] = useState("");
   const [notes, setNotes] = useState("");
   // const [name, setName]= useState("");
   // const [email, setEmail] = useState("");
 
-  const name = user.displayName;
+  const name = user.name;
   const email = user.email;
 
   const apiBaseUrl =
@@ -44,8 +44,7 @@ const StudentsView = (props) => {
       .then((response) => {
         Swal.fire(
           "Success!",
-          "Your class code has been submitted",
-          response.code,
+          "Your class code has been submitted: " +response.code,
           "success"
         );
         props.history.push("/student-history");

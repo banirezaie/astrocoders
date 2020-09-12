@@ -1,12 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./App.css";
+import Logout from "./authentication/Logout";
 import HomeNavbar from "./navbar/HomeNavbar";
 import { useUserProfile } from "./providers/UserProvider";
+import StudentsView from "./students/StudentsView";
 
-function Home() {
+function Home(props) {
   const user = useUserProfile();
   
+  console.log('User in Home', user);
 
   const adminView=()=>(
     <div className="home">
@@ -46,33 +49,22 @@ function Home() {
   )
 
   const studentView = () => (
-    <div className="home">
-      <div className="col-4">
-        
+    <div className="">
+      <div className="">
+        <StudentsView {...props} />
       </div>
     </div>
   )
 
 
   return (
-
     <div>
       <HomeNavbar background="#888" hoverBackground="#ddd" linkColor="#eee" />
-      <div className="home">
-     
-        { user.role === "admin" && 
-           adminView()
-        }
+      {user && user.role === "student" && studentView()}
+        {user && user.role === "admin" && adminView()}
 
-        {user.role === "mentor" &&
-          mentorView()
-        }
-        {user.role === "student" &&
-          studentView()
-        }
-          
-
-      </div>
+        {user && user.role === "mentor" && mentorView()}
+        <Logout />
     </div>
   );
 }

@@ -93,13 +93,19 @@ const LocationUpdate = ({ props }) => {
                       >
                         View Groups
                       </Link> */}
-                      <ViewGroups id={data._id} />
+                      <ViewGroups
+                        id={data._id}
+                        groups={data.groups}
+                        setGroups={group => setLocation(location
+                          .map(oldLocation => oldLocation === data ? ({ ...data, groups: group}) : oldLocation))}
+                      />
                     </td>
                     <td>
                       <AddGroup
                         props={{
                           id: data._id,
-                          onAddGroup: handleOnAddGroup,
+                          onAddGroup: (group) => setLocation(location
+                            .map(oldLocation => oldLocation === data ? ({ ...data, groups: data.groups.concat([group])}) : oldLocation))
                         }}
                       />
                     </td>

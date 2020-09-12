@@ -24,7 +24,7 @@ const AddGroup = ( {props} ) => {
     })
       .then((res) => res.json())
       .then((response) => {
-        props.onAddGroup();
+        props.onAddGroup(response);
         Swal.fire(
           "Success!",
           "Your location has been submitted",
