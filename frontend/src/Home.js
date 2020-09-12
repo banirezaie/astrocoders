@@ -11,27 +11,31 @@ function Home(props) {
   
   console.log('User in Home', user);
 
-  const adminView=()=>(
+  const adminView = () => (
     <div className="home">
       <div className="col-4">
         <NavLink to="/createCode" className="btn btn-primary col-12">
           Create a class code
-          </NavLink>
+        </NavLink>
         <hr></hr>
         <NavLink to="/locations" className="btn btn-primary col-12">
           Add-Delete Locations
-          </NavLink>
+        </NavLink>
         <hr></hr>
         <NavLink to="/groups" className="btn btn-primary col-12">
           Show Groups
-          </NavLink>
+        </NavLink>
         <hr></hr>
         <NavLink to="/attendees" className="btn btn-primary col-12">
           Show Attendees
-          </NavLink>
+        </NavLink>
+        <hr></hr>
+        <NavLink to="/user-list" className="btn btn-primary col-12">
+          Update Users
+        </NavLink>
       </div>
     </div>
-  )
+  );
   
 
   const mentorView = () => (

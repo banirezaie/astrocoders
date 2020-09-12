@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import "../App.css";
 // import { Link } from "react-router-dom";
 import DeleteGroup from "./DeleteGroup";
 
 const ViewGroups = ({ id, groups, setGroups }) => {
   //const [group, setGroup] = useState("");
-  const apiBaseUrl =
-    process.env.NODE_ENV === "production"
-      ? process.env.REACT_APP_PROD_API_URL
-      : process.env.REACT_APP_LOCAL_API_URL;
+  // const apiBaseUrl =
+  //   process.env.NODE_ENV === "production"
+  //     ? process.env.REACT_APP_PROD_API_URL
+  //     : process.env.REACT_APP_LOCAL_API_URL;
   /*
   const loadLocation = useCallback(() => {
     fetch(`${apiBaseUrl}/location/${id}`)

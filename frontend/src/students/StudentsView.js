@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "../App.css";
 import Swal from "sweetalert2";
 import StudentsNavbar from "../navbar/StudentsNavbar";
-import { UserContext, useUserProfile } from "../providers/UserProvider";
+import { useUserProfile } from "../providers/UserProvider";
 
 const StudentsView = (props) => {
   const user = useUserProfile();

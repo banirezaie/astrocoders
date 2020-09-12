@@ -34,9 +34,7 @@ const LocationUpdate = ({ props }) => {
   const handleOnAddLocation = () => {
     loadLocation();
   };
-  const handleOnAddGroup = () => {
-    loadLocation();
-  };
+
 
   return (
     <div>
