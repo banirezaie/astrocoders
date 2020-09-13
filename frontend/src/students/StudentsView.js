@@ -44,7 +44,7 @@ const StudentsView = (props) => {
       .then((response) => {
         Swal.fire(
           "Success!",
-          "Your class code has been submitted: " +response.code,
+          "Your class code has been submitted: " + response.code,
           "success"
         );
         props.history.push("/student-history");
@@ -69,8 +69,7 @@ const StudentsView = (props) => {
         <div className="col-6  mx-auto">
           <div className="text-center pb-5">
             <h1>Attend class</h1>
-            <h3>{user.displayName}</h3>
-            <h3>{user.email}</h3>
+            <h4> Welcome {user.name}</h4>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="form-group mx-5">
@@ -87,7 +86,7 @@ const StudentsView = (props) => {
             <div className="form-group mx-5">
               <label htmlFor="name">Add Notes</label>
               <textarea
-                placeholder="Optional"
+                placeholder="Optionail | You can add your notes about your attendance."
                 type="text"
                 className="form-control"
                 id="notes"

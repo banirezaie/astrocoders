@@ -5,6 +5,12 @@ import Logout from "./authentication/Logout";
 import HomeNavbar from "./navbar/HomeNavbar";
 import { useUserProfile } from "./providers/UserProvider";
 import StudentsView from "./students/StudentsView";
+import { FaSearchLocation } from "react-icons/fa";
+import { FaKey } from "react-icons/fa";
+import { FaUserGraduate } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa";
+import { FaSchool } from "react-icons/fa";
+import { FaList } from "react-icons/fa";
 
 function Home(props) {
   const user = useUserProfile();
@@ -13,25 +19,47 @@ function Home(props) {
 
   const adminView = () => (
     <div className="home">
-      <div className="col-4">
-        <NavLink to="/createCode" className="btn btn-primary col-12">
+      <div className="home-menu">
+        <NavLink to="/createCode" className="btn btn-primary home-menu-items">
+          <div>
+            <FaKey color="white" size="25px" />
+          </div>
           Create a class code
         </NavLink>
-        <hr></hr>
-        <NavLink to="/locations" className="btn btn-primary col-12">
+
+        <NavLink to="/locations" className="btn btn-primary home-menu-items">
+          <div>
+            <FaSearchLocation color="white" size="35px" />
+          </div>
           Add-Delete Locations
         </NavLink>
-        <hr></hr>
-        <NavLink to="/groups" className="btn btn-primary col-12">
+
+        <NavLink to="/groups" className="btn btn-primary home-menu-items">
+          <div>
+            <FaSchool color="white" size="35px" />
+          </div>
           Show Groups
         </NavLink>
-        <hr></hr>
-        <NavLink to="/attendees" className="btn btn-primary col-12">
+
+        <NavLink to="/attendees" className="btn btn-primary home-menu-items">
+          <div>
+            <FaUserGraduate color="white" size="35px" />
+          </div>
           Show Attendees
         </NavLink>
-        <hr></hr>
-        <NavLink to="/user-list" className="btn btn-primary col-12">
+
+        <NavLink to="/user-list" className="btn btn-primary home-menu-items">
+          <div>
+            <FaUserEdit color="white" size="35px" />
+          </div>
           Update Users
+        </NavLink>
+
+        <NavLink to="/user-list" className="btn btn-primary home-menu-items">
+          <div>
+            <FaList color="white" size="35px" />
+          </div>
+          Update Syllabus
         </NavLink>
       </div>
     </div>
@@ -40,17 +68,23 @@ function Home(props) {
 
   const mentorView = () => (
     <div className="home">
-      <div className="col-4">
-        <NavLink to="/groups" className="btn btn-primary col-12">
+      <div className="home-menu">
+        <NavLink to="/groups" className="btn btn-primary home-menu-items">
+          <div>
+            <FaSchool color="white" size="35px" />
+          </div>
           Show Groups
-          </NavLink>
-        <hr></hr>
-        <NavLink to="/attendees" className="btn btn-primary col-12">
+        </NavLink>
+
+        <NavLink to="/attendees" className="btn btn-primary home-menu-items">
+          <div>
+            <FaUserGraduate color="white" size="35px" />
+          </div>
           Show Attendees
-          </NavLink>
+        </NavLink>
       </div>
     </div>
-  )
+  );
 
   const studentView = () => (
     <div className="">
@@ -63,7 +97,7 @@ function Home(props) {
 
   return (
     <div>
-      <HomeNavbar background="#888" hoverBackground="#ddd" linkColor="#eee" />
+      <HomeNavbar background="#8391a4" hoverBackground="#ddd" linkColor="#eee" />
       {user && user.role === "student" && studentView()}
         {user && user.role === "admin" && adminView()}
 
