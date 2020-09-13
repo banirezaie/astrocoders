@@ -50,7 +50,7 @@ const AttendeeList = () => {
     if (searchVal !== "") {
       setFilteredStudents(
         students.filter((person) =>
-          person.name.toLowerCase().includes(searchVal.toLowerCase())
+          (person.name || "").toLowerCase().includes(searchVal.toLowerCase())
         )
       );
     } else {

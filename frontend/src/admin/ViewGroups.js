@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import "../App.css";
 // import { Link } from "react-router-dom";
 import DeleteGroup from "./DeleteGroup";
 
-const ViewGroups = ({ id }) => {
-  const [group, setGroup] = useState("");
-  const apiBaseUrl =
-    process.env.NODE_ENV === "production"
-      ? process.env.REACT_APP_PROD_API_URL
-      : process.env.REACT_APP_LOCAL_API_URL;
-
+const ViewGroups = ({ id, groups, setGroups }) => {
+  //const [group, setGroup] = useState("");
+  // const apiBaseUrl =
+  //   process.env.NODE_ENV === "production"
+  //     ? process.env.REACT_APP_PROD_API_URL
+  //     : process.env.REACT_APP_LOCAL_API_URL;
+  /*
   const loadLocation = useCallback(() => {
     fetch(`${apiBaseUrl}/location/${id}`)
       // , { query: { location, groups, type } }
@@ -22,14 +22,10 @@ const ViewGroups = ({ id }) => {
   useEffect(() => {
     loadLocation();
   }, [loadLocation]);
-
-  if (!group) {
-    return <div>Loading...</div>;
-  }
-
-  const handleOnDeleteGroup = () => {
-    loadLocation();
-  };
+*/
+  //if (!group) {
+  //  return <div>Loading...</div>;
+  //}
 
   return (
     <div>
@@ -44,9 +40,9 @@ const ViewGroups = ({ id }) => {
             </tr>
           </thead> */}
 
-          {group ? (
+          {groups && groups.length > 0 ? (
             <tbody>
-              {group.groups.map((data, i) => {
+              {groups.map((data, i) => {
                 return (
                   <tr key={i}>
                     <th>{i + 1}</th>
@@ -54,9 +50,12 @@ const ViewGroups = ({ id }) => {
                     <td>
                       <DeleteGroup
                         props={{
-                          locationId: group._id,
+                          locationId: id,
                           groupId: data._id,
-                          onDeleteGroup: handleOnDeleteGroup,
+                          onDeleteGroup: () =>
+                            setGroups(
+                              groups.filter((oldGroup) => oldGroup !== data)
+                            ),
                         }}
                       />
                     </td>

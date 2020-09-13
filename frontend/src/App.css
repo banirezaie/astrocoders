@@ -109,6 +109,21 @@ span {
   
   color: #bc3d53;
 }
+
+.home-menu{
+  padding: 5px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.home-menu-items{
+  margin: 10px;
+  width: 40%;
+
+
+}
 @media all and (min-width: 480px) {
   .Login {
     padding: 60px 0;
