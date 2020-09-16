@@ -75,11 +75,12 @@ span {
 }
 .login-image {
   background-image: url("./image/login-landing.png");
-  height: 99vh;
+  height: 50vh;
   background-position: LEFT;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  visibility: ;
 }
 
 .login-logo {
@@ -128,9 +129,18 @@ span {
   .Login {
     padding: 60px 0;
   }
-
+.login-image {
+  background-image: url("./image/login-landing.png");
+  height: 90vh;
+}
   .Login form {
     margin: 0 auto;
     max-width: 320px;
+  }
+  .stretch{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }

@@ -22,6 +22,7 @@ import StudentsView from "./students/StudentsView";
 import StudentViewHistory from "./students/StudentViewHistory";
 import AdminView from "./admin/AdminView";
 import UserList from "./admin/UserList";
+import SyllabusUpdate from "./admin/SyllabusUpdate"
 
 function Routes() {
   const user = useUserProfile();
@@ -55,6 +56,7 @@ function Routes() {
       <Route path="/user-list" component={UserList} />
       <Route path="/mentors" component={MentorsView} />
       <Route path="/student-history" component={StudentViewHistory} />
+      <Route path="/syllabus" component={SyllabusUpdate} />
       <Redirect to="/" />
     </Switch>
   );
