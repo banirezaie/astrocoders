@@ -55,7 +55,7 @@ function Home(props) {
           Update Users
         </NavLink>
 
-        <NavLink to="/user-list" className="btn btn-primary home-menu-items">
+        <NavLink to="/syllabus" className="btn btn-primary home-menu-items">
           <div>
             <FaList color="white" size="35px" />
           </div>
