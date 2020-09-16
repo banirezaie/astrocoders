@@ -1,7 +1,7 @@
 import React, {  useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { Redirect } from "react-router-dom";
-
+import { FcGoogle } from "react-icons/fc";
 
 import { signInWithGoogle } from "../firebase";
 import { Button, } from "react-bootstrap";
@@ -23,27 +23,29 @@ export default function Login() {
   // }
   
   return (
-
-   <div className="Login">
+    <div className="Login">
       <div className="login">
         <h4> </h4>
       </div>
 
-     
-      {user ? <Redirect to="/" /> :
+      {user ? (
+        <Redirect to="/" />
+      ) : (
         <div>
-
-
-      <Button block bsSize="small" onClick={signInWithGoogle}>
-              <i className="fa fa-google-plus"></i>
-        Login with Google
-      </Button>
-
-
-        </div> }
-
-         </div>
-    
+          <div className="stretch">
+            <div style={{ margin: "10px" }}>
+              <FcGoogle size="2.5rem" />
+            </div>
+            <div>
+            <Button block bsSize="small" onClick={signInWithGoogle}>
+              
+                <div>Login with Google</div>
+              
+            </Button></div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 // Native login form 

@@ -21,6 +21,7 @@ export default function LoginPage() {
               <span></span>
               <Login />
             </div>
+            <span></span>
             <div className="row-login">
               <div className="col-md-12">
                 <nav className="navbar navbar-expand-lg ">
