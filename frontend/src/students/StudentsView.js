@@ -84,9 +84,12 @@ const StudentsView = (props) => {
               />
             </div>
             <div className="form-group mx-5">
-              <label htmlFor="name">Add Notes</label>
+              <label htmlFor="name">
+                <p style={{ display: "inline" }}>Notes</p>
+                <p style={{ color: "grey" }}>(Optional)</p>
+              </label>
               <textarea
-                placeholder="Optionail | You can add your notes about your attendance."
+                placeholder="Add notes about your attendance, e.g. I was late due to child care"
                 type="text"
                 className="form-control"
                 id="notes"
