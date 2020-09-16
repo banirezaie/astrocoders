@@ -66,7 +66,7 @@
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
+  margin-right: 0px;
   margin-left: 0px;
 }
 span {
@@ -75,15 +75,17 @@ span {
 }
 .login-image {
   background-image: url("./image/login-landing.png");
-  height: 99vh;
+  height: 50vh;
   background-position: LEFT;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  
+
 }
 
 .login-logo {
-  width: 90%;
+  width: 100%;
 }
 
 .login-header {
@@ -109,18 +111,55 @@ span {
   
   color: #bc3d53;
 }
-.navbar-student{
-  display:flex;
-  flex-direction: column;
-  justify-content: space-between;
+
+.home-menu{
+  padding: 5px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.home-menu-items{
+  margin: 10px;
+  width: 40%;
+}
+
+.login-button{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+
+}
+  .stretch{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-image {
+  background-image: url("./image/login-landing.png");
+  height: 90vh;
+
 }
 @media all and (min-width: 480px) {
   .Login {
     padding: 60px 0;
   }
-
+.login-image {
+  background-image: url("./image/login-landing.png");
+  height: 90vh;
+}
   .Login form {
     margin: 0 auto;
     max-width: 320px;
+  }
+  .stretch{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 }

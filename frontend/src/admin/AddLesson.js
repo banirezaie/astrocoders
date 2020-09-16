@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import Swal from "sweetalert2";
 
-const AddGroup = ( {props} ) => {
+const AddLesson = ({ props }) => {
   const [name, setName] = useState("");
 
   function handleSubmit(e) {
@@ -13,9 +13,12 @@ const AddGroup = ( {props} ) => {
       name,
     });
 
-    const apiBaseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_LOCAL_API_URL;
+    const apiBaseUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_PROD_API_URL
+        : process.env.REACT_APP_LOCAL_API_URL;
 
-    fetch(`${apiBaseUrl}/location/${props.id}/group`, {
+    fetch(`${apiBaseUrl}/syllabus/${props.id}/lesson`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +27,7 @@ const AddGroup = ( {props} ) => {
     })
       .then((res) => res.json())
       .then((response) => {
-        props.onAddGroup(response);
+        props.onAddLesson(response);
         Swal.fire(
           "Success!",
           "Your location has been submitted",
@@ -49,7 +52,7 @@ const AddGroup = ( {props} ) => {
         <div className="form-row align-items-center">
           <div className="col-md-9">
             <input
-              placeholder="Add a new Group"
+              placeholder="Add a new Lesson"
               type="text"
               className="form-control"
               id="name"
@@ -69,4 +72,4 @@ const AddGroup = ( {props} ) => {
   );
 };
 
-export default AddGroup;
+export default AddLesson;

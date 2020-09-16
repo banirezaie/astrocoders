@@ -1,42 +1,108 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import "./App.css";
+import Logout from "./authentication/Logout";
 import HomeNavbar from "./navbar/HomeNavbar";
-import { UserContext } from "./providers/UserProvider";
+import { useUserProfile } from "./providers/UserProvider";
+import StudentsView from "./students/StudentsView";
+import { FaSearchLocation } from "react-icons/fa";
+import { FaKey } from "react-icons/fa";
+import { FaUserGraduate } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa";
+import { FaSchool } from "react-icons/fa";
+import { FaList } from "react-icons/fa";
 
-function Home() {
-  const user = useContext(UserContext);
+function Home(props) {
+  const user = useUserProfile();
+  
+  console.log('User in Home', user);
+
+  const adminView = () => (
+    <div className="home">
+      <div className="home-menu">
+        <NavLink to="/createCode" className="btn btn-primary home-menu-items">
+          <div>
+            <FaKey color="white" size="25px" />
+          </div>
+          Create a class code
+        </NavLink>
+
+        <NavLink to="/locations" className="btn btn-primary home-menu-items">
+          <div>
+            <FaSearchLocation color="white" size="35px" />
+          </div>
+          Add-Delete Locations
+        </NavLink>
+
+        <NavLink to="/groups" className="btn btn-primary home-menu-items">
+          <div>
+            <FaSchool color="white" size="35px" />
+          </div>
+          Show Groups
+        </NavLink>
+
+        <NavLink to="/attendees" className="btn btn-primary home-menu-items">
+          <div>
+            <FaUserGraduate color="white" size="35px" />
+          </div>
+          Show Attendees
+        </NavLink>
+
+        <NavLink to="/user-list" className="btn btn-primary home-menu-items">
+          <div>
+            <FaUserEdit color="white" size="35px" />
+          </div>
+          Update Users
+        </NavLink>
+
+        <NavLink to="/syllabus" className="btn btn-primary home-menu-items">
+          <div>
+            <FaList color="white" size="35px" />
+          </div>
+          Update Syllabus
+        </NavLink>
+      </div>
+    </div>
+  );
+  
+
+  const mentorView = () => (
+    <div className="home">
+      <div className="home-menu">
+        <NavLink to="/groups" className="btn btn-primary home-menu-items">
+          <div>
+            <FaSchool color="white" size="35px" />
+          </div>
+          Show Groups
+        </NavLink>
+
+        <NavLink to="/attendees" className="btn btn-primary home-menu-items">
+          <div>
+            <FaUserGraduate color="white" size="35px" />
+          </div>
+          Show Attendees
+        </NavLink>
+      </div>
+    </div>
+  );
+
+  const studentView = () => (
+    <div className="">
+      <div className="">
+        <StudentsView {...props} />
+      </div>
+    </div>
+  )
+
 
   return (
     <div>
-      <HomeNavbar background="#888" hoverBackground="#ddd" linkColor="#eee" />
+      <HomeNavbar background="#8391a4" hoverBackground="#ddd" linkColor="#eee" />
+      {user && user.role === "student" && studentView()}
+        {user && user.role === "admin" && adminView()}
 
-      <div className="home">
-        <div className="col-6">
-          {<h1> Welcome {user && user.displayName}</h1>}
-
-          <span className="col-2"></span>
-          <NavLink to="/login" className="btn btn-primary col-5">
-            Login Page
-          </NavLink>
-          {/* <NavLink to="/groups" className="btn btn-primary col-5">
-            Show Groups
-          </NavLink> */}
-          <hr></hr>
-
-          <NavLink to="/studentsView" className="btn btn-primary col-5">
-           Students View
-          </NavLink>
-          <span className="col-2"></span>
-          <NavLink to="/adminView" className="btn btn-primary col-5">
-           Admin View
-          </NavLink>
-          <hr></hr>
-          <NavLink to="/mentors" className="btn btn-primary col-5">
-           Mentors page
-          </NavLink>
-        </div>
-      </div>
+        {user && user.role === "mentor" && mentorView()}
+        <Logout />
     </div>
   );
 }

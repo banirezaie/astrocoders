@@ -1,42 +1,39 @@
 import React from "react";
 import "../App.css";
+import DeleteLesson from "./DeleteLesson";
 // import { Link } from "react-router-dom";
-import DeleteGroup from "./DeleteGroup";
-
-const ViewGroups = ({ id, groups, setGroups }) => {
 
 
+
+const ViewLessons = ({ id, lessons, setlessons }) => {
   return (
     <div>
       <div className=""></div>
       <div className="table">
         <table className="table">
-          {/* <thead>
-            <tr>
-              <th scope="col">#</th>
-                          <th scope="col">Group Name</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead> */}
+   
 
-          {groups && groups.length > 0 ? (
+          {lessons && lessons.length > 0 ? (
             <tbody>
-              {groups.map((data, i) => {
+              {lessons.map((data, i) => {
                 return (
                   <tr key={i}>
                     <th>{i + 1}</th>
                     <td>{data.name}</td>
                     <td>
-                      <DeleteGroup
+                      <DeleteLesson
                         props={{
-                          locationId: id,
-                          groupId: data._id,
-                          onDeleteGroup: () =>
-                            setGroups(
-                              groups.filter((oldGroup) => oldGroup !== data)
+                          moduleId: id,
+                          lessonId: data._id,
+                          onDeleteLesson: 
+                          () =>
+                            setlessons(
+                              
+                              // lessons.filter((oldlesson) => oldlesson !== data)
                             ),
                         }}
                       />
+                      {console.log(id)}
                     </td>
                   </tr>
                 );
@@ -45,14 +42,15 @@ const ViewGroups = ({ id, groups, setGroups }) => {
           ) : (
             <tbody>
               <tr>
-                <th>No groups added yet</th>
+                <th>No lesson added yet</th>
               </tr>
             </tbody>
           )}
         </table>
       </div>
+     
     </div>
   );
 };
 
-export default ViewGroups;
+export default ViewLessons;

@@ -1,21 +1,22 @@
-import "../App.css";
-
 import React, { useState } from "react";
-
+import "../App.css";
 import Swal from "sweetalert2";
 
-const AddGroup = ( {props} ) => {
-  const [name, setName] = useState("");
+const AddModule = ({ props }) => {
+  const [module, setModule] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
     const body = JSON.stringify({
-      name,
+      module,
     });
 
-    const apiBaseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_LOCAL_API_URL;
+    const apiBaseUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_PROD_API_URL
+        : process.env.REACT_APP_LOCAL_API_URL;
 
-    fetch(`${apiBaseUrl}/location/${props.id}/group`, {
+    fetch(`${apiBaseUrl}/syllabus`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,20 +25,19 @@ const AddGroup = ( {props} ) => {
     })
       .then((res) => res.json())
       .then((response) => {
-        props.onAddGroup(response);
+        props.onAddModule();
         Swal.fire(
           "Success!",
-          "Your location has been submitted",
-          response.name,
+          "Module has been submitted",
+          response.module,
           "success"
         );
-
         // props.history.push("/");
       })
       .catch((error) =>
         Swal.fire(
           "Error",
-          "An error occurred while creating the new location.",
+          "An error occurred while creating the new module.",
           "error"
         )
       );
@@ -49,12 +49,12 @@ const AddGroup = ( {props} ) => {
         <div className="form-row align-items-center">
           <div className="col-md-9">
             <input
-              placeholder="Add a new Group"
+              placeholder="Add a new Module"
               type="text"
               className="form-control"
               id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={module}
+              onChange={(e) => setModule(e.target.value)}
             />
           </div>
 
@@ -69,4 +69,4 @@ const AddGroup = ( {props} ) => {
   );
 };
 
-export default AddGroup;
+export default AddModule;

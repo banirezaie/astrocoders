@@ -199,15 +199,17 @@ app.delete("/location/:id/group/:groupId", function (req, res) {
     .collection("location")
     .findOne(searchObject)
     .then((location) => {
-      const index = location.groups.indexOf((group) => group._id === groupId);
-      location.groups.splice(index, 1);
+      const newGroups = location.groups.filter(
+        (group) => !group._id.equals(groupId)
+      );
+      //location.groups.splice(index, 1);
 
-      console.log(location);
+      //console.log(location);
 
       client
         .db("admins")
         .collection("location")
-        .updateOne(searchObject, { $set: { groups: location.groups } })
+        .updateOne(searchObject, { $set: { groups: newGroups } })
         .then((result) => res.status(200).send(result).end())
         .catch((error) => res.status(500).send(error).end());
     })
@@ -351,6 +353,117 @@ app.post("/syllabus/:id/lesson", function (req, res) {
       { $push: { lesson: lesson } }
     )
     .then((result) => res.status(200).send(lesson).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
+//delete Module
+
+app.delete("/admin/syllabus/:id", function (req, res) {
+  const id = new mongodb.ObjectID(req.params.id);
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("syllabus")
+    .deleteOne(searchObject)
+    .then((result) => res.status(200).send(result).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
+//delete lesson-------------
+app.delete("/syllabus/:id/lesson/:lessonId", function (req, res) {
+  const id = new mongodb.ObjectID(req.params.id);
+  const lessonId = new mongodb.ObjectID(req.params.lessonId);
+
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("syllabus")
+    .findOne(searchObject)
+    .then((module) => {
+      const newLessons = module.lesson.filter(
+        (lesson) => !lesson._id.equals(lessonId)
+      );
+      //location.groups.splice(index, 1);
+
+      //console.log(location);
+
+      client
+        .db("admins")
+        .collection("syllabus")
+        .updateOne(searchObject, { $set: { lesson: newLessons } })
+        .then((result) => res.status(200).send(result).end())
+        .catch((error) => res.status(500).send(error).end());
+    })
+
+    .catch((error) => res.status(500).send(error).end());
+});
+
+//outh
+app.post("/login/create-user", function (req, res) {
+  var userParam = {
+    socialId: req.body.socialId,
+    displayName: req.body.displayName,
+    email: req.body.email,
+  };
+
+  client
+    .db("admins")
+    .collection("user")
+    .findOne(
+      // search operation
+      { email: userParam.email }
+    )
+    .then((user) => {
+      if (user) {
+        return res.status(200).send(user).end();
+      }
+      user = {};
+      user.email = userParam.email;
+      user.name = userParam.displayName;
+      user.role = "student";
+      user.password = "";
+      client
+        .db("admins")
+        .collection("user")
+        .insertOne(user)
+        .then((result) => res.status(200).send(user).end())
+        .catch((error) => res.status(500).send(error).end());
+    })
+
+    .catch((error) => res.status(500).send(error).end());
+});
+
+//-------------------------------------
+app.get("/admin/users", function (req, res) {
+  client
+    .db("admins")
+    .collection("user")
+    .find({})
+    .toArray()
+    .then((user) => res.status(200).send(user).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
+app.post("/admin/users/:id", function (req, res) {
+  client
+    .db("admins")
+    .collection("user")
+    .findOneAndUpdate(
+      { _id: new ObjectID(req.params.id) },
+      { $set: { role: req.body.role } }
+    )
+    .then((user) => res.status(200).send(user).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
+app.delete("/admin/users/:id", function (req, res) {
+  const id = new mongodb.ObjectID(req.params.id);
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("user")
+    .deleteOne(searchObject)
+    .then((user) => res.status(200).send(user).end())
     .catch((error) => res.status(500).send(error).end());
 });
 
