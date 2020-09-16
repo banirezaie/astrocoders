@@ -5,7 +5,7 @@ import DeleteLesson from "./DeleteLesson";
 
 
 
-const ViewLessons = ({ id, lessons, setlessons }) => {
+const ViewLessons = ({ id, lessons, setLessons }) => {
   return (
     <div>
       <div className=""></div>
@@ -27,13 +27,13 @@ const ViewLessons = ({ id, lessons, setlessons }) => {
                           lessonId: data._id,
                           onDeleteLesson: 
                           () =>
-                            setlessons(
+                            setLessons(
                               
-                              // lessons.filter((oldlesson) => oldlesson !== data)
+                              lessons.filter((oldlesson) => oldlesson !== data)
                             ),
                         }}
                       />
-                      {console.log(id)}
+                      
                     </td>
                   </tr>
                 );

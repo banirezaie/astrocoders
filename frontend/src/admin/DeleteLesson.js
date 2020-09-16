@@ -24,7 +24,8 @@ const DeleteLesson = ({ props }) => {
     )
       .then((res) => res.json())
       .then((response) => {
-        // props.onDeleteLesson();
+        debugger
+        props.onDeleteLesson();
         Swal.fire(
           "Success!",
           "Your lesson has been deleted",
