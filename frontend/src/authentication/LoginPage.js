@@ -34,7 +34,7 @@ export default function LoginPage() {
                         <li className="nav-item active">
                           <a
                             className="nav-link"
-                            href="https://codeyourfuture.io/"
+                           href="mailto:contact@codeyourfuture.io"
                           >
                             CONTACT <span class="sr-only">(current)</span>
                           </a>
