@@ -414,6 +414,17 @@ app.post("/admin/users/:id", function (req, res) {
     .catch((error) => res.status(500).send(error).end());
 });
 
+app.delete("/admin/users/:id", function (req, res) {
+  const id = new mongodb.ObjectID(req.params.id);
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("user")
+    .deleteOne(searchObject)
+    .then((user) => res.status(200).send(user).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
 client
   .connect()
   .then(() =>
