@@ -356,6 +356,48 @@ app.post("/syllabus/:id/lesson", function (req, res) {
     .catch((error) => res.status(500).send(error).end());
 });
 
+//delete Module
+
+app.delete("/admin/syllabus/:id", function (req, res) {
+  const id = new mongodb.ObjectID(req.params.id);
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("syllabus")
+    .deleteOne(searchObject)
+    .then((result) => res.status(200).send(result).end())
+    .catch((error) => res.status(500).send(error).end());
+});
+
+//delete lesson-------------
+app.delete("/syllabus/:id/lesson/:lessonId", function (req, res) {
+  const id = new mongodb.ObjectID(req.params.id);
+  const lessonId = new mongodb.ObjectID(req.params.lessonId);
+
+  const searchObject = { _id: id };
+  client
+    .db("admins")
+    .collection("syllabus")
+    .findOne(searchObject)
+    .then((module) => {
+      const newLessons = module.lesson.filter(
+        (lesson) => !lesson._id.equals(lessonId)
+      );
+      //location.groups.splice(index, 1);
+
+      //console.log(location);
+
+      client
+        .db("admins")
+        .collection("syllabus")
+        .updateOne(searchObject, { $set: { lesson: newLessons } })
+        .then((result) => res.status(200).send(result).end())
+        .catch((error) => res.status(500).send(error).end());
+    })
+
+    .catch((error) => res.status(500).send(error).end());
+});
+
 //outh
 app.post("/login/create-user", function (req, res) {
   var userParam = {

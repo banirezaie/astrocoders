@@ -15,7 +15,7 @@ export default function LoginPage() {
               <div className="col-md-5">
                 <img alt="login-logo" className="login-logo" src={logo} />
               </div>
-              <div className="col-md-5"></div>
+              <div className="col-md-5 stretch"></div>
             </div>
             <div>
               <span></span>
