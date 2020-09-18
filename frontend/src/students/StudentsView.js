@@ -6,7 +6,7 @@ import { useUserProfile } from "../providers/UserProvider";
 
 const StudentsView = (props) => {
   const user = useUserProfile();
-  console.log(user);
+  // console.log(user);
   const [code, setCode] = useState("");
   const [notes, setNotes] = useState("");
   // const [name, setName]= useState("");

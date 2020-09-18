@@ -32,6 +32,14 @@ app.get("/", (req, res) => {
   res.send("<h2>You can search the students now!</h2>");
 });
 
+app.get("/abc", (req, res) => {
+  res
+    .status(200)
+    .send(
+      "<script>window.location.href='https://syllabus.codeyourfuture.io/'</script>"
+    );
+});
+
 app.get("/attendance/student", function (req, res) {
   let filter = {};
 

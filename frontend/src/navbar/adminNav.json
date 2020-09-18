@@ -4,27 +4,27 @@
     "path": "/",
     "icon": "ion-ios-home"
   },
-
   {
-    "text": "mentors",
-    "path": "/mentors",
-    "icon": "ion-bookmark"
+    "text": "Create Class Code",
+    "path": "",
+    "icon": "ion-lock-combination"
   },
   {
-    "text": "lessons",
+    "text": "Attendee List",
+    "path": "",
+    "icon": "ion-person"
+  },
+  {
+    "text": "Group List",
+    "path": "",
+    "icon": "ion-document-text"
+  },
+  {
+    "text": "Syllabus",
     "path": "/lessons",
     "icon": "ion-ios-book"
   },
-  {
-    "text": "About Us",
-    "path": "/about",
-    "icon": "ion-earth"
-  },
-  {
-    "text": "Contact us",
-    "path": "/contact",
-    "icon": "ion-speakerphone"
-  },
+
   {
     "text": "Sign Out",
     "path": "/sign",

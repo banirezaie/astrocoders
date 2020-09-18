@@ -15,7 +15,7 @@ import { FaList } from "react-icons/fa";
 function Home(props) {
   const user = useUserProfile();
 
-  console.log("User in Home", user);
+  // console.log("User in Home", user);
 
   const adminView = () => (
     <div className="home">

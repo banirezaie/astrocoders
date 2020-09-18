@@ -2,6 +2,7 @@ nav.responsive-toolbar {
   background: "#333";
   height: 60px;
   width: 100%;
+  z-index: 10;
   position: fixed;
   ul {
     display: flex;

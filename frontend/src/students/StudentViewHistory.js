@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-// import Navbar from "../Navbar";
+
 import "../App.css";
 import { UserContext } from "../providers/UserProvider";
 import Logout from "../authentication/Logout";
@@ -7,7 +7,6 @@ import Logout from "../authentication/Logout";
 const StudentViewHistory = (props) => {
   const user = useContext(UserContext);
   const [students, setStudents] = useState("");
- 
 
   const email = user && user.email;
 
@@ -16,13 +15,13 @@ const StudentViewHistory = (props) => {
       process.env.NODE_ENV === "production"
         ? process.env.REACT_APP_PROD_API_URL
         : process.env.REACT_APP_LOCAL_API_URL;
-        
+
     email &&
-    fetch(`${apiBaseUrl}/studentsView/history?email=${email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setStudents(data);
-      });
+      fetch(`${apiBaseUrl}/studentsView/history?email=${email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setStudents(data);
+        });
   }, [email]);
 
   return (
