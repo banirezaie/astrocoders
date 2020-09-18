@@ -3,16 +3,15 @@ import studentNav from "./studentNav.json";
 import { NavLink } from "react-router-dom";
 
 import "../App.css";
-import Logout from "../authentication/Logout";
-
+// import Logout from "../authentication/Logout";
 
 const StudentNavbar = ({ background, hoverBackground }) => {
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className="home">
-      <Logout />
+    <div>
+      {/* <Logout /> */}
       <nav className="responsive-toolbar" style={{ background }}>
         <ul style={{ background }} className={navOpen ? "active" : ""}>
           <figure
@@ -35,7 +34,7 @@ const StudentNavbar = ({ background, hoverBackground }) => {
                 background: hoverIndex === i ? hoverBackground || "#999" : "",
               }}
             >
-              <i className={item.icon} />
+              <i style={{ color: "#bc3d53" }} className={item.icon} />
               {/* https://ionicons.com/v2/ */}
               <NavLink to={item.path}>{item.text}</NavLink>
             </li>
