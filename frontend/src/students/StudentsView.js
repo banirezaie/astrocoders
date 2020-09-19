@@ -60,12 +60,13 @@ const StudentsView = (props) => {
   return (
     <div>
       <div className="student-header">
-        <div className="col-6  mx-auto">
+        <div className="mx-auto">
           <div className="text-center pb-5">
-            <h1>Attend class</h1>
-            <h4> Welcome {user.name}</h4>
+            <h1 style={{ color: "black" }}>Attend Class</h1>
+            <hr></hr>
+            <h5 style={{ color: "black" }}> Welcome {user.name}</h5>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form className="create-code-container" onSubmit={handleSubmit}>
             <div className="form-group mx-5">
               <label htmlFor="name">Class code</label>
               <input
@@ -80,7 +81,7 @@ const StudentsView = (props) => {
             <div className="form-group mx-5">
               <label htmlFor="name">
                 <p style={{ display: "inline" }}>Notes</p>
-                <p style={{ color: "grey" }}>(Optional)</p>
+                <p style={{ color: "white" }}>(Optional)</p>
               </label>
               <textarea
                 placeholder="Add notes about your attendance, e.g. I was late due to child care"
@@ -92,7 +93,7 @@ const StudentsView = (props) => {
               ></textarea>
             </div>
             <div className="text-center">
-              <button type="submit" className="btn btn-danger">
+              <button type="submit" className="btn btn-info">
                 Submit
               </button>
             </div>

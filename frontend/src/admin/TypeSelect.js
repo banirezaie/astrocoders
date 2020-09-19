@@ -2,7 +2,7 @@ import React from "react";
 
 function TypeSelect({ type, setType }) {
   return (
-    <div className="form-group mx-5">
+    <div className="col-12">
       <label htmlFor="type">Type</label>
       <select
         className="form-control"

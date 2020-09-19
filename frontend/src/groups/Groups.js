@@ -21,6 +21,7 @@ const Mentors = () => {
   }
 
   return (
+
     <div>
       <MentorsNavbar
         background="#aaa"
@@ -29,8 +30,9 @@ const Mentors = () => {
       />
       <div style={{ paddingTop: "75px" }} className="header">
         <h2>Group List</h2>
+
       </div>
-      <div className="table">
+      <div className="">
         <table className="table table-striped container bg-white table-hover">
           <thead>
             <tr>

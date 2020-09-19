@@ -60,67 +60,69 @@ const CreateClassCode = (props) => {
   }
 
   return (
-    <div className="App-header">
-      <div className="col-6  mx-auto">
-        <div className="text-center pb-5">
-          <h1>Create Class Code</h1>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <LocationSelect
+    <div className="col-12">
+      <div className="wrapper list-jumbotron">
+        <div className="col-12  col-sm-6">
+          <div className="text-center pb-5">
+            <h1>Create Class Code</h1>
+          </div>
+          <form className="create-code-container" onSubmit={handleSubmit}>
+            <div>
+              <LocationSelect
+                selectedLocation={selectedLocation}
+                setSelectedLocation={(value) => {
+                  setSelectedLocation(value);
+                  setSelectedGroup(null);
+                }}
+              />
+            </div>
+            <GroupSelect
               selectedLocation={selectedLocation}
-              setSelectedLocation={(value) => {
-                setSelectedLocation(value);
-                setSelectedGroup(null);
+              selectedGroup={selectedGroup}
+              setSelectedGroup={setSelectedGroup}
+            />
+            <ModuleSelect
+              selectedModule={selectedModule}
+              setSelectedModule={(value) => {
+                setSelectedModule(value);
+                setSelectedLesson(null);
               }}
             />
-          </div>
-          <GroupSelect
-            selectedLocation={selectedLocation}
-            selectedGroup={selectedGroup}
-            setSelectedGroup={setSelectedGroup}
-          />
-          <ModuleSelect
-            selectedModule={selectedModule}
-            setSelectedModule={(value) => {
-              setSelectedModule(value);
-              setSelectedLesson(null);
-            }}
-          />
-          <ModuleLessonSelect
-            selectedModule={selectedModule}
-            selectedLesson={selectedLesson}
-            setSelectedLesson={setSelectedLesson}
-          />
-          <TypeSelect type={type} setType={setType} />
-          <div className="form-group mx-5">
-            <label htmlFor="date">Date</label>
-            <input
-              className="form-control"
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              required
-            ></input>
-          </div>
+            <ModuleLessonSelect
+              selectedModule={selectedModule}
+              selectedLesson={selectedLesson}
+              setSelectedLesson={setSelectedLesson}
+            />
+            <TypeSelect type={type} setType={setType} />
+            <div className="col-12">
+              <label htmlFor="date">Date</label>
+              <input
+                className="form-control"
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                required
+              ></input>
+            </div>
 
-          <div className="form-group mx-5">
-            <label htmlFor="time">Time</label>
-            <input
-              className="form-control"
-              type="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-              required
-            ></input>
-          </div>
-
-          <div className="text-center">
-            <button type="submit" className="btn btn-success">
-              Submit
-            </button>
-          </div>
-        </form>
+            <div className="col-12 ">
+              <label htmlFor="time">Time</label>
+              <input
+                className="form-control"
+                type="time"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                required
+              ></input>
+            </div>
+            <hr></hr>
+            <div className="text-center">
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

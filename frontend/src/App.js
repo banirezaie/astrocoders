@@ -24,6 +24,7 @@ import AdminView from "./admin/AdminView";
 import UserList from "./admin/UserList";
 import SyllabusUpdate from "./admin/SyllabusUpdate"
 
+
 function Routes() {
   const user = useUserProfile();
 
@@ -69,7 +70,9 @@ function App() {
   return (
     <UserProvider>
       <Routes />
+
     </UserProvider>
+
   );
 }
 
