@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-
 import "../App.css";
 import { UserContext } from "../providers/UserProvider";
-import Logout from "../authentication/Logout";
 
 const StudentViewHistory = (props) => {
   const user = useContext(UserContext);
@@ -95,7 +93,6 @@ const StudentViewHistory = (props) => {
               </tbody>
             )}
           </table>
-          <Logout />
         </div>
       ) : (
         <div></div>
