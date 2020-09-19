@@ -94,7 +94,6 @@ function Home(props) {
     <div>
       {user && user.role === "student" && studentView()}
       {user && user.role === "admin" && adminView()}
-
       {user && user.role === "mentor" && mentorView()}
       <Logout />
     </div>

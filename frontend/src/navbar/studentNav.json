@@ -11,12 +11,7 @@
   },
   {
     "text": "Syllabus",
-    "path": "",
-    "icon": "ion-ios-book"
-  },
-  {
-    "text": "Sign Out",
-    "path": "/signOut",
-    "icon": "ion-log-out"
+    "path": "/abc",
+    "icon": "ion-map"
   }
 ]

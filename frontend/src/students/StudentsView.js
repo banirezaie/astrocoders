@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
 import Swal from "sweetalert2";
-import StudentsNavbar from "../navbar/StudentsNavbar";
 import { useUserProfile } from "../providers/UserProvider";
 
 const StudentsView = (props) => {
@@ -60,11 +59,6 @@ const StudentsView = (props) => {
 
   return (
     <div>
-      <StudentsNavbar
-        background="#aaa"
-        hoverBackground="#ccc"
-        linkColor="#eee"
-      />
       <div className="student-header">
         <div className="col-6  mx-auto">
           <div className="text-center pb-5">

@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-
 import "../App.css";
 import { UserContext } from "../providers/UserProvider";
-import Logout from "../authentication/Logout";
-import StudentsNavbar from "../navbar/StudentsNavbar";
 
 const StudentViewHistory = (props) => {
   const user = useContext(UserContext);
