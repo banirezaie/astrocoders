@@ -1,17 +1,17 @@
 [
   {
-    "text": "Attend class",
+    "text": "Attend Class",
+    "path": "/",
+    "icon": "ion-clock"
+  },
+  {
+    "text": "Attendance History",
     "path": "/student-history",
-    "icon": "ion-ios-paper"
+    "icon": "ion-clipboard"
   },
   {
-    "text": "Lessons",
-    "path": "/lessons",
-    "icon": "ion-ios-book"
-  },
-  {
-    "text": "Sign out",
-    "path": "/signOut",
-    "icon": "ion-log-out"
+    "text": "Syllabus",
+    "path": "/abc",
+    "icon": "ion-map"
   }
 ]

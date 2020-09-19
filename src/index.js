@@ -32,6 +32,19 @@ app.get("/", (req, res) => {
   res.send("<h2>You can search the students now!</h2>");
 });
 
+// https://syllabus.codeyourfuture.io/
+
+app.get("/abc", (req, res) => {
+  res.status(301).redirect("https://syllabus.codeyourfuture.io");
+
+  // if (req.url == "/abc") {
+  //   res.writeHead(301, {
+  //     Location: "https://syllabus.codeyourfuture.io/",
+  //   });
+  res.end();
+  // }
+});
+
 app.get("/attendance/student", function (req, res) {
   let filter = {};
 

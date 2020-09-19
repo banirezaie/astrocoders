@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./App.css";
 import Logout from "./authentication/Logout";
-import StudentsNavbar from "./navbar/StudentsNavbar";
 import { useUserProfile } from "./providers/UserProvider";
 import StudentsView from "./students/StudentsView";
 import { FaSearchLocation } from "react-icons/fa";
@@ -17,7 +16,7 @@ import MentorsNavbar from "./navbar/MentorsNavbar";
 function Home(props) {
   const user = useUserProfile();
 
-  console.log("User in Home", user);
+  // console.log("User in Home", user);
 
   const adminView = () => (
     <div className="home">
@@ -104,15 +103,7 @@ function Home(props) {
 
   const studentView = () => (
     <div className="">
-      <StudentsNavbar
-        background="#aaa"
-        hoverBackground="#ccc"
-        linkColor="#eee"
-      />
-
-      <div className="">
-        <StudentsView {...props} />
-      </div>
+      <StudentsView {...props} />
     </div>
   );
 
@@ -120,7 +111,6 @@ function Home(props) {
     <div>
       {user && user.role === "student" && studentView()}
       {user && user.role === "admin" && adminView()}
-
       {user && user.role === "mentor" && mentorView()}
       <Logout />
     </div>

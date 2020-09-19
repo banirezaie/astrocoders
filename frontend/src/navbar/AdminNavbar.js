@@ -31,7 +31,7 @@ const AdminNavbar = ({ background, hoverBackground }) => {
               background: hoverIndex === i ? hoverBackground || "#999" : "",
             }}
           >
-            <i className={item.icon} />
+            <i style={{ color: "#bc3d53" }} className={item.icon} />
             {/* https://ionicons.com/v2/ */}
             <NavLink to={item.path}>{item.text}</NavLink>
           </li>

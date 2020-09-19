@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import "../App.css";
 import Swal from "sweetalert2";
-// import StudentsNavbar from "../navbar/StudentsNavbar";
 import { useUserProfile } from "../providers/UserProvider";
 
 const StudentsView = (props) => {
   const user = useUserProfile();
-  console.log(user);
+  // console.log(user);
   const [code, setCode] = useState("");
   const [notes, setNotes] = useState("");
   // const [name, setName]= useState("");
@@ -60,11 +59,6 @@ const StudentsView = (props) => {
 
   return (
     <div>
-      {/* <StudentsNavbar
-        background="#aaa"
-        hoverBackground="#ccc"
-        linkColor="#eee"
-      /> */}
       <div className="student-header">
         <div className="mx-auto">
           <div className="text-center pb-5">

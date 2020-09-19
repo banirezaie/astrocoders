@@ -53,6 +53,19 @@
   box-shadow: 14px 22px 15px -16px rgba(0, 0, 0, 0.52);
 }
 
+
+.logOut {
+  color: black;
+  text-decoration: none;
+  padding: 0;
+}
+.logOut:hover {
+  color: black;
+  text-decoration: none;
+  background-color: #eee;
+}
+
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -73,6 +86,7 @@
   display: flex;
   align-items: center;
 }
+
 .welcomeAdmin {
   position: absolute;
   margin: 5rem 0 0 15%;
@@ -208,5 +222,10 @@ span {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+  }
+}
+@media screen and (max-width: 759px) {
+  .logOut {
+    margin-left: 10px;
   }
 }

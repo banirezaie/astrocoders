@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import Navbar from "../Navbar";
+import MentorsNavbar from "../navbar/MentorsNavbar";
 import "../App.css";
 import LocationSelect from "../admin/LocationSelect";
 import GroupSelect from "../admin/GroupSelect";
@@ -64,9 +64,15 @@ const AttendeeList = () => {
   };
 
   return (
-    <div className="wrapper">
-      {/* <Navbar /> */}
-      <div>
+
+    <div>
+      <MentorsNavbar
+        background="#aaa"
+        hoverBackground="#ddd"
+        linkColor="#eee"
+      />
+      <div style={{ paddingTop: "75px" }}>
+
         <h2>Attendee List</h2>
       </div>
 

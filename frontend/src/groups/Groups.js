@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
+import MentorsNavbar from "../navbar/MentorsNavbar";
 
 const Mentors = () => {
   const [students, setStudents] = useState("");
-      const apiBaseUrl =
-        process.env.NODE_ENV === "production"
-          ? process.env.REACT_APP_PROD_API_URL
-          : process.env.REACT_APP_LOCAL_API_URL;
+  const apiBaseUrl =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_PROD_API_URL
+      : process.env.REACT_APP_LOCAL_API_URL;
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/admins`)
@@ -20,9 +21,16 @@ const Mentors = () => {
   }
 
   return (
-    <div className="wrapper">
-      <div className="list-jumbotron">
-        <h2>All Group List</h2>
+
+    <div>
+      <MentorsNavbar
+        background="#aaa"
+        hoverBackground="#ddd"
+        linkColor="#eee"
+      />
+      <div style={{ paddingTop: "75px" }} className="header">
+        <h2>Group List</h2>
+
       </div>
       <div className="">
         <table className="table table-striped container bg-white table-hover">
