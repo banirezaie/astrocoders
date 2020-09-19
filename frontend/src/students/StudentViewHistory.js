@@ -28,7 +28,7 @@ const StudentViewHistory = (props) => {
   return (
     <div>
       {email ? (
-        <div className="table">
+        <div className="wrapper">
           <table className="table table-striped container bg-white table-hover">
             <thead>
               <tr>
