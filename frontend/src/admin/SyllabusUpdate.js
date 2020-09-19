@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "../App.css";
+import AdminNavbar from "../navbar/AdminNavbar";
 import AddLesson from "./AddLesson";
 // import { Link } from "react-router-dom";
 // import AddGroup from "../admin/AddGroup";
@@ -38,91 +39,92 @@ const SyllabusUpdate = ({ props }) => {
   };
 
   return (
-    <div className="wrapper">
-      <div className="list-jumbotron">
-        <div className="col-sm-12 col-md-4">
-          <h2>Syllabus List</h2>
-        </div>
+    <div>
+      <AdminNavbar background="#888" hoverBackground="#ccc" linkColor="#eee" />
+      <div className="wrapper">
+        <div className="list-jumbotron">
+          <div className="col-sm-12 col-md-4">
+            <h2>Syllabus List</h2>
+          </div>
 
-        <hr className="my-4"></hr>
-        <div className="col-sm-12 col-md-4">
-          <AddModule
-            props={{
-              onAddModule: handleOnAddSyllabus,
-            }}
-          />
+          <hr className="my-4"></hr>
+          <div className="col-sm-12 col-md-4">
+            <AddModule
+              props={{
+                onAddModule: handleOnAddSyllabus,
+              }}
+            />
+          </div>
         </div>
-      </div>
-      {syllabus.map((data, i) => {
-        return (
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-4 col-md-4">
-                <div className="card">
-                  <div className="card-body">
-                    <h4 className="card-city">{data.module}</h4>
-                    <DeleteModule
-                      props={{
-                        id: data._id,
-                        onDeleteModule: handleOnDeleteSyllabus,
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-4 col-md-4">
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title">Group Names</h5>
-
-                    <ul className="list-group ">
-                      <ViewLessons
-                        id={data._id}
-                        lessons={data.lesson}
-                        setLessons={(lesson) =>
-                          setSyllabus(
-                            syllabus.map((oldLesson) =>
-                              oldLesson === data
-                                ? { ...data, lesson: lesson }
-                                : oldLesson
-                            )
-                          )
-                        }
+        {syllabus.map((data, i) => {
+          return (
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-4 col-md-4">
+                  <div className="card">
+                    <div className="card-body">
+                      <h4 className="card-city">{data.module}</h4>
+                      <DeleteModule
+                        props={{
+                          id: data._id,
+                          onDeleteModule: handleOnDeleteSyllabus,
+                        }}
                       />
-                    </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-sm-4 col-md-4">
-                <div className="card">
-                  <div className="card-body">
-                    <AddLesson
-                      props={{
-                        id: data._id,
-                        onAddLesson: (lesson) =>
-                          setSyllabus(
-                            syllabus.map((oldLesson) =>
-                              oldLesson === data
-                                ? {
-                                    ...data,
-                                    lesson: data.lesson.concat([lesson]),
-                                  }
-                                : oldLesson
+                <div className="col-sm-4 col-md-4">
+                  <div className="card">
+                    <div className="card-body">
+                      <h5 className="card-title">Group Names</h5>
+
+                      <ul className="list-group ">
+                        <ViewLessons
+                          id={data._id}
+                          lessons={data.lesson}
+                          setLessons={(lesson) =>
+                            setSyllabus(
+                              syllabus.map((oldLesson) =>
+                                oldLesson === data
+                                  ? { ...data, lesson: lesson }
+                                  : oldLesson
+                              )
                             )
-                          ),
-                      }}
-                    />
+                          }
+                        />
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-4 col-md-4">
+                  <div className="card">
+                    <div className="card-body">
+                      <AddLesson
+                        props={{
+                          id: data._id,
+                          onAddLesson: (lesson) =>
+                            setSyllabus(
+                              syllabus.map((oldLesson) =>
+                                oldLesson === data
+                                  ? {
+                                      ...data,
+                                      lesson: data.lesson.concat([lesson]),
+                                    }
+                                  : oldLesson
+                              )
+                            ),
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        );
-      })}{" "}
-      
+          );
+        })}
+      </div>
     </div>
   );
 };
-
 
 export default SyllabusUpdate;

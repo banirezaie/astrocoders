@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import studentNav from "./studentNav.json";
 import { NavLink } from "react-router-dom";
-
 import "../App.css";
 import Logout from "../authentication/Logout";
 

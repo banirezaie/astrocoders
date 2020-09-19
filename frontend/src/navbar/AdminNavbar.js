@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import adminNav from "./adminNav.json";
 import { NavLink } from "react-router-dom";
-
+import Logout from "../authentication/Logout";
 import "../App.css";
 
 const AdminNavbar = ({ background, hoverBackground }) => {
@@ -36,6 +36,10 @@ const AdminNavbar = ({ background, hoverBackground }) => {
             <NavLink to={item.path}>{item.text}</NavLink>
           </li>
         ))}
+        <li className="logOut">
+          <i style={{ color: "#bc3d53" }} className={"ion-log-out"} />
+          <Logout />
+        </li>
       </ul>
     </nav>
   );

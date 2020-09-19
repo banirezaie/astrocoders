@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-
+import AdminNavbar from "../navbar/AdminNavbar";
 import DeleteUser from "./DeleteUser";
 
 const apiBaseUrl =
@@ -25,15 +25,17 @@ function UserRoleSelect({ user, setUser }) {
   };
 
   return (
-    <select
-      className="custom-select"
-      value={user.role}
-      onChange={updateUserRole}
-    >
-      <option value="student">Student</option>
-      <option value="mentor">Mentor</option>
-      <option value="admin">Admin</option>
-    </select>
+    <div>
+      <select
+        className="custom-select"
+        value={user.role}
+        onChange={updateUserRole}
+      >
+        <option value="student">Student</option>
+        <option value="mentor">Mentor</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
   );
 }
 
@@ -60,6 +62,7 @@ export default function UserList({ props }) {
 
   return (
     <div className="">
+      <AdminNavbar background="#888" hoverBackground="#ccc" linkColor="#eee" />
       <div className="table">
         <table className="table table-striped container bg-white table-hover">
           <thead>
