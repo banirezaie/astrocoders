@@ -23,12 +23,12 @@ const GroupDetail = ({ match }) => {
   console.log("data===>", group);
 
   return (
-    <div>
-      <div ClassName="App-header">
-        <p>Group Detail of </p>{" "}
-        <p style={{ color: "red" }}> {group.group.name}</p>
+    <div className="wrapper">
+      <div className="list-jumbotron">
+        <h4>Group Details of  {group.group.name}</h4>{" "}
+       
       </div>
-      <div className="table">
+      <div className="">
         <table className="table table-striped container bg-white table-hover">
           <thead>
             <tr>

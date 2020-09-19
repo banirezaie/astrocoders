@@ -23,7 +23,7 @@ const ClassSelect = ({ selectedClass, setSelectedClass }) => {
   };
 
   return (
-    <div className="form-group mx-5">
+    <div className="col-12">
       <label htmlFor="class">Class</label>
       <select
         id="class"

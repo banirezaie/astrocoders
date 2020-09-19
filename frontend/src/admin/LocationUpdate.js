@@ -31,95 +31,89 @@ const LocationUpdate = ({ props }) => {
   const handleOnDeleteLocation = () => {
     loadLocation();
   };
-  const handleOnAddLocation = () => {
-    loadLocation();
-  };
+  // const handleOnAddLocation = () => {
+  //   loadLocation();
+  // };
 
 
   return (
-    <div>
-      <div className="header">
-        <h2>Location List</h2>
+    <div className="wrapper">
+      <div className="list-jumbotron">
+        <div className="col-sm-12 col-md-4">
+          <h2>Location List</h2>
+        </div>
+
+        <hr className="my-4"></hr>
+        <div className="col-sm-12 col-md-4">
+          <AddLocation />
+        </div>
       </div>
+      {location.map((data, i) => {
+        return (
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-4 col-md-4">
+                <div className="card">
+                  <div className="card-body">
+                    <h4 className="card-city">{data.name}</h4>
+                    <DeleteLocation
+                      props={{
+                        id: data._id,
+                        onDeleteLocation: handleOnDeleteLocation,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4 col-md-4">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Group Names</h5>
 
-      <div className="table">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">
-                <h4>Location</h4>
-              </th>
-              <th scope="col">
-                <h4>Groups</h4>
-              </th>
-              <th scope="col">
-                <h4>Actions</h4>
-              </th>
-              <th scope="col">
-                <AddLocation
-                  props={{
-                    onAddLocation: handleOnAddLocation,
-                  }}
-                />
-              </th>
-            </tr>
-          </thead>
-
-          {location ? (
-            <tbody>
-              {location.map((data, i) => {
-                return (
-                  <tr key={i}>
-                    <th>
-                      <h4>{i + 1}</h4>
-                    </th>
-                    <td>
-                      <h4>{data.name}</h4>
-                      <DeleteLocation
-                        props={{
-                          id: data._id,
-                          onDeleteLocation: handleOnDeleteLocation,
-                        }}
-                      />
-                    </td>
-
-                    <td>
-                      {/* <Link
-                        to={"/location/" + data._id}
-                        className="btn btn-sm btn-primary"
-                      >
-                        View Groups
-                      </Link> */}
+                    <ul className="list-group ">
                       <ViewGroups
                         id={data._id}
                         groups={data.groups}
-                        setGroups={group => setLocation(location
-                          .map(oldLocation => oldLocation === data ? ({ ...data, groups: group}) : oldLocation))}
+                        setGroups={(group) =>
+                          setLocation(
+                            location.map((oldLocation) =>
+                              oldLocation === data
+                                ? { ...data, groups: group }
+                                : oldLocation
+                            )
+                          )
+                        }
                       />
-                    </td>
-                    <td>
-                      <AddGroup
-                        props={{
-                          id: data._id,
-                          onAddGroup: (group) => setLocation(location
-                            .map(oldLocation => oldLocation === data ? ({ ...data, groups: data.groups.concat([group])}) : oldLocation))
-                        }}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          ) : (
-            <tbody>
-              <tr>
-                <th>No location added yet</th>
-              </tr>
-            </tbody>
-          )}
-        </table>
-      </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4 col-md-4">
+                <div className="card">
+                  <div className="card-body">
+                    <AddGroup
+                      props={{
+                        id: data._id,
+                        onAddGroup: (group) =>
+                          setLocation(
+                            location.map((oldLocation) =>
+                              oldLocation === data
+                                ? {
+                                    ...data,
+                                    groups: data.groups.concat([group]),
+                                  }
+                                : oldLocation
+                            )
+                          ),
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

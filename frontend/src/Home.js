@@ -11,6 +11,8 @@ import { FaUserGraduate } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
 import { FaSchool } from "react-icons/fa";
 import { FaList } from "react-icons/fa";
+import MentorsNavbar from "./navbar/MentorsNavbar";
+
 
 function Home(props) {
   const user = useUserProfile();
@@ -66,21 +68,24 @@ function Home(props) {
   );
 
   const mentorView = () => (
-    <div className="home">
-      <div className="home-menu">
-        <NavLink to="/groups" className="btn btn-primary home-menu-items">
-          <div>
-            <FaSchool color="white" size="35px" />
-          </div>
-          Show Groups
-        </NavLink>
+    <div>
+      <MentorsNavbar background="#888" hoverBackground="#ccc" linkColor="#eee"/>
+      <div className="home">
+        <div className="home-menu">
+          <NavLink to="/groups" className="btn btn-primary home-menu-items">
+            <div>
+              <FaSchool color="white" size="35px" />
+            </div>
+            Show Groups
+          </NavLink>
 
-        <NavLink to="/attendees" className="btn btn-primary home-menu-items">
-          <div>
-            <FaUserGraduate color="white" size="35px" />
-          </div>
-          Show Attendees
-        </NavLink>
+          <NavLink to="/attendees" className="btn btn-primary home-menu-items">
+            <div>
+              <FaUserGraduate color="white" size="35px" />
+            </div>
+            Show Attendees
+          </NavLink>
+        </div>
       </div>
     </div>
   );

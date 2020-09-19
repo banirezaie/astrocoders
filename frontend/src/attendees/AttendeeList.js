@@ -9,6 +9,7 @@ import ModuleLessonSelect from "../admin/ModuleLessonSelect";
 
 import qs from "query-string";
 
+
 const AttendeeList = () => {
   const [students, setStudents] = useState("");
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -19,10 +20,10 @@ const AttendeeList = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredStudents, setFilteredStudents] = useState("");
   useEffect(() => {
-          const apiBaseUrl =
-            process.env.NODE_ENV === "production"
-              ? process.env.REACT_APP_PROD_API_URL
-              : process.env.REACT_APP_LOCAL_API_URL;
+    const apiBaseUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_PROD_API_URL
+        : process.env.REACT_APP_LOCAL_API_URL;
     fetch(
       `${apiBaseUrl}/attendance/student?` +
         qs.stringify({
@@ -63,14 +64,14 @@ const AttendeeList = () => {
   };
 
   return (
-    <div>
+    <div className="wrapper">
       {/* <Navbar /> */}
       <div>
         <h2>Attendee List</h2>
       </div>
 
-      <div className="row">
-        <div className="col-md-3">
+      <div className="list-jumbotron">
+        <div className="col-md-2 col-sm-12">
           <LocationSelect
             selectedLocation={selectedLocation}
             setSelectedLocation={(value) => {
@@ -79,17 +80,17 @@ const AttendeeList = () => {
             }}
           />
         </div>
-        <div className="col-md-3">
+        <div className="col-sm-12 col-md-2">
           <GroupSelect
             selectedLocation={selectedLocation}
             selectedGroup={selectedGroup}
             setSelectedGroup={setSelectedGroup}
           />
         </div>
-        <div className="col-md-3">
+        <div className="col-sm-12 col-md-2">
           <TypeSelect type={selectedType} setType={setSelectedType} />
         </div>
-        <div>
+        <div className="col-sm-12 col-md-2">
           <ModuleSelect
             selectedModule={selectedModule}
             setSelectedModule={(value) => {
@@ -98,16 +99,16 @@ const AttendeeList = () => {
             }}
           />
         </div>
-        <div className="col-md-3">
+        <div className="col-sm-12 col-md-2">
           <ModuleLessonSelect
             selectedModule={selectedModule}
             selectedLesson={selectedLesson}
             setSelectedLesson={setSelectedLesson}
           />
         </div>
-        <div className="col-md-3">
+        <div className="col-sm-12 col-md-2">
           <form className="form-group search-box">
-            <label htmlFor="customerName">Student Name</label>
+            <label htmlFor="studentName">Student Name</label>
             <input
               type="text"
               id="customerName"
@@ -120,76 +121,95 @@ const AttendeeList = () => {
         </div>
       </div>
 
-      <div className="table">
-        <table className="table table-striped container bg-white table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Location</th>
-              <th scope="col">Group</th>
-              <th scope="col">Type</th>
-              <th scope="col">Module</th>
-              <th scope="col">Lesson</th>
-              <th scope="col">Date</th>
-              <th scope="col">Time</th>
-              <th scope="col">Code</th>
-              <th scope="col">Notes</th>
-            </tr>
-          </thead>
-          {filteredStudents ? (
-            <tbody>
-              {filteredStudents.map((data, i) => {
-                return (
-                  <tr key={i}>
-                    <th>{i + 1}</th>
-                    <td>{data.name ? data.name : null}</td>
-                    <td>{data.email ? data.email : null}</td>
-                    <td>
-                      {data.class_code && data.class_code.location
-                        ? data.class_code && data.class_code.location.name
-                        : null}
-                    </td>
-                    <td>
-                      {data.class_code && data.class_code.group
-                        ? data.class_code && data.class_code.group.name
-                        : null}
-                    </td>
-                    <td>
-                      {data.class_code && data.class_code.type
-                        ? data.class_code.type
-                        : null}
-                    </td>
-                    <td>
-                      {data.class_code && data.class_code.syllabus
-                        ? data.class_code && data.class_code.syllabus.module
-                        : null}
-                    </td>
-                    <td>
-                      {data.class_code && data.class_code.lesson
-                        ? data.class_code && data.class_code.lesson.name
-                        : null}
-                    </td>
+      {filteredStudents ? (
+        <div>
+          {filteredStudents.map((data, i) => {
+            return (
+              <div key={i} className="container">
+                <div className="row">
+                  <div className="col-sm-4 col-md-4">
+                    <div className="card">
+                      <div className="card-body">
+                        <h5>{data.name ? data.name : null}</h5>
+                        <p>{data.email ? data.email : null}</p>
 
-                    <td>{data.date ? data.date : null}</td>
-                    <td>{data.time ? data.time : null}</td>
-                    <td>{data.code ? data.code : null}</td>
-                    <td>{data.notes ? data.notes : null}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          ) : (
-            <tbody>
-              <tr>
-                <th>No one attended yet</th>
-              </tr>
-            </tbody>
-          )}
-        </table>
-      </div>
+                        <hr></hr>
+                        <p>
+                          {data.class_code && data.class_code.location
+                            ? data.class_code && data.class_code.location.name
+                            : null}
+                        </p>
+                        <p>
+                          {data.class_code && data.class_code.group
+                            ? data.class_code && data.class_code.group.name
+                            : null}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-4 col-md-3">
+                    <div className="card">
+                      <div className="card-body">
+                        <h5>Group Details</h5>
+                        <hr></hr>
+
+                        <p>
+                          {data.class_code && data.class_code.syllabus
+                            ? data.class_code && data.class_code.syllabus.module
+                            : null}
+                        </p>
+                        <p>
+                          {data.class_code && data.class_code.lesson
+                            ? data.class_code && data.class_code.lesson.name
+                            : null}
+                        </p>
+                        <p>
+                          {data.class_code && data.class_code.type
+                            ? data.class_code.type
+                            : null}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-4 col-md-3">
+                    <div className="card">
+                      <div className="card-body">
+                        <h5>Class Details</h5>
+                        <hr></hr>
+
+                        <p>Date: {data.date ? data.date : null}</p>
+                        <p>Time: {data.time ? data.time : null}</p>
+                        <p>Code: {data.code ? data.code : null}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-4 col-md-2">
+                    <div className="card">
+                      <div className="card-body">
+                        <h5>Notes</h5>
+                        <hr></hr>
+
+                        <p> {data.notes ? data.notes : null}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div>
+          <tr>
+            <th>No one attended yet</th>
+          </tr>
+        </div>
+        
+      )}
+
     </div>
+    
   );
 };
 

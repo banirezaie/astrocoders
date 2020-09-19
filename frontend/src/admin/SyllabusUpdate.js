@@ -38,54 +38,44 @@ const SyllabusUpdate = ({ props }) => {
   };
 
   return (
-    <div>
-      <div className="header">
-        <h2>Syllabus</h2>
+    <div className="wrapper">
+      <div className="list-jumbotron">
+        <div className="col-sm-12 col-md-4">
+          <h2>Syllabus List</h2>
+        </div>
+
+        <hr className="my-4"></hr>
+        <div className="col-sm-12 col-md-4">
+          <AddModule
+            props={{
+              onAddModule: handleOnAddSyllabus,
+            }}
+          />
+        </div>
       </div>
+      {syllabus.map((data, i) => {
+        return (
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-4 col-md-4">
+                <div className="card">
+                  <div className="card-body">
+                    <h4 className="card-city">{data.module}</h4>
+                    <DeleteModule
+                      props={{
+                        id: data._id,
+                        onDeleteModule: handleOnDeleteSyllabus,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4 col-md-4">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Group Names</h5>
 
-      <div className="table">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">
-                <h4>Module</h4>
-              </th>
-              <th scope="col">
-                <h4>Lesson</h4>
-              </th>
-              <th scope="col">
-                <h4>Actions</h4>
-              </th>
-              <th scope="col">
-                <AddModule
-                  props={{
-                    onAddModule: handleOnAddSyllabus,
-                  }}
-                />
-              </th>
-            </tr>
-          </thead>
-
-          {syllabus ? (
-            <tbody>
-              {syllabus.map((data, i) => {
-                return (
-                  <tr key={i}>
-                    <th>
-                      <h4>{i + 1}</h4>
-                    </th>
-                    <td>
-                      <h4>{data.module}</h4>
-                      <DeleteModule
-                        props={{
-                          id: data._id,
-                          onDeleteModule: handleOnDeleteSyllabus,
-                        }}
-                      />
-                    </td>
-
-                    <td>
+                    <ul className="list-group ">
                       <ViewLessons
                         id={data._id}
                         lessons={data.lesson}
@@ -99,41 +89,40 @@ const SyllabusUpdate = ({ props }) => {
                           )
                         }
                       />
-                    </td>
-                    <td>
-                      <AddLesson
-                        props={{
-                          id: data._id,
-                          onAddLesson: (lesson) =>
-                            setSyllabus(
-                              syllabus.map((oldLesson) =>
-                                oldLesson === data
-                                  ? {
-                                      ...data,
-                                      lesson: data.lesson.concat([lesson]),
-                                    }
-                                  : oldLesson
-                              )
-                            ),
-                        }}
-                      />
-                      {console.log( data)}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          ) : (
-            <tbody>
-              <tr>
-                <th>No Modules added yet</th>
-              </tr>
-            </tbody>
-          )}
-        </table>
-      </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4 col-md-4">
+                <div className="card">
+                  <div className="card-body">
+                    <AddLesson
+                      props={{
+                        id: data._id,
+                        onAddLesson: (lesson) =>
+                          setSyllabus(
+                            syllabus.map((oldLesson) =>
+                              oldLesson === data
+                                ? {
+                                    ...data,
+                                    lesson: data.lesson.concat([lesson]),
+                                  }
+                                : oldLesson
+                            )
+                          ),
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}{" "}
+      
     </div>
   );
 };
+
 
 export default SyllabusUpdate;

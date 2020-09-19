@@ -20,11 +20,11 @@ const Mentors = () => {
   }
 
   return (
-    <div>
-      <div className="header">
-        <h2>Group List</h2>
+    <div className="wrapper">
+      <div className="list-jumbotron">
+        <h2>All Group List</h2>
       </div>
-      <div className="table">
+      <div className="">
         <table className="table table-striped container bg-white table-hover">
           <thead>
             <tr>
