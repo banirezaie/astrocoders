@@ -61,7 +61,7 @@ const CreateClassCode = (props) => {
 
   return (
     <div className="App-header">
-      <div className="col-6  mx-auto">
+      <div className="col-12  col-sm-6">
         <div className="text-center pb-5">
           <h1>Create Class Code</h1>
         </div>
@@ -93,7 +93,7 @@ const CreateClassCode = (props) => {
             setSelectedLesson={setSelectedLesson}
           />
           <TypeSelect type={type} setType={setType} />
-          <div className="form-group mx-5">
+          <div className="col-12"  >
             <label htmlFor="date">Date</label>
             <input
               className="form-control"
@@ -104,7 +104,7 @@ const CreateClassCode = (props) => {
             ></input>
           </div>
 
-          <div className="form-group mx-5">
+          <div className="col-12 ">
             <label htmlFor="time">Time</label>
             <input
               className="form-control"

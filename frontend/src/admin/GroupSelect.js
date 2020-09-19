@@ -9,7 +9,7 @@ const GroupSelect = ({ selectedLocation, selectedGroup, setSelectedGroup }) => {
     );
   };
   return (
-    <div className="form-group mx-5">
+    <div className="col-12">
       <label htmlFor="class">Group</label>
       <select
         id="class"

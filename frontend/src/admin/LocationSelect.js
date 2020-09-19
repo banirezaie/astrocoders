@@ -27,7 +27,7 @@ const LocationSelect = ({ selectedLocation, setSelectedLocation }) => {
   };
 
   return (
-    <div className="form-group mx-5">
+    <div className="col-12">
       <label htmlFor="class">Location</label>
       <select id="class" className="form-control" onChange={changeHandler}>
         <option>Select the Location</option>
