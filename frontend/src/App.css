@@ -40,6 +40,17 @@
   border-color: #dd1173;
 }
 
+.logOut {
+  color: black;
+  text-decoration: none;
+  padding: 0;
+}
+.logOut:hover {
+  color: black;
+  text-decoration: none;
+  background-color: #eee;
+}
+
 .welcomeAdmin {
   position: absolute;
   margin: 5rem 0 0 15%;
@@ -80,8 +91,6 @@ span {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  
-
 }
 
 .login-logo {
@@ -108,58 +117,60 @@ span {
   display: flex;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   justify-content: center;
-  
+
   color: #bc3d53;
 }
 
-.home-menu{
+.home-menu {
   padding: 5px;
 
   display: flex;
   flex-wrap: wrap;
-
 }
 
-.home-menu-items{
+.home-menu-items {
   margin: 10px;
   width: 40%;
 }
 
-.login-button{
+.login-button {
   display: flex;
   flex-direction: row;
   align-content: center;
-
 }
-  .stretch{
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  .login-image {
+.stretch {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.login-image {
   background-image: url("./image/login-landing.png");
   height: 90vh;
-
 }
 @media all and (min-width: 480px) {
   .Login {
     padding: 60px 0;
   }
-.login-image {
-  background-image: url("./image/login-landing.png");
-  height: 90vh;
-}
+  .login-image {
+    background-image: url("./image/login-landing.png");
+    height: 90vh;
+  }
   .Login form {
     margin: 0 auto;
     max-width: 320px;
   }
-  .stretch{
+  .stretch {
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+  }
+}
+@media screen and (max-width: 759px) {
+  .logOut {
+    margin-left: 10px;
   }
 }

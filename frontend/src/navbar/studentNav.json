@@ -13,10 +13,5 @@
     "text": "Syllabus",
     "path": "/abc",
     "icon": "ion-map"
-  },
-  {
-    "text": "Sign Out",
-    "path": "/signOut",
-    "icon": "ion-log-out"
   }
 ]
