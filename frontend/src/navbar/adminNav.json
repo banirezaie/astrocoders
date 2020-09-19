@@ -23,11 +23,5 @@
     "text": "Syllabus",
     "path": "/syllabus",
     "icon": "ion-ios-book"
-  },
-
-  {
-    "text": "Sign Out",
-    "path": "/signOut",
-    "icon": "ion-log-out"
   }
 ]
