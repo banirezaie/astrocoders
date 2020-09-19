@@ -13,19 +13,19 @@ export default function LoginPage() {
           <div className="col-md-5">
             <div className="row-login">
               <div className="col-md-5">
-              <span></span>
+              <span className = "extra"></span>
                 <img alt="login-logo" className="login-logo" src={logo} />
               </div>
               <div className="col-md-5 stretch"></div>
             </div>
             <div>
-              <span></span><hr></hr>
-              <span></span>
+              <span className = "extra"></span><hr></hr>
+              <span className ="extra"></span>
               <Login />
             </div>
-            <span></span>
+            <span className = "extra"></span>
             <hr></hr>
-            <span></span>
+            <span className = "extra" ></span>
             <div className="row-login">
               <div className="col-md-12">
                 <nav className="navbar navbar-expand-lg ">

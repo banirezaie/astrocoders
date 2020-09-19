@@ -47,7 +47,9 @@
 }
 .create-code-container {
   border: #e9adca 1px solid;
-  background-color: #8391A4;
+  color: white;
+  font-size: 1.2rem;
+  background-color: #bc3d53;
   padding: 1rem;
   margin: 0.5rem ;
   box-shadow: 14px 22px 15px -16px rgba(0, 0, 0, 0.52);
@@ -116,7 +118,7 @@
   margin-right: 0px;
   margin-left: 0px;
 }
-span {
+ .extra {
   display: inline-block;
   margin-bottom: 90px;
 }
