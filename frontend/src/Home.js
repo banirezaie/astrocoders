@@ -69,9 +69,21 @@ function Home(props) {
 
   const mentorView = () => (
     <div>
-      <MentorsNavbar background="#888" hoverBackground="#ccc" linkColor="#eee"/>
+      <MentorsNavbar
+        background="#888"
+        hoverBackground="#ccc"
+        linkColor="#eee"
+      />
+
       <div className="home">
         <div className="home-menu">
+          <NavLink to="/createCode" className="btn btn-primary home-menu-items">
+            <div>
+              <FaKey color="white" size="25px" />
+            </div>
+            Create a class code
+          </NavLink>
+          
           <NavLink to="/groups" className="btn btn-primary home-menu-items">
             <div>
               <FaSchool color="white" size="35px" />
