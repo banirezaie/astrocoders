@@ -95,9 +95,9 @@
 .row-login {
   display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  -ms-flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+
   flex-wrap: wrap;
   margin-right: 0px;
   margin-left: 0px;

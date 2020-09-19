@@ -13,14 +13,18 @@ export default function LoginPage() {
           <div className="col-md-5">
             <div className="row-login">
               <div className="col-md-5">
+              <span></span>
                 <img alt="login-logo" className="login-logo" src={logo} />
               </div>
               <div className="col-md-5 stretch"></div>
             </div>
             <div>
+              <span></span><hr></hr>
               <span></span>
               <Login />
             </div>
+            <span></span>
+            <hr></hr>
             <span></span>
             <div className="row-login">
               <div className="col-md-12">
@@ -34,7 +38,7 @@ export default function LoginPage() {
                         <li className="nav-item active">
                           <a
                             className="nav-link"
-                           href="mailto:contact@codeyourfuture.io"
+                            href="mailto:contact@codeyourfuture.io"
                           >
                             CONTACT <span class="sr-only">(current)</span>
                           </a>
