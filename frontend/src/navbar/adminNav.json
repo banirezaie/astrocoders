@@ -6,28 +6,28 @@
   },
   {
     "text": "Create Class Code",
-    "path": "",
+    "path": "/createCode",
     "icon": "ion-lock-combination"
   },
   {
-    "text": "Attendee List",
-    "path": "",
-    "icon": "ion-person"
+    "text": "Attendees",
+    "path": "/attendees",
+    "icon": "ion-person-add"
   },
   {
-    "text": "Group List",
-    "path": "",
-    "icon": "ion-document-text"
+    "text": "Groups",
+    "path": "/groups",
+    "icon": "ion-clipboard"
   },
   {
     "text": "Syllabus",
-    "path": "/lessons",
+    "path": "/syllabus",
     "icon": "ion-ios-book"
   },
 
   {
     "text": "Sign Out",
-    "path": "/sign",
+    "path": "/signOut",
     "icon": "ion-log-out"
   }
 ]
