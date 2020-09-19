@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import Navbar from "../Navbar";
+import MentorsNavbar from "../navbar/MentorsNavbar";
 import "../App.css";
 import LocationSelect from "../admin/LocationSelect";
 import GroupSelect from "../admin/GroupSelect";
@@ -19,10 +19,10 @@ const AttendeeList = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredStudents, setFilteredStudents] = useState("");
   useEffect(() => {
-          const apiBaseUrl =
-            process.env.NODE_ENV === "production"
-              ? process.env.REACT_APP_PROD_API_URL
-              : process.env.REACT_APP_LOCAL_API_URL;
+    const apiBaseUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_PROD_API_URL
+        : process.env.REACT_APP_LOCAL_API_URL;
     fetch(
       `${apiBaseUrl}/attendance/student?` +
         qs.stringify({
@@ -64,8 +64,12 @@ const AttendeeList = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
-      <div>
+      <MentorsNavbar
+        background="#aaa"
+        hoverBackground="#ddd"
+        linkColor="#eee"
+      />
+      <div style={{ paddingTop: "75px" }}>
         <h2>Attendee List</h2>
       </div>
 

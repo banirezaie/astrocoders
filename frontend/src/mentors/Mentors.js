@@ -14,11 +14,10 @@ const Mentors = () => {
   const [location, setLocation] = useState("");
 
   const getClassList = () => {
-
-          const apiBaseUrl =
-            process.env.NODE_ENV === "production"
-              ? process.env.REACT_APP_PROD_API_URL
-              : process.env.REACT_APP_LOCAL_API_URL;
+    const apiBaseUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_PROD_API_URL
+        : process.env.REACT_APP_LOCAL_API_URL;
 
     let url = `${apiBaseUrl}/attendance/student`;
 
@@ -42,7 +41,6 @@ const Mentors = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div className="App-header">
         {" "}
         <h2>Attendance List</h2>{" "}
