@@ -19,6 +19,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.same-background {
+  background: #3a2226;
+}
 .home {
   background-color: #3a2226;
   /* background-color: aliceblue; */
@@ -35,26 +38,33 @@
   margin: 15px 5px;
   /* color: white; */
 }
+
 .btn-primary {
   background-color: #bc3d53;
-  border-color: #dd1173;
+  border-color: #bc3d53;
+}
+
+.btn-danger {
+  background-color: #bc3d53;
+  border-color: #bc3d53;
+}
+
+.btn-dark {
+  background-color: #3f3f3f;
 }
 .container {
-  border: #e9adca 1px solid;
-  background-color: #dd1173;
+  background-color: #bc3d53;
   margin: 0.6rem 0;
   box-shadow: 14px 22px 15px -16px rgba(0, 0, 0, 0.52);
 }
 .create-code-container {
-  border: #e9adca 1px solid;
-  color: white;
+  color: black;
   font-size: 1.2rem;
-  background-color: #bc3d53;
+  background-color: #aaa;
   padding: 1rem;
-  margin: 0.5rem ;
+  margin: 0.5rem;
   box-shadow: 14px 22px 15px -16px rgba(0, 0, 0, 0.52);
 }
-
 
 .logOut {
   color: black;
@@ -67,8 +77,12 @@
   background-color: #eee;
 }
 
+.ion {
+  font-size: 2rem;
+}
 
 .wrapper {
+  /* margin-bottom: 5rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,15 +92,15 @@
   width: 100%;
   color: white;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  /* margin: 1rem; */
-  padding: 2rem;
-  background: linear-gradient(45deg, #a36196 0%, #d441ad 50%, #de47ac 100%);
+  justify-content: space-between;
 }
 .dust-bin {
   display: flex;
   align-items: center;
+}
+
+.margin-top {
+  margin-top: 5rem;
 }
 
 .welcomeAdmin {
@@ -118,7 +132,7 @@
   margin-right: 0px;
   margin-left: 0px;
 }
- .extra {
+.extra {
   display: inline-block;
   margin-bottom: 90px;
 }
