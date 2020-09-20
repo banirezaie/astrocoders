@@ -32,7 +32,7 @@ const Mentors = () => {
         <h2>Group List</h2>
 
       </div>
-      <div className="">
+      <div className="wrapper">
         <table className="table table-striped container bg-white table-hover">
           <thead>
             <tr>

@@ -64,16 +64,19 @@ const AttendeeList = () => {
   };
 
   return (
-
     <div>
       <MentorsNavbar
         background="#aaa"
         hoverBackground="#ddd"
         linkColor="#eee"
       />
-      <div style={{ paddingTop: "75px" }}>
-
-        <h2>Attendee List</h2>
+      <div
+        className="text-center"
+        style={{ paddingTop: "95px" }}
+      >
+        <h3>
+          Attendee List
+        </h3>
       </div>
 
       <div className="list-jumbotron">
@@ -128,7 +131,7 @@ const AttendeeList = () => {
       </div>
 
       {filteredStudents ? (
-        <div>
+        <div className="wrapper">
           {filteredStudents.map((data, i) => {
             return (
               <div key={i} className="container">
@@ -211,11 +214,8 @@ const AttendeeList = () => {
             <th>No one attended yet</th>
           </tr>
         </div>
-        
       )}
-
     </div>
-    
   );
 };
 
