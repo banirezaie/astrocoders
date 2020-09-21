@@ -23,6 +23,7 @@ import SyllabusUpdate from "./admin/SyllabusUpdate";
 import AttendeesListAdmin from "./attendees/AttendeeListAdmin";
 import GroupsAdmin from "./groups/GroupsAdmin";
 import CreateClassCode from "./admin/CreateClassCode";
+import SyllabusUpdateMentor from "./mentors/SyllabusUpdateMentor";
 
 function Routes() {
   const user = useUserProfile();
@@ -57,7 +58,8 @@ function Routes() {
       <Route path="/user-list" component={UserList} />
       <Route path="/mentors" component={MentorsView} />
       <Route path="/student-history" component={StudentViewHistory} />
-      <Route path="/syllabus" component={SyllabusUpdate} />
+      <Route path="/syllabus" component={SyllabusUpdateMentor} />
+      <Route path="/syllabus-admin" component={SyllabusUpdate} />
       <Redirect to="/" />
     </Switch>
   );
