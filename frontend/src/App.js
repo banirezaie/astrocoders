@@ -4,7 +4,7 @@ import Home from "./Home";
 import { Route, Switch, Redirect } from "react-router-dom";
 import MentorsView from "./mentors/MentorsView";
 import Admin from "./admin/Admin";
-import CreateClassCode from "./admin/CreateClassCode";
+import CreateClassCodeMentor from "./mentors/CreateClassCodeMentor";
 import ClassCodes from "./admin/ClassCodes";
 import GroupsMentor from "./groups/GroupsMentor";
 import GroupDetail from "./groups/GroupDetail";
@@ -22,6 +22,7 @@ import UserList from "./admin/UserList";
 import SyllabusUpdate from "./admin/SyllabusUpdate";
 import AttendeesListAdmin from "./attendees/AttendeeListAdmin";
 import GroupsAdmin from "./groups/GroupsAdmin";
+import CreateClassCode from "./admin/CreateClassCode";
 
 function Routes() {
   const user = useUserProfile();
@@ -49,8 +50,9 @@ function Routes() {
       <Route path="/groups" component={GroupsMentor} exact />
       <Route path="/groups/:id/details" component={GroupDetail} />
       <Route path="/admin" component={Admin} />
-      <Route path="/CreateCode" component={CreateClassCode} />
+      <Route path="/create-code" component={CreateClassCodeMentor} />
       <Route path="/class-code" component={ClassCodes} />
+      <Route path="/create-code-admin" component={CreateClassCode} />
       <Route path="/adminView" component={AdminView} />
       <Route path="/user-list" component={UserList} />
       <Route path="/mentors" component={MentorsView} />

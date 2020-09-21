@@ -37,7 +37,10 @@ function Home(props) {
             Update Syllabus
           </NavLink>
 
-          <NavLink to="/createCode" className="btn btn-primary home-menu-items">
+          <NavLink
+            to="/create-code-admin"
+            className="btn btn-primary home-menu-items"
+          >
             <div>
               <FaKey color="white" size="25px" />
             </div>
@@ -85,7 +88,10 @@ function Home(props) {
 
       <div className="home">
         <div className="home-menu">
-          <NavLink to="/createCode" className="btn btn-primary home-menu-items">
+          <NavLink
+            to="/create-code"
+            className="btn btn-primary home-menu-items"
+          >
             <div>
               <FaKey color="white" size="25px" />
             </div>
