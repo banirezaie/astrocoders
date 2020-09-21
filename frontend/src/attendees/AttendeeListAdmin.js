@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import MentorsNavbar from "../navbar/MentorsNavbar";
 import "../App.css";
 import LocationSelect from "../admin/LocationSelect";
 import GroupSelect from "../admin/GroupSelect";
@@ -8,7 +7,7 @@ import ModuleSelect from "../admin/ModuleSelect";
 import ModuleLessonSelect from "../admin/ModuleLessonSelect";
 
 import qs from "query-string";
-
+import AdminNavbar from "../navbar/AdminNavbar";
 
 const AttendeeList = () => {
   const [students, setStudents] = useState("");
@@ -64,19 +63,10 @@ const AttendeeList = () => {
   };
 
   return (
-    <div>
-      <MentorsNavbar
-        background="#aaa"
-        hoverBackground="#ddd"
-        linkColor="#eee"
-      />
-      <div
-        className="text-center"
-        style={{ paddingTop: "95px" }}
-      >
-        <h3>
-          Attendee List
-        </h3>
+    <div className="same-background">
+      <AdminNavbar background="#aaa" hoverBackground="#ddd" linkColor="#eee" />
+      <div className="text-center" style={{ paddingTop: "95px" }}>
+        <h3 className="text-white">Attendee List</h3>
       </div>
 
       <div className="list-jumbotron">

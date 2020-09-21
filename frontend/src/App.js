@@ -4,26 +4,26 @@ import Home from "./Home";
 import { Route, Switch, Redirect } from "react-router-dom";
 import MentorsView from "./mentors/MentorsView";
 import Admin from "./admin/Admin";
-import CreateClassCode from "./admin/CreateClassCode";
+import CreateClassCodeMentor from "./mentors/CreateClassCodeMentor";
 import ClassCodes from "./admin/ClassCodes";
-import Groups from "./groups/Groups";
+import GroupsMentor from "./groups/GroupsMentor";
 import GroupDetail from "./groups/GroupDetail";
-import AttendeeList from "./attendees/AttendeeList";
+import AttendeeListMentor from "./attendees/AttendeeListMentor";
 import LocationUpdate from "./admin/LocationUpdate";
 import AddLocation from "./admin/AddGroup";
 import LoginPage from "./authentication/LoginPage";
 import Login from "./authentication/Login";
 import Register from "./authentication/Register";
-// import PasswordReset from "./authentication/PasswordReset";
 import UserProvider, { useUserProfile } from "./providers/UserProvider";
-// const UserContext = createContext({ user: null });
-
 import StudentsView from "./students/StudentsView";
 import StudentViewHistory from "./students/StudentViewHistory";
 import AdminView from "./admin/AdminView";
 import UserList from "./admin/UserList";
-import SyllabusUpdate from "./admin/SyllabusUpdate"
-
+import SyllabusUpdate from "./admin/SyllabusUpdate";
+import AttendeesListAdmin from "./attendees/AttendeeListAdmin";
+import GroupsAdmin from "./groups/GroupsAdmin";
+import CreateClassCode from "./admin/CreateClassCode";
+import SyllabusUpdateMentor from "./mentors/SyllabusUpdateMentor";
 
 function Routes() {
   const user = useUserProfile();
@@ -33,9 +33,7 @@ function Routes() {
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/loginx" component={Login} />
-        {/* <Route path="/sign-in" component={SignIn} /> */}
         <Route path="/register" component={Register} />
-        {/* <Route path="/password-reset" component={PasswordReset} /> */}
         <Redirect to="/login" />
       </Switch>
     );
@@ -46,33 +44,32 @@ function Routes() {
       <Route path="/" component={Home} exact />
       <Route path="/studentsView" component={StudentsView} />
       <Route path="/locations" component={LocationUpdate} />
-      <Route path="/attendees" component={AttendeeList} />
+      <Route path="/attendees" component={AttendeeListMentor} exact />
+      <Route path="/attendees-admin" component={AttendeesListAdmin} exact />
       <Route path="/add-location" component={AddLocation} />
-      <Route path="/groups" component={Groups} exact />
+      <Route path="/groups-admin" component={GroupsAdmin} exact />
+      <Route path="/groups" component={GroupsMentor} exact />
       <Route path="/groups/:id/details" component={GroupDetail} />
       <Route path="/admin" component={Admin} />
-      <Route path="/CreateCode" component={CreateClassCode} />
+      <Route path="/create-code" component={CreateClassCodeMentor} />
       <Route path="/class-code" component={ClassCodes} />
+      <Route path="/create-code-admin" component={CreateClassCode} />
       <Route path="/adminView" component={AdminView} />
       <Route path="/user-list" component={UserList} />
       <Route path="/mentors" component={MentorsView} />
       <Route path="/student-history" component={StudentViewHistory} />
-      <Route path="/syllabus" component={SyllabusUpdate} />
+      <Route path="/syllabus" component={SyllabusUpdateMentor} />
+      <Route path="/syllabus-admin" component={SyllabusUpdate} />
       <Redirect to="/" />
     </Switch>
   );
 }
 
 function App() {
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(setUser);
-  // });
   return (
     <UserProvider>
       <Routes />
-
     </UserProvider>
-
   );
 }
 

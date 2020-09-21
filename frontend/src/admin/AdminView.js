@@ -26,11 +26,11 @@ function Home() {
           </NavLink>
           <hr></hr>
           <NavLink to="/groups" className="btn btn-primary col-12">
-            Show Groups
+            Groups
           </NavLink>
           <hr></hr>
-          <NavLink to="/attendees" className="btn btn-primary col-12">
-            Show Attendees
+          <NavLink to="/attendees-admin" className="btn btn-primary col-12">
+            Attendees
           </NavLink>
         </div>
       </div>

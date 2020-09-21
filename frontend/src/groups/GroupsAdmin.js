@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import MentorsNavbar from "../navbar/MentorsNavbar";
+import AdminNavbar from "../navbar/AdminNavbar";
 
 const Mentors = () => {
   const [students, setStudents] = useState("");
@@ -21,16 +21,10 @@ const Mentors = () => {
   }
 
   return (
-
-    <div>
-      <MentorsNavbar
-        background="#aaa"
-        hoverBackground="#ddd"
-        linkColor="#eee"
-      />
+    <div className="same-background">
+      <AdminNavbar background="#aaa" hoverBackground="#ddd" linkColor="#eee" />
       <div style={{ paddingTop: "75px" }} className="header">
-        <h2>Group List</h2>
-
+        <h2 className="text-white text-center">Group List</h2>
       </div>
       <div className="wrapper">
         <table className="table table-striped container bg-white table-hover">

@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import Navbar from "../Navbar";
 import "../App.css";
 import GroupSelect from "../admin/GroupSelect";
 
 const Mentors = () => {
   const [students, setStudents] = useState("");
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
   const [myClass, setMyClass] = useState("");
   const [type, setType] = useState("");
-
-  // const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
 
   const getClassList = () => {
@@ -42,11 +37,9 @@ const Mentors = () => {
   return (
     <div>
       <div className="App-header">
-        {" "}
-        <h2>Attendance List</h2>{" "}
+        <h2>Attendance List</h2>
       </div>
       <div>
-        {" "}
         <GroupSelect />
       </div>
       <div className="table">

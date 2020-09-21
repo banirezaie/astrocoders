@@ -11,22 +11,22 @@
   },
   {
     "text": "Update syllabus",
-    "path": "/syllabus",
+    "path": "/syllabus-admin",
     "icon": "ion-ios-book"
   },
   {
     "text": "Create Class Code",
-    "path": "/createCode",
+    "path": "/create-code-admin",
     "icon": "ion-key"
   },
   {
     "text": "Attendees",
-    "path": "/attendees",
+    "path": "/attendees-admin",
     "icon": "ion-person-add"
   },
   {
     "text": "Groups",
-    "path": "/groups",
+    "path": "/groups-admin",
     "icon": "ion-clipboard"
   },
   {

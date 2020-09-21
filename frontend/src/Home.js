@@ -30,28 +30,40 @@ function Home(props) {
             Update Users
           </NavLink>
 
-          <NavLink to="/syllabus" className="btn btn-primary home-menu-items">
+          <NavLink
+            to="/syllabus-admin"
+            className="btn btn-primary home-menu-items"
+          >
             <div>
               <FaList color="white" size="35px" />
             </div>
             Update Syllabus
           </NavLink>
 
-          <NavLink to="/createCode" className="btn btn-primary home-menu-items">
+          <NavLink
+            to="/create-code-admin"
+            className="btn btn-primary home-menu-items"
+          >
             <div>
               <FaKey color="white" size="25px" />
             </div>
             Create a class code
           </NavLink>
 
-          <NavLink to="/attendees" className="btn btn-primary home-menu-items">
+          <NavLink
+            to="/attendees-admin"
+            className="btn btn-primary home-menu-items"
+          >
             <div>
               <FaUserGraduate color="white" size="35px" />
             </div>
             Attendees
           </NavLink>
 
-          <NavLink to="/groups" className="btn btn-primary home-menu-items">
+          <NavLink
+            to="/groups-admin"
+            className="btn btn-primary home-menu-items"
+          >
             <div>
               <i style={{ color: "#fff" }} className="ion-clipboard ion" />
             </div>
@@ -79,7 +91,10 @@ function Home(props) {
 
       <div className="home">
         <div className="home-menu">
-          <NavLink to="/createCode" className="btn btn-primary home-menu-items">
+          <NavLink
+            to="/create-code"
+            className="btn btn-primary home-menu-items"
+          >
             <div>
               <FaKey color="white" size="25px" />
             </div>

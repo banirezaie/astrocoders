@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import Navbar from "../Navbar";
 import "../App.css";
 
 const ClassCodes = () => {
@@ -17,7 +16,6 @@ const ClassCodes = () => {
   }, [apiBaseUrl]);
   return (
     <div>
-      {/* <Navbar /> */}
       <div className="App-header">
         <table className="table table-striped container bg-white table-hover">
           <thead>
