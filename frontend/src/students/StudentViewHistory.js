@@ -24,7 +24,7 @@ const StudentViewHistory = (props) => {
   }, [email]);
 
   return (
-    <div>
+    <div className="same-background">
       <div>
         <StudentsNavbar
           background="#aaa"
@@ -32,11 +32,13 @@ const StudentViewHistory = (props) => {
           linkColor="#eee"
         />
       </div>
-      {/* Move inline styles? */}
-      <div style={{ paddingTop: "5rem" }}>
+      <div className="text-white text-center">
+        <h1 className="padding-top-bottom">{user.name}'s Attendance History</h1>
+      </div>
+      <div>
         {email ? (
           <div className="table">
-            <table className="table table-striped container bg-white table-hover">
+            <table className="table table-striped container bg-white table-hover mx-auto">
               <thead>
                 <tr>
                   <th scope="col">#</th>
