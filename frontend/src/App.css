@@ -1,5 +1,12 @@
 @import "~/sweetalert2/dist/sweetalert2.min.css";
 
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #3a2226;
+}
+
 .App-header {
   background-color: #bc3d53;
   min-height: 100vh;
@@ -168,6 +175,11 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   justify-content: center;
   color: #bc3d53;
+}
+
+.padding-top-bottom {
+  padding-top: 6rem;
+  padding-bottom: 1rem;
 }
 
 .home-menu {
