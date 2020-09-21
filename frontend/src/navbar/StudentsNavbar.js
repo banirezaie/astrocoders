@@ -7,6 +7,7 @@ import Logout from "../authentication/Logout";
 const StudentNavbar = ({ background, hoverBackground }) => {
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [navOpen, setNavOpen] = useState(false);
+  const [hamburgerHover, setHamburgerHover] = useState(false);
 
   return (
     <div>
@@ -19,6 +20,26 @@ const StudentNavbar = ({ background, hoverBackground }) => {
           >
             <img src="logo.png" alt="logo" />
           </figure>
+          {window.innerWidth < 760 ? (
+            <li
+              onClick={() => {
+                setNavOpen(!navOpen);
+              }}
+              onMouseEnter={() => {
+                setHamburgerHover(true);
+              }}
+              onMouseLeave={() => {
+                setHamburgerHover(false);
+              }}
+              style={{
+                background:
+                  hamburgerHover === true ? hoverBackground || "#999" : "",
+              }}
+            >
+              <i style={{ color: "#bc3d53" }} className="ion-navicon" />
+              <span style={{ marginLeft: "20px" }}>Close Menu</span>
+            </li>
+          ) : null}
           {studentNav.map((item, i) => (
             <li
               key={i}
