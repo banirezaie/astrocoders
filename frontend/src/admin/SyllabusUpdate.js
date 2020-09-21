@@ -39,8 +39,9 @@ const SyllabusUpdate = ({ props }) => {
   };
 
   return (
-    <div>
+    <div className="same-background">
       <AdminNavbar background="#888" hoverBackground="#ccc" linkColor="#eee" />
+      <span className="extra"></span>
       <div className="wrapper">
         <div className="list-jumbotron">
           <div className="col-sm-12 col-md-4">

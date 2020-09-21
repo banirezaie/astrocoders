@@ -5,9 +5,19 @@
     "icon": "ion-ios-home"
   },
   {
+    "text": "Update User",
+    "path": "/user-list",
+    "icon": "ion-edit"
+  },
+  {
+    "text": "Update syllabus",
+    "path": "/syllabus",
+    "icon": "ion-ios-book"
+  },
+  {
     "text": "Create Class Code",
     "path": "/createCode",
-    "icon": "ion-lock-combination"
+    "icon": "ion-key"
   },
   {
     "text": "Attendees",
@@ -20,8 +30,8 @@
     "icon": "ion-clipboard"
   },
   {
-    "text": "Syllabus",
-    "path": "/syllabus",
-    "icon": "ion-ios-book"
+    "text": "Manage Location",
+    "path": "/locations",
+    "icon": "ion-location"
   }
 ]

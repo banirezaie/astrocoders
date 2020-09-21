@@ -61,9 +61,9 @@ export default function UserList({ props }) {
   };
 
   return (
-    <div className="">
+    <div className="same-background">
       <AdminNavbar background="#888" hoverBackground="#ccc" linkColor="#eee" />
-      <div className="table">
+      <div className="wrapper" style={{ paddingTop: "75px" }}>
         <table className="table table-striped container bg-white table-hover">
           <thead>
             <tr>

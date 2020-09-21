@@ -59,12 +59,12 @@ const StudentsView = (props) => {
 
   return (
     <div>
-      <div className="student-header">
+      <div className="home">
         <div className="mx-auto">
           <div className="text-center pb-5">
-            <h1 style={{ color: "black" }}>Attend Class</h1>
-            <hr></hr>
-            <h5 style={{ color: "black" }}> Welcome {user.name}</h5>
+            <h1>Attend Class</h1>
+            <hr style={{ color: "white" }}></hr>
+            <h5 style={{ color: "white" }}> Welcome {user.name}</h5>
           </div>
           <form className="create-code-container" onSubmit={handleSubmit}>
             <div className="form-group mx-5">
@@ -80,8 +80,14 @@ const StudentsView = (props) => {
             </div>
             <div className="form-group mx-5">
               <label htmlFor="name">
-                <p style={{ display: "inline" }}>Notes</p>
-                <p style={{ color: "white" }}>(Optional)</p>
+                <p style={{ display: "inline" }}>Notes</p> <span></span>
+                <span
+                  style={{ fontSize: "0.7rem" }}
+                  class="badge badge-light"
+                >
+                  Optional
+                </span>
+                
               </label>
               <textarea
                 placeholder="Add notes about your attendance, e.g. I was late due to child care"

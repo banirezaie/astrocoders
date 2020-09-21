@@ -61,25 +61,18 @@ const CreateClassCode = (props) => {
   }
 
   return (
-    <div>
-      <AdminNavbar background="#aaa" hoverBackground="#ddd" linkColor="#eee" />
-      <div style={{ paddingTop: "75px" }} className="col-12">
-        <div className="wrapper list-jumbotron">
-          <div className="col-12  col-sm-6">
-            <div className="text-center pb-5">
-              <h1>Create Class Code</h1>
-            </div>
-            <form className="create-code-container" onSubmit={handleSubmit}>
-              <div>
-                <LocationSelect
-                  selectedLocation={selectedLocation}
-                  setSelectedLocation={(value) => {
-                    setSelectedLocation(value);
-                    setSelectedGroup(null);
-                  }}
-                />
-              </div>
-              <GroupSelect
+    <div className="">
+      <AdminNavbar background="#888" hoverBackground="#ccc" linkColor="#eee" />
+      <div className="wrapper home">
+        <div className="col-md-4  col-sm-6">
+          <span></span>
+          <div className="text-center margin-top">
+            <h2 style={{ color: "white" }}>Create Class Code</h2>
+            <hr></hr>
+          </div>
+          <form className="create-code-container" onSubmit={handleSubmit}>
+            <div>
+              <LocationSelect
                 selectedLocation={selectedLocation}
                 selectedGroup={selectedGroup}
                 setSelectedGroup={setSelectedGroup}
@@ -120,12 +113,12 @@ const CreateClassCode = (props) => {
               </div>
               <hr></hr>
               <div className="text-center">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-info">
                   Submit
                 </button>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

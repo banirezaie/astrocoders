@@ -62,7 +62,7 @@ const AddLesson = ({ props }) => {
           </div>
 
           <div className="col-md-3">
-            <button type="submit" className="btn-sm btn-primary">
+            <button type="submit" className="btn-sm btn-warning">
               Add
             </button>
           </div>

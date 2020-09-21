@@ -8,10 +8,5 @@
     "text": "Attendance History",
     "path": "/student-history",
     "icon": "ion-clipboard"
-  },
-  {
-    "text": "Syllabus",
-    "path": "/abc",
-    "icon": "ion-map"
   }
 ]

@@ -23,34 +23,6 @@ function Home(props) {
       <AdminNavbar background="#888" hoverBackground="#ccc" linkColor="#eee" />
       <div className="home">
         <div className="home-menu">
-          <NavLink to="/createCode" className="btn btn-primary home-menu-items">
-            <div>
-              <FaKey color="white" size="25px" />
-            </div>
-            Create a class code
-          </NavLink>
-
-          <NavLink to="/locations" className="btn btn-primary home-menu-items">
-            <div>
-              <FaSearchLocation color="white" size="35px" />
-            </div>
-            Add-Delete Locations
-          </NavLink>
-
-          <NavLink to="/groups" className="btn btn-primary home-menu-items">
-            <div>
-              <FaSchool color="white" size="35px" />
-            </div>
-            Show Groups
-          </NavLink>
-
-          <NavLink to="/attendees" className="btn btn-primary home-menu-items">
-            <div>
-              <FaUserGraduate color="white" size="35px" />
-            </div>
-            Show Attendees
-          </NavLink>
-
           <NavLink to="/user-list" className="btn btn-primary home-menu-items">
             <div>
               <FaUserEdit color="white" size="35px" />
@@ -63,6 +35,34 @@ function Home(props) {
               <FaList color="white" size="35px" />
             </div>
             Update Syllabus
+          </NavLink>
+
+          <NavLink to="/createCode" className="btn btn-primary home-menu-items">
+            <div>
+              <FaKey color="white" size="25px" />
+            </div>
+            Create a class code
+          </NavLink>
+
+          <NavLink to="/attendees" className="btn btn-primary home-menu-items">
+            <div>
+              <FaUserGraduate color="white" size="35px" />
+            </div>
+            Attendees
+          </NavLink>
+
+          <NavLink to="/groups" className="btn btn-primary home-menu-items">
+            <div>
+              <i style={{ color: "#fff" }} className="ion-clipboard ion" />
+            </div>
+            Groups
+          </NavLink>
+
+          <NavLink to="/locations" className="btn btn-primary home-menu-items">
+            <div>
+              <FaSearchLocation color="white" size="35px" />
+            </div>
+            Manage Locations
           </NavLink>
         </div>
       </div>
