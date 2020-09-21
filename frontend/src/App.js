@@ -8,22 +8,19 @@ import CreateClassCode from "./admin/CreateClassCode";
 import ClassCodes from "./admin/ClassCodes";
 import Groups from "./groups/Groups";
 import GroupDetail from "./groups/GroupDetail";
-import AttendeeList from "./attendees/AttendeeList";
+import AttendeeListMentor from "./attendees/AttendeeListMentor";
 import LocationUpdate from "./admin/LocationUpdate";
 import AddLocation from "./admin/AddGroup";
 import LoginPage from "./authentication/LoginPage";
 import Login from "./authentication/Login";
 import Register from "./authentication/Register";
-// import PasswordReset from "./authentication/PasswordReset";
 import UserProvider, { useUserProfile } from "./providers/UserProvider";
-// const UserContext = createContext({ user: null });
-
 import StudentsView from "./students/StudentsView";
 import StudentViewHistory from "./students/StudentViewHistory";
 import AdminView from "./admin/AdminView";
 import UserList from "./admin/UserList";
-import SyllabusUpdate from "./admin/SyllabusUpdate"
-
+import SyllabusUpdate from "./admin/SyllabusUpdate";
+import AttendeesListAdmin from "./attendees/AttendeeListAdmin";
 
 function Routes() {
   const user = useUserProfile();
@@ -33,9 +30,7 @@ function Routes() {
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/loginx" component={Login} />
-        {/* <Route path="/sign-in" component={SignIn} /> */}
         <Route path="/register" component={Register} />
-        {/* <Route path="/password-reset" component={PasswordReset} /> */}
         <Redirect to="/login" />
       </Switch>
     );
@@ -46,7 +41,8 @@ function Routes() {
       <Route path="/" component={Home} exact />
       <Route path="/studentsView" component={StudentsView} />
       <Route path="/locations" component={LocationUpdate} />
-      <Route path="/attendees" component={AttendeeList} />
+      <Route path="/attendees" component={AttendeeListMentor} exact />
+      <Route path="/attendees-admin" component={AttendeesListAdmin} exact />
       <Route path="/add-location" component={AddLocation} />
       <Route path="/groups" component={Groups} exact />
       <Route path="/groups/:id/details" component={GroupDetail} />
@@ -70,9 +66,7 @@ function App() {
   return (
     <UserProvider>
       <Routes />
-
     </UserProvider>
-
   );
 }
 

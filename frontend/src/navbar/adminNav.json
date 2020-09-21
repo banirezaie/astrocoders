@@ -21,7 +21,7 @@
   },
   {
     "text": "Attendees",
-    "path": "/attendees",
+    "path": "/attendees-admin",
     "icon": "ion-person-add"
   },
   {

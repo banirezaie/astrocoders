@@ -44,7 +44,10 @@ function Home(props) {
             Create a class code
           </NavLink>
 
-          <NavLink to="/attendees" className="btn btn-primary home-menu-items">
+          <NavLink
+            to="/attendees-admin"
+            className="btn btn-primary home-menu-items"
+          >
             <div>
               <FaUserGraduate color="white" size="35px" />
             </div>
