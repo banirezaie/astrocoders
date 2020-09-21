@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
 import LocationSelect from "./LocationSelect";
-import GroupSelect from "./GroupSelect";
 import TypeSelect from "./TypeSelect";
 import ModuleSelect from "./ModuleSelect";
 import ModuleLessonSelect from "./ModuleLessonSelect";

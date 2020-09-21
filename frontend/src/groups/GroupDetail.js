@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import AdminNavbar from "../navbar/AdminNavbar";
+import MentorsNavbar from "../navbar/MentorsNavbar";
 
 const GroupDetail = ({ match }) => {
   const [group, setGroup] = useState(null);
@@ -25,7 +25,11 @@ const GroupDetail = ({ match }) => {
 
   return (
     <div>
-      <AdminNavbar background="#aaa" hoverBackground="#ddd" linkColor="#eee" />
+      <MentorsNavbar
+        background="#aaa"
+        hoverBackground="#ddd"
+        linkColor="#eee"
+      />
       <div style={{ paddingTop: "75px" }} className="wrapper">
         <div className="list-jumbotron">
           <h4>Group Details of {group.group.name}</h4>{" "}
@@ -61,7 +65,7 @@ const GroupDetail = ({ match }) => {
             ) : (
               <tbody>
                 <tr>
-                  <th>No one attended yet</th>
+                  <th>No one has attended yet</th>
                 </tr>
               </tbody>
             )}
