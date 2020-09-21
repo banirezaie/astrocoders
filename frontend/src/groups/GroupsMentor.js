@@ -21,16 +21,14 @@ const Mentors = () => {
   }
 
   return (
-
-    <div>
+    <div className="same-background">
       <MentorsNavbar
         background="#aaa"
         hoverBackground="#ddd"
         linkColor="#eee"
       />
       <div style={{ paddingTop: "75px" }} className="header">
-        <h2>Group List</h2>
-
+        <h2 className="text-white text-center">Group List</h2>
       </div>
       <div className="wrapper">
         <table className="table table-striped container bg-white table-hover">

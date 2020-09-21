@@ -64,9 +64,6 @@ function Routes() {
 }
 
 function App() {
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(setUser);
-  // });
   return (
     <UserProvider>
       <Routes />
