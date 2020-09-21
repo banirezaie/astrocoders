@@ -6,7 +6,7 @@ import MentorsView from "./mentors/MentorsView";
 import Admin from "./admin/Admin";
 import CreateClassCode from "./admin/CreateClassCode";
 import ClassCodes from "./admin/ClassCodes";
-import Groups from "./groups/Groups";
+import GroupsMentor from "./groups/GroupsMentor";
 import GroupDetail from "./groups/GroupDetail";
 import AttendeeListMentor from "./attendees/AttendeeListMentor";
 import LocationUpdate from "./admin/LocationUpdate";
@@ -21,6 +21,7 @@ import AdminView from "./admin/AdminView";
 import UserList from "./admin/UserList";
 import SyllabusUpdate from "./admin/SyllabusUpdate";
 import AttendeesListAdmin from "./attendees/AttendeeListAdmin";
+import GroupsAdmin from "./groups/GroupsAdmin";
 
 function Routes() {
   const user = useUserProfile();
@@ -44,7 +45,8 @@ function Routes() {
       <Route path="/attendees" component={AttendeeListMentor} exact />
       <Route path="/attendees-admin" component={AttendeesListAdmin} exact />
       <Route path="/add-location" component={AddLocation} />
-      <Route path="/groups" component={Groups} exact />
+      <Route path="/groups-admin" component={GroupsAdmin} exact />
+      <Route path="/groups" component={GroupsMentor} exact />
       <Route path="/groups/:id/details" component={GroupDetail} />
       <Route path="/admin" component={Admin} />
       <Route path="/CreateCode" component={CreateClassCode} />

@@ -54,7 +54,10 @@ function Home(props) {
             Attendees
           </NavLink>
 
-          <NavLink to="/groups" className="btn btn-primary home-menu-items">
+          <NavLink
+            to="/groups-admin"
+            className="btn btn-primary home-menu-items"
+          >
             <div>
               <i style={{ color: "#fff" }} className="ion-clipboard ion" />
             </div>

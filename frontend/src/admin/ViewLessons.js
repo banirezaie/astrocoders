@@ -1,9 +1,6 @@
 import React from "react";
 import "../App.css";
 import DeleteLesson from "./DeleteLesson";
-// import { Link } from "react-router-dom";
-
-
 
 const ViewLessons = ({ id, lessons, setLessons }) => {
   return (
@@ -11,8 +8,6 @@ const ViewLessons = ({ id, lessons, setLessons }) => {
       <div className=""></div>
       <div className="table">
         <table className="table">
-   
-
           {lessons && lessons.length > 0 ? (
             <tbody>
               {lessons.map((data, i) => {
@@ -25,10 +20,8 @@ const ViewLessons = ({ id, lessons, setLessons }) => {
                         props={{
                           moduleId: id,
                           lessonId: data._id,
-                          onDeleteLesson: 
-                          () =>
+                          onDeleteLesson: () =>
                             setLessons(
-                              
                               lessons.filter((oldlesson) => oldlesson !== data)
                             ),
                         }}
@@ -48,7 +41,6 @@ const ViewLessons = ({ id, lessons, setLessons }) => {
           )}
         </table>
       </div>
-     
     </div>
   );
 };
