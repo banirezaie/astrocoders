@@ -24,7 +24,7 @@ const MentorsView = () => {
           <NavLink to="/attendees" className="btn btn-primary col-10 mb-4">
             Show Attendees
           </NavLink>
-          <NavLink to="/createCode" className="btn btn-primary col-10 mb-4">
+          <NavLink to="/create-code" className="btn btn-primary col-10 mb-4">
             Create a class code
           </NavLink>
         </div>

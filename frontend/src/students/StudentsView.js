@@ -68,7 +68,7 @@ const StudentsView = (props) => {
           </div>
           <form className="create-code-container" onSubmit={handleSubmit}>
             <div className="form-group mx-5">
-              <label htmlFor="name">Class code</label>
+              <label htmlFor="name">Class code*</label>
               <input
                 type="text"
                 className="form-control"
@@ -81,13 +81,9 @@ const StudentsView = (props) => {
             <div className="form-group mx-5">
               <label htmlFor="name">
                 <p style={{ display: "inline" }}>Notes</p> <span></span>
-                <span
-                  style={{ fontSize: "0.7rem" }}
-                  class="badge badge-light"
-                >
+                <span style={{ fontSize: "0.7rem" }} class="badge badge-light">
                   Optional
                 </span>
-                
               </label>
               <textarea
                 placeholder="Add notes about your attendance, e.g. I was late due to child care"

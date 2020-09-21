@@ -44,12 +44,13 @@ nav.responsive-toolbar {
     ul {
       height: 100%;
       width: 300px;
-      top: 5rem;
+      top: 3.79rem;
       left: -250px;
       position: fixed;
       flex-direction: column;
       box-shadow: 2px 2px 2px 2px rgb(88, 88, 88);
       transition: 300ms ease all;
+      padding-right: 2px;
       &.active {
         left: 0px;
       }

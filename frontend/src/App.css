@@ -2,10 +2,8 @@
 
 .App-header {
   background-color: #bc3d53;
-  /* background-color: aliceblue; */
   min-height: 100vh;
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -20,11 +18,10 @@
   color: white;
 }
 .same-background {
-  background: #3a2226;
+  background-color: #3a2226;
 }
 .home {
   background-color: #3a2226;
-  /* background-color: aliceblue; */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -34,9 +31,7 @@
   color: #bc3d53;
 }
 .row {
-  /* background-color: #7e7694; */
   margin: 15px 5px;
-  /* color: white; */
 }
 
 .btn-primary {
@@ -60,10 +55,14 @@
 .create-code-container {
   color: black;
   font-size: 1.2rem;
-  background-color: #aaa;
+  background-color: #bc3d53;
   padding: 1rem;
   margin: 0.5rem;
   box-shadow: 14px 22px 15px -16px rgba(0, 0, 0, 0.52);
+}
+
+.width {
+  width: 100%;
 }
 
 .logOut {
@@ -82,7 +81,6 @@
 }
 
 .wrapper {
-  /* margin-bottom: 5rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -169,7 +167,6 @@
   display: flex;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   justify-content: center;
-
   color: #bc3d53;
 }
 
@@ -210,7 +207,6 @@
   padding: 1rem;
   background-color: #8391a4;
   color: white;
-  /* position: fixed; */
   bottom: 0;
   left: 0;
   width: 100%;
