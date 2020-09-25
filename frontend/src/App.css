@@ -132,7 +132,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-
+  background-color:white;
   flex-wrap: wrap;
   margin-right: 0px;
   margin-left: 0px;
@@ -143,7 +143,7 @@ body {
 }
 .login-image {
   background-image: url("./image/login-landing.png");
-  height: 50vh;
+  height: 100vh;
   background-position: LEFT;
   background-repeat: no-repeat;
   background-size: cover;
@@ -206,10 +206,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.login-image {
-  background-image: url("./image/login-landing.png");
-  height: 90vh;
-}
+
 .card-city {
   width: 80%;
   border-bottom: #8391a4 0.6rem solid;
@@ -232,10 +229,7 @@ body {
   .Login {
     padding: 60px 0;
   }
-  .login-image {
-    background-image: url("./image/login-landing.png");
-    height: 90vh;
-  }
+
   .Login form {
     margin: 0 auto;
     max-width: 320px;

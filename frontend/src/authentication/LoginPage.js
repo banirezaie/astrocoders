@@ -25,7 +25,7 @@ export default function LoginPage() {
             </div>
             <span className = "extra"></span>
             <hr></hr>
-            <span className = "extra" ></span>
+            <span className = "" ></span>
             <div className="row-login">
               <div className="col-md-12">
                 <nav className="navbar navbar-expand-lg ">
@@ -40,7 +40,7 @@ export default function LoginPage() {
                             className="nav-link"
                             href="mailto:contact@codeyourfuture.io"
                           >
-                            CONTACT <span class="sr-only">(current)</span>
+                            CONTACT <span className="sr-only">(current)</span>
                           </a>
                         </li>
                       </ul>
