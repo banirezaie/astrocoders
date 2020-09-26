@@ -77,7 +77,7 @@ const SyllabusUpdate = ({ props }) => {
                 <div className="col-sm-4 col-md-4">
                   <div className="card">
                     <div className="card-body">
-                      <h5 className="card-title">Group Names</h5>
+                      <h5 className="card-title">Class Names</h5>
 
                       <ul className="list-group ">
                         <ViewLessons
