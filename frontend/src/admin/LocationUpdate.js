@@ -32,6 +32,11 @@ const LocationUpdate = ({ props }) => {
     loadLocation();
   };
 
+    const handleOnAddLocation = () => {
+      loadLocation();
+    };
+
+
   return (
     <div className="same-background">
       <AdminNavbar background="#aaa" hoverBackground="#ddd" linkColor="#eee" />
@@ -41,7 +46,11 @@ const LocationUpdate = ({ props }) => {
             <h1 className="text-white">Location List</h1>
           </div>
           <div className="col-4">
-            <AddLocation />
+            <AddLocation
+              props={{
+                onAddLocation: handleOnAddLocation,
+              }}
+            />
           </div>
         </div>
         {location.map((data, i) => {
